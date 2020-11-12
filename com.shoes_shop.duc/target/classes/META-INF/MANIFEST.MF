@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Built-By: Duc
+Build-Jdk: 14.0.1
+Implementation-Title: Maven Webapp
+Implementation-Version: 1.0-SNAPSHOT
+Implementation-Vendor-Id: com.shoes_shop
+Implementation-URL: http://maven.apache.org
+Created-By: Maven Integration for Eclipse
+
