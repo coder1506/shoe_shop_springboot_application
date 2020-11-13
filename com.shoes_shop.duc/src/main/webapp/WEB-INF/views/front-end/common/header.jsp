@@ -49,8 +49,13 @@
 					</nav>
 					<div class="account-cart">
 						<span class="account"><a href="${pageContext.request.contextPath }/account" class="color-hover"><i class="far fa-user"></i> Tài khoản</a></span>
-						<span class="cart"><a href="#" class="color-hover"><i class="fas fa-cart-plus"></i> <span class="cart-text">Giỏ hàng</span></a>
+						<span class="cart">
+						<a href="#" class="color-hover">
+							<i class="fas fa-cart-plus"></i> 
+							<span class="cart-text">Giỏ hàng</span>
+						</a>
 							<div class="small-circle-cart">0</div>
+							<div class="cart-content">Bạn chưa có sản phẩm nào</div>
 						</span>
 						<span class="responsive-menu">
 							<div class="rp-menu-exit"><i class="fas fa-times"></i></div>
@@ -59,7 +64,7 @@
 									<ul class="nav flex-column content-rp-menu">
 										<div class="title-rp-menu">Menu</div>
 										 <li class="nav-item">
-										    <a class="nav-link color-hover" href="#">
+										    <a class="nav-link color-hover" href="${pageContext.request.contextPath}/home">
 										    TRANG CHỦ
 											</a>
 										  </li>
@@ -88,7 +93,7 @@
 										    </ul>
 										  </li>
 										  <li class="nav-item rp-account">
-										    <a href="${pageContext.request.contextPath}/account"><span class="account"><a href="#" class="color-hover"><i class="far fa-user"></i> Tài khoản</a></span></i>
+										    <a href="${pageContext.request.contextPath}/account"><span class="account"><a href="${pageContext.request.contextPath}/account" class="color-hover"><i class="far fa-user"></i> Tài khoản</a></span></i>
 										  </li>
 									</ul>
 							</button>

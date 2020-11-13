@@ -9,7 +9,7 @@
 				</li>
 				<li class="subcriber"><b>Điền email để nhận thông báo từ</br> chúng tôi</b></li>
 				<li ><form action="${pageContext.request.contextPath}/home" method = "post" class="emailfrm" >
-						<input type="email" id="email" name="email" placeholder="Email của bạn" required>
+						<input type="email" id="email" value="" name="email" placeholder="Email của bạn" required>
 						<button type = "button" class= "btn btn-primary" onclick="Shop.saveContact();">Gửi</button>
 				</form></li>
 			</ul>

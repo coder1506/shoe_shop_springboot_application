@@ -19,7 +19,7 @@ var Shop = {
 					//$("#message").html(jsonResult.data);
 					//$('#blogModal').modal('show');
 					if(jsonResult.status == 200) {
-						//$("#email").val(""); 
+						 $("#email").val("");
 						alert(jsonResult.data);
 					} else {
 						alert('loi');
