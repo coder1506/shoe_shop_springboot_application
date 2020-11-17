@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 <header class="header">
 				<!--header-top-content  -->
 				<div class="header-content">
@@ -24,25 +24,21 @@
 						  <li class="nav-item sp">
 						    <a class="nav-link color-hover" href="${pageContext.request.contextPath}/category">SẢN PHẨM &nbsp<i class="fas fa-angle-down"></i></a>
 						    <ul class="sub-menu sub-menu-sp color-hover">
-						    	<li><a href="${pageContext.request.contextPath}/category">Converse</a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">Sneaker </a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">Nike</a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">Gucci</a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">EQT</a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">Alexander McQueen </a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">Balenciaga </a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">Dolce & Gabbana</a></li>
+						    	<c:forEach var = "category" items = "${categories}">
+						    		<c:if test="${category.categorytype.equals('sản phẩm')}">
+						    			<li><a href="${base}/category">${category.name}</a></li>
+						    		</c:if>
+								</c:forEach>
 						    </ul>
 						  </li>
 						  <li class="nav-item lc">
 						    <a class="nav-link color-hover" href="${pageContext.request.contextPath}/category">PHỤ KIỆN KHÁC &nbsp<i class="fas fa-angle-down"></i></a>
 						    <ul class="sub-menu sub-menu-lc">
-						    	<li><a href="${pageContext.request.contextPath}/category">Dây giày</a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">Bọc giày</a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">Bọt về sinh</a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">Viên khử mùi và hút ẩm</a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">Lọ tẩy ố</a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">Sticker</a></li>
+						    	<c:forEach var = "category" items = "${categories}">
+						    		<c:if test="${category.categorytype.equals('phụ kiện khác')}">
+						    			<li><a href="${base}/category">${category.name}</a></li>
+						    		</c:if>
+								</c:forEach>
 						    </ul>
 						  </li>
 						</ul>
@@ -71,25 +67,21 @@
 										  <li class="nav-item sp">
 										    <a href="#">SẢN PHẨM &nbsp</a><i class="fas fa-angle-down sp-icon"></i>
 										    <ul class="sub-menu-sp color-hover">
-										    	<li><a href="${pageContext.request.contextPath}/category">Converse</a></li>
-										    	<li><a href="${pageContext.request.contextPath}/category">Sneaker </a></li>
-										    	<li><a href="${pageContext.request.contextPath}/category">Nike</a></li>
-										    	<li><a href="${pageContext.request.contextPath}/category">Gucci</a></li>
-										    	<li><a href="${pageContext.request.contextPath}/category">EQT</a></li>
-										    	<li><a href="${pageContext.request.contextPath}/category">Alexander McQueen </a></li>
-										    	<li><a href="${pageContext.request.contextPath}/category">Balenciaga </a></li>
-										    	<li><a href="${pageContext.request.contextPath}/category">Dolce & Gabbana</a></li>
+										    	<c:forEach var = "category" items = "${categories}">
+										    		<c:if test="${category.categorytype.equals('sản phẩm')}">
+										    			<li><a href="${base}/category">${category.name}</a></li>
+										    		</c:if>
+												</c:forEach>
 										    </ul>
 										  </li>
 										  <li class="nav-item lc">
 										    <a href="${pageContext.request.contextPath}/category">PHỤ KIỆN KHÁC &nbsp</a><i class="fas fa-angle-down lc-icon"></i>
 										    <ul class="sub-menu-lc">
-										    	<li><a href="${pageContext.request.contextPath}/category">Dây giày</a></li>
-										    	<li><a href="${pageContext.request.contextPath}/category">Bọc giày</a></li>
-										    	<li><a href="${pageContext.request.contextPath}/category">Bọt về sinh</a></li>
-										    	<li><a href="${pageContext.request.contextPath}/category">Viên khử mùi và hút ẩm</a></li>
-										    	<li><a href="${pageContext.request.contextPath}/category">Lọ tẩy ố</a></li>
-										    	<li><a href="${pageContext.request.contextPath}/category">Sticker</a></li>
+										    	<c:forEach var = "category" items = "${categories}">
+										    		<c:if test="${category.categorytype.equals('phụ kiện khác')}">
+										    			<li><a href="${base}/category">${category.name}</a></li>
+										    		</c:if>
+												</c:forEach>
 										    </ul>
 										  </li>
 										  <li class="nav-item rp-account">
@@ -117,27 +109,23 @@
 							</a>
 						  </li>
 						  <li class="nav-item sp">
-						    <a class="nav-link color-hover" href="#">SẢN PHẨM &nbsp<i class="fas fa-angle-down"></i></a>
+						    <a class="nav-link color-hover" href="${pageContext.request.contextPath}/category">SẢN PHẨM &nbsp<i class="fas fa-angle-down"></i></a>
 						    <ul class="sub-menu sub-menu-sp color-hover">
-						    	<li><a href="${pageContext.request.contextPath}/category">Converse</a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">Sneaker </a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">Nike</a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">Gucci</a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">EQT</a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">Alexander McQueen </a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">Balenciaga </a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">Dolce & Gabbana</a></li>
+						    	<c:forEach var = "category" items = "${categories}">
+						    		<c:if test="${category.categorytype.equals('sản phẩm')}">
+						    			<li><a href="${base}/category">${category.name}</a></li>
+						    		</c:if>
+								</c:forEach>
 						    </ul>
 						  </li>
 						  <li class="nav-item lc">
 						    <a class="nav-link color-hover" href="#">PHỤ KIỆN KHÁC &nbsp<i class="fas fa-angle-down"></i></a>
 						    <ul class="sub-menu sub-menu-lc">
-						    	<li><a href="${pageContext.request.contextPath}/category">Dây giày</a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">Bọc giày</a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">Bọt về sinh</a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">Viên khử mùi và hút ẩm</a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">Lọ tẩy ố</a></li>
-						    	<li><a href="${pageContext.request.contextPath}/category">Sticker</a></li>
+						    	<c:forEach var = "category" items = "${categories}">
+						    		<c:if test="${category.categorytype.equals('phụ kiện khác')}">
+						    			<li><a href="${base}/category">${category.name}</a></li>
+						    		</c:if>
+								</c:forEach>
 						    </ul>
 						  </li>
 						</ul>

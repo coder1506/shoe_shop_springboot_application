@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class DetailController {
+public class DetailController extends BaseController{
 	@RequestMapping (value = "/detail", method = RequestMethod.GET)
 	public String index(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {

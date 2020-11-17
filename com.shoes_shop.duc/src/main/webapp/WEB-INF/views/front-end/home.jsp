@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,65 +69,27 @@
 		<!-- content -->
 		<div class="content">
 			<div class="container-fluid">
-				<div class="row justify-content-center fade1">
+				<div class="row justify-content-center fade1 ">
 					<div class="col-xl-3 col-lg-3 col-md-5 product-block">
 						<div class="heading-panel">
 							<h2>Sản phẩm mới nhất</h2>
 							<div class="btn-more"><a href="${pageContext.request.contextPath}/category">Xem thêm</a></div>
 						</div>
 					</div>
-					<div class="col-xl-3 col-lg-3 col-md-5 prd">
+					<c:forEach var = "product" items = "${products}">
+					<c:if test ="${product.producttype.equals('sản phẩm mới') == true}">
+						<div class="col-xl-3 col-lg-3 col-md-5 prd">
 						<img src="../../images/product/sp.jpg">
 						<div class="btn-more add-btn add-btn-m"><a href="#">THÊM VÀO GIỎ</a></div>
 						<div class="btn-more add-btn ct-btn"><a href="${pageContext.request.contextPath}/detail">CHI TIẾT</a></div>
 						<div class="cost">
-							<a>Born originals</a>
+							<a>${product.title}</a>
 							<br>
-							150.000Đ
+							${product.price}Đ
 						</div>
 					</div>	
-					<div class="col-xl-3 col-lg-3 col-md-12 prd">
-						<img src="../../images/product/sp1.jpg">
-						<div class="btn-more add-btn add-btn-m"><a href="#">THÊM VÀO GIỎ</a></div>
-						<div class="btn-more add-btn ct-btn"><a href="${pageContext.request.contextPath}/detail">CHI TIẾT</a></div>
-						<div class="cost">
-							<a href="#">Born originals</a>
-							<br>
-							150.000Đ
-						</div>
-					</div>
-				</div>
-				<div class="row justify-content-center fade2">
-					<div class="col-xl-3 col-lg-3 col-md-5 prd product-block fp">
-						<img src="../../images/product/sp2.jpg">
-						<div class="btn-more add-btn add-btn-m"><a href="#">THÊM VÀO GIỎ</a></div>
-						<div class="btn-more add-btn ct-btn"><a href="${pageContext.request.contextPath}/detail">CHI TIẾT</a></div>
-						<div class="cost">
-							<a href="#">Born originals</a>
-							<br>
-							150.000Đ
-						</div>
-					</div>	
-					<div class="col-xl-3 col-lg-3 col-md-5 prd">
-						<img src="../../images/product/sp3.jpg">
-						<div class="btn-more add-btn add-btn-m"><a href="#">THÊM VÀO GIỎ</a></div>
-						<div class="btn-more add-btn ct-btn"><a href="${pageContext.request.contextPath}/detail">CHI TIẾT</a></div>
-						<div class="cost">
-							<a href="#">Born originals</a>
-							<br>
-							150.000Đ
-						</div>
-					</div>	
-					<div class="col-xl-3 col-lg-3 col-md-12 prd">
-						<img src="../../images/product/sp4.jpg">
-						<div class="btn-more add-btn add-btn-m"><a href="#">THÊM VÀO GIỎ</a></div>
-						<div class="btn-more add-btn ct-btn"><a href="${pageContext.request.contextPath}/detail">CHI TIẾT</a></div>
-						<div class="cost">
-							<a href="#">Born originals</a>
-							<br>
-							150.000Đ
-						</div>
-					</div>
+					</c:if>
+					</c:forEach>
 				</div>
 				<div class="row justify-content-center fade3">
 					<div class="col-xl-3 col-lg-3 col-md-5 product-block">
@@ -134,59 +97,21 @@
 							<h2>Sản phẩm nổi bật</h2>
 							<div class="btn-more"><a href="${pageContext.request.contextPath}/category">Xem thêm</a></div>
 						</div>
-					</div>
-					<div class="col-xl-3 col-lg-3 col-md-5 prd">
-						<img src="../../images/product/sp5.jpg">
+					 </div>
+					 <c:forEach var = "product" items = "${products}">
+					<c:if test ="${product.producttype.equals('sản phẩm nổi bật') == true}">
+						<div class="col-xl-3 col-lg-3 col-md-5 prd">
+						<img src="../../images/product/sp.jpg">
 						<div class="btn-more add-btn add-btn-m"><a href="#">THÊM VÀO GIỎ</a></div>
 						<div class="btn-more add-btn ct-btn"><a href="${pageContext.request.contextPath}/detail">CHI TIẾT</a></div>
 						<div class="cost">
-							<a>Born originals</a>
+							<a>${product.title}</a>
 							<br>
-							150.000Đ
+							${product.price}Đ
 						</div>
 					</div>	
-					<div class="col-xl-3 col-lg-3 col-md-12 prd">
-						<img src="../../images/product/sp6.jpg">
-						<div class="btn-more add-btn add-btn-m"><a href="#">THÊM VÀO GIỎ</a></div>
-						<div class="btn-more add-btn ct-btn"><a href="${pageContext.request.contextPath}/detail">CHI TIẾT</a></div>
-						<div class="cost">
-							<a>Born originals</a>
-							<br>
-							150.000Đ
-						</div>
-					</div>
-				</div>
-				<div class="row justify-content-center fade4">
-					<div class="col-xl-3 col-lg-3 col-md-5 prd product-block fp">
-						<img src="../../images/product/sp7.jpg">
-						<div class="btn-more add-btn add-btn-m"><a href="#">THÊM VÀO GIỎ</a></div>
-						<div class="btn-more add-btn ct-btn"><a href="${pageContext.request.contextPath}/detail">CHI TIẾT</a></div>
-						<div class="cost">
-							<a>Born originals</a>
-							<br>
-							150.000Đ
-						</div>
-					</div>	
-					<div class="col-xl-3 col-lg-3 col-md-5 prd">
-						<img src="../../images/product/sp8.jpg">
-						<div class="btn-more add-btn add-btn-m"><a href="#">THÊM VÀO GIỎ</a></div>
-						<div class="btn-more add-btn ct-btn"><a href="${pageContext.request.contextPath}/detail">CHI TIẾT</a></div>
-						<div class="cost">
-							<a>Born originals</a>
-							<br>
-							150.000Đ
-						</div>
-					</div>	
-					<div class="col-xl-3 col-lg-3 col-md-12 prd">
-						<img src="../../images/product/sp9.jpg">
-						<div class="btn-more add-btn add-btn-m"><a href="#">THÊM VÀO GIỎ</a></div>
-						<div class="btn-more add-btn ct-btn"><a href="${pageContext.request.contextPath}/detail">CHI TIẾT</a></div>
-						<div class="cost">
-							<a>Born originals</a>
-							<br>
-							150.000Đ
-						</div>
-					</div>
+					</c:if>
+					</c:forEach>
 				</div>
 				<div class="row justify-content-center fade3">
 					<div class="col-xl-3 col-lg-3 col-md-5 product-block">
@@ -195,61 +120,21 @@
 							<div class="btn-more"><a href="${pageContext.request.contextPath}/category">Xem thêm</a></div>
 						</div>
 					</div>
-					<div class="col-xl-3 col-lg-3 col-md-5 prd">
-						<img src="../../images/product/sp5.jpg">
+					<c:forEach var = "product" items = "${products}">
+					<c:if test ="${product.producttype.equals('sản phẩm giảm giá') == true}">
+						<div class="col-xl-3 col-lg-3 col-md-5 prd">
+						<img src="../../images/product/sp.jpg">
 						<div class="btn-more add-btn add-btn-m"><a href="#">THÊM VÀO GIỎ</a></div>
 						<div class="btn-more add-btn ct-btn"><a href="${pageContext.request.contextPath}/detail">CHI TIẾT</a></div>
 						<div class="cost">
-							<a>Born originals</a>
+							<a>${product.title}</a>
 							<br>
-							150.000Đ
+							${product.price}Đ
 						</div>
 					</div>	
-					<div class="col-xl-3 col-lg-3 col-md-12 prd">
-						<img src="../../images/product/sp6.jpg">
-						<div class="btn-more add-btn add-btn-m"><a href="#">THÊM VÀO GIỎ</a></div>
-						<div class="btn-more add-btn ct-btn"><a href="${pageContext.request.contextPath}/detail">CHI TIẾT</a></div>
-						<div class="cost">
-							<a>Born originals</a>
-							<br>
-							150.000Đ
-						</div>
-					</div>
-				</div>
-				<div class="row justify-content-center fade4">
-					<div class="col-xl-3 col-lg-3 col-md-5 prd product-block fp">
-						<img src="../../images/product/sp7.jpg">
-						<div class="btn-more add-btn add-btn-m"><a href="#">THÊM VÀO GIỎ</a></div>
-						<div class="btn-more add-btn ct-btn"><a href="${pageContext.request.contextPath}/detail">CHI TIẾT</a></div>
-						<div class="cost">
-							<a>Born originals</a>
-							<br>
-							150.000Đ
-						</div>
-					</div>	
-					<div class="col-xl-3 col-lg-3 col-md-5 prd">
-						<img src="../../images/product/sp8.jpg">
-						<div class="btn-more add-btn add-btn-m"><a href="#">THÊM VÀO GIỎ</a></div>
-						<div class="btn-more add-btn ct-btn"><a href="${pageContext.request.contextPath}/detail">CHI TIẾT</a></div>
-						<div class="cost">
-							<a>Born originals</a>
-							<br>
-							150.000Đ
-						</div>
-					</div>	
-					<div class="col-xl-3 col-lg-3 col-md-12 prd">
-						<img src="../../images/product/sp9.jpg">
-						<div class="btn-more add-btn add-btn-m"><a href="#">THÊM VÀO GIỎ</a></div>
-						<div class="btn-more add-btn ct-btn"><a href="${pageContext.request.contextPath}/detail">CHI TIẾT</a></div>
-						<div class="cost">
-							<a>Born originals</a>
-							<br>
-							150.000Đ
-						</div>
-					</div>
-				</div>
+					</c:if>
+					</c:forEach>
 			</div>
-		</div>
 		<!-- /content -->
 		<jsp:include page="/WEB-INF/views/front-end/common/footer.jsp"></jsp:include>
 	</div>

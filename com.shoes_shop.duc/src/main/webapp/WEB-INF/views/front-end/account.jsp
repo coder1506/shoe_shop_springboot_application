@@ -45,4 +45,5 @@
 		<jsp:include page="/WEB-INF/views/front-end/common/footer.jsp"></jsp:include>
 	</div>
 </body>
+	<jsp:include page="/WEB-INF/views/front-end/common/js.jsp"></jsp:include>
 </html>

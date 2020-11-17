@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class AccountController {
+public class AccountController extends BaseController{
 	@RequestMapping (value = "/account" , method = RequestMethod.GET)
 	public String accountIndex(final ModelMap model ,final HttpServletRequest request,final HttpServletResponse response ) {
 		model.addAttribute("form", "/WEB-INF/views/front-end/common/userLogin.jsp")	;

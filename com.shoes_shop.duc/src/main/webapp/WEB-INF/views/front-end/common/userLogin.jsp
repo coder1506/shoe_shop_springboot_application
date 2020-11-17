@@ -5,7 +5,7 @@
 				<h1>ĐĂNG NHẬP</h1>
 				<input type = "text" name = "username" class="text" placeholder="Tài khoản" required>
 				</br>
-				<input type = "text" name = "password" class="text" placeholder="Mật khẩu" required>
+				<input type = "password" name = "password" class="text" placeholder="Mật khẩu" required>
 				</br>
 				<input type = "submit" value = "ĐĂNG NHẬP" id = "btn-send">
 				</br>

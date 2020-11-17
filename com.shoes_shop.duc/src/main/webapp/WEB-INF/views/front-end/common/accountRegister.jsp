@@ -12,9 +12,9 @@
 				</br>
 				<input type = "text" name = "username" class="text" placeholder="Tên đăng nhập" required>
 				</br>
-				<input type = "text" name = "password" class="text" placeholder="Mật khẩu" required>
+				<input type = "password" name = "password" class="text" placeholder="Mật khẩu" required>
 				</br>
-				<input type = "text" name = "passwordrp" class="text" placeholder="Nhập lại mật khẩu" required>
+				<input type = "password" name = "passwordrp" class="text" placeholder="Nhập lại mật khẩu" required>
 				</br>
 				<input type = "submit" value = "ĐĂNG KÍ" id = "btn-send">
 				</br>
