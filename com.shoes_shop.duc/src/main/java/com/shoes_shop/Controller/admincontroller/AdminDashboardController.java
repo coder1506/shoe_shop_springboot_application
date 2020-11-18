@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class EditCss {
-	@RequestMapping (value = "/editCss",method = RequestMethod.GET)
-	public String editCss(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {
-		return "admin/edit_css";
+public class AdminDashboardController {
+	@RequestMapping (value = "/admin/dashboard",method = RequestMethod.GET)
+	public String Dashboard(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {
+		return "admin/index";
 	}
 }

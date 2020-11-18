@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
     <div class="wrapper">
@@ -26,17 +26,17 @@
                             <a class="right__card" href="view_customers.html">
                                 <div class="right__cardTitle">Khách Hàng</div>
                                 <div class="right__cardNumber">12</div>
-                                <div class="right__cardDesc">Xem Chi Tiết <img src="assets/arrow-right.svg" alt=""></div>
+                                <div class="right__cardDesc">Xem Chi Tiết <img src="/assets/arrow-right.svg" alt=""></div>
                             </a>
                             <a class="right__card" href="view_p_category.html">
                                 <div class="right__cardTitle">Danh Mục</div>
                                 <div class="right__cardNumber">4</div>
-                                <div class="right__cardDesc">Xem Chi Tiết <img src="assets/arrow-right.svg" alt=""></div>
+                                <div class="right__cardDesc">Xem Chi Tiết <img src="/assets/arrow-right.svg" alt=""></div>
                             </a>
                             <a class="right__card" href="view_orders.html">
                                 <div class="right__cardTitle">Đơn Hàng</div>
                                 <div class="right__cardNumber">72</div>
-                                <div class="right__cardDesc">Xem Chi Tiết <img src="assets/arrow-right.svg" alt=""></div>
+                                <div class="right__cardDesc">Xem Chi Tiết <img src="/assets/arrow-right.svg" alt=""></div>
                             </a>
                         </div>
                         <div class="right__table">
@@ -103,7 +103,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <a href="" class="right__tableMore"><p>Xem tất cả các đơn đặt hàng</p> <img src="assets/arrow-right-black.svg" alt=""></a>
+                            <a href="" class="right__tableMore"><p>Xem tất cả các đơn đặt hàng</p> <img src="/assets/arrow-right-black.svg" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -111,6 +111,6 @@
         </div>
     </div>
 
-    <script src="js/main.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 </html>

@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
     <div class="wrapper">
@@ -18,7 +19,7 @@
                         <div class="right__title">Bảng điều khiển</div>
                         <p class="right__desc">Chèn danh mục</p>
                         <div class="right__formWrapper">
-                            <form action="" method="post" enctype="multipart/form-data">
+                            <form:form action="${pageContext.request.contextPath}/admin/addproduct" method="post" enctype="multipart/form-data">
                                 <div class="right__inputWrapper">
                                     <label for="title">Tiêu đề</label>
                                     <input type="text" placeholder="Tiêu đề">
@@ -76,7 +77,7 @@
                                     <textarea name="" id="" cols="30" rows="10" placeholder="Mô tả"></textarea>
                                 </div>
                                 <button class="btn" type="submit">Chèn</button>
-                            </form>
+                            </form:form>
                         </div>
                     </div>
                 </div>
@@ -84,6 +85,6 @@
         </div>
     </div>
 
-    <script src="js/main.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 </html>

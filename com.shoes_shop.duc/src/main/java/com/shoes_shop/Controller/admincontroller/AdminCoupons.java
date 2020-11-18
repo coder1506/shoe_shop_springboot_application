@@ -9,20 +9,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class Coupons {
-	@RequestMapping (value = "/addCoupons",method = RequestMethod.GET)
+public class AdminCoupons {
+	@RequestMapping (value = "/admin/addcoupons",method = RequestMethod.GET)
 	public String addCoupons(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {
 		return "admin/insert_coupon";
 	}
-	@RequestMapping (value = "/viewCoupons",method = RequestMethod.GET)
+	@RequestMapping (value = "/admin/viewcoupons",method = RequestMethod.GET)
 	public String viewCoupons(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {
 		return "admin/view_coupons";
 	}
-	@RequestMapping (value = "/repairCoupons",method = RequestMethod.GET)
+	@RequestMapping (value = "/admin/repaircoupons",method = RequestMethod.GET)
 	public String repairCoupons(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {
 		return "admin/view_coupons";
 	}
-	@RequestMapping (value = "/deleteCoupons",method = RequestMethod.GET)
+	@RequestMapping (value = "/admin/deletecoupons",method = RequestMethod.GET)
 	public String deleteCoupons(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {
 		return "admin/view_coupons";
 	}

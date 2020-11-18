@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class CustomerController {
-	@RequestMapping (value = "/customers",method = RequestMethod.GET)
-	public String customers(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {
-		return "admin/view_customers";
+public class AdminOrder {
+	@RequestMapping (value = "/admin/order",method = RequestMethod.GET)
+	public String order(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {
+		return "admin/view_orders";
 	}
 }

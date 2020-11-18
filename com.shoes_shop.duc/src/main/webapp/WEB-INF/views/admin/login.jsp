@@ -5,8 +5,8 @@
 <head>
 	<title>login</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="../../css/loginstyle.css">
-	<link rel="stylesheet" type="text/css" href="../../css/bootstrap-4.5.2-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/loginstyle.css">
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap-4.5.2-dist/css/bootstrap.min.css">
 </head>
 <body>
 	<div class="wrapper">

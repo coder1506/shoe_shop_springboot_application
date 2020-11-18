@@ -9,20 +9,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class AdminController {
-	@RequestMapping (value = "/addAdmin",method = RequestMethod.GET)
+public class AdminUserController {
+	@RequestMapping (value = "/admin/addadmin",method = RequestMethod.GET)
 	public String addAdmin(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {
 		return "admin/insert_admin";
 	}
-	@RequestMapping (value = "/viewAdmin",method = RequestMethod.GET)
+	@RequestMapping (value = "/admin/viewadmin",method = RequestMethod.GET)
 	public String viewAdmin(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {
 		return "admin/view_admins";
 	}
-	@RequestMapping (value = "/repairAdmin",method = RequestMethod.GET)
+	@RequestMapping (value = "/admin/repairadmin",method = RequestMethod.GET)
 	public String repairAdmin(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {
 		return "admin/view_admins";
 	}
-	@RequestMapping (value = "/deleteAdmin",method = RequestMethod.GET)
+	@RequestMapping (value = "/admin/deleteadmin",method = RequestMethod.GET)
 	public String deleteAdmin(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {
 		return "admin/view_admins";
 	}
