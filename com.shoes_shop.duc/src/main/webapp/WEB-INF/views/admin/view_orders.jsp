@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
 </head>
 <body>
     <div class="wrapper">
@@ -47,10 +47,10 @@
                                             <td data-label="Ngày">2020-07-13</td>
                                             <td data-label="Tổng">1.180.000 ₫</td>
                                             <td data-label="Trạng thái">Đang Chờ Xử Lý</td>
-                                            <td data-label="Xoá" class="right__iconTable"><a href=""><img src="assets/icon-trash-black.svg" alt=""></a></td>
+                                            <td data-label="Xoá" class="right__iconTable"><a href=""><img src="${pageContext.request.contextPath}/assets/icon-trash-black.svg" alt=""></a></td>
                                             <td data-label="Thanh toán" class="right__confirm">
-                                                <a href="" class="right__iconTable"><img src="assets/icon-check.svg" alt=""></a>
-                                                <a href="" class="right__iconTable"><img src="assets/icon-x.svg" alt=""></a>
+                                                <a href="" class="right__iconTable"><img src="${pageContext.request.contextPath}/assets/icon-check.svg" alt=""></a>
+                                                <a href="" class="right__iconTable"><img src="${pageContext.request.contextPath}/assets/icon-x.svg" alt=""></a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -63,10 +63,10 @@
                                             <td data-label="Ngày">2020-07-13</td>
                                             <td data-label="Tổng">590.000 ₫</td>
                                             <td data-label="Trạng thái">Đang Chờ Xử Lý</td>
-                                            <td data-label="Xoá" class="right__iconTable"><a href=""><img src="assets/icon-trash-black.svg" alt=""></a></td>
+                                            <td data-label="Xoá" class="right__iconTable"><a href=""><img src="${pageContext.request.contextPath}/assets/icon-trash-black.svg" alt=""></a></td>
                                             <td data-label="Thanh toán">
-                                                <a href="" class="right__iconTable iconConfirm"><img src="assets/icon-check.svg" alt=""></a>
-                                                <a href="" class="right__iconTable iconConfirm"><img src="assets/icon-x.svg" alt=""></a>
+                                                <a href="" class="right__iconTable iconConfirm"><img src="${pageContext.request.contextPath}/assets/icon-check.svg" alt=""></a>
+                                                <a href="" class="right__iconTable iconConfirm"><img src="${pageContext.request.contextPath}/assets/icon-x.svg" alt=""></a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -79,6 +79,6 @@
         </div>
     </div>
 
-    <script src="js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/js/main.js"></script>
 </body>
 </html>

@@ -30,6 +30,10 @@ public class ProductEntity extends BaseEntity {
 
 	@Column(name = "short_description", length = 3000, nullable = false)
 	private String shortDes;
+	@Column(name = "metarial_vs_skill")
+	private String metarial_vs_skill;
+	@Column(name = "code")
+	private String code;
 
 	@Lob
 	@Column(name = "detail_description", nullable = false, columnDefinition = "LONGTEXT")
@@ -133,4 +137,20 @@ public class ProductEntity extends BaseEntity {
 		this.category = category;
 	}
 
+	public String getMetarial_vs_skill() {
+		return metarial_vs_skill;
+	}
+
+	public void setMetarial_vs_skill(String metarial_vs_skill) {
+		this.metarial_vs_skill = metarial_vs_skill;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+	
 }

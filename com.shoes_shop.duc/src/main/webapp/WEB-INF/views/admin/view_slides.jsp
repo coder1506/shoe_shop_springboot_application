@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
 </head>
 <body>
     <div class="wrapper">
@@ -21,34 +21,34 @@
                             <div class="right__slides">
                                 <div class="right__slide">
                                     <div class="right__slideTitle">This is the title</div>
-                                    <div class="right__slideImage"><img src="images/slide1.jpg" alt=""></div>
+                                    <div class="right__slideImage"><img src="${pageContext.request.contextPath}/images/slide1.jpg" alt=""></div>
                                     <div class="right__slideIcons">
-                                        <a class="right__slideIcon" href="edit_slide.html"><img src="assets/icon-pencil.svg" alt=""></a>
-                                        <a class="right__slideIcon" href=""><img src="assets/icon-trash.svg" alt=""></a>
+                                        <a class="right__slideIcon" href="${pageContext.request.contextPath}/admin/editslide"><img src="${pageContext.request.contextPath}/assets/icon-pencil.svg" alt=""></a>
+                                        <a class="right__slideIcon" href=""><img src="${pageContext.request.contextPath}/assets/icon-trash.svg" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="right__slide">
                                     <div class="right__slideTitle">This is the title</div>
-                                    <div class="right__slideImage"><img src="images/slide2.jpg" alt=""></div>
+                                    <div class="right__slideImage"><img src="${pageContext.request.contextPath}/images/slide2.jpg" alt=""></div>
                                     <div class="right__slideIcons">
-                                        <a class="right__slideIcon" href="edit_slide.html"><img src="assets/icon-pencil.svg" alt=""></a>
-                                        <a class="right__slideIcon" href=""><img src="assets/icon-trash.svg" alt=""></a>
+                                        <a class="right__slideIcon" href="${pageContext.request.contextPath}/admin/editslide"><img src="${pageContext.request.contextPath}/assets/icon-pencil.svg" alt=""></a>
+                                        <a class="right__slideIcon" href=""><img src="${pageContext.request.contextPath}/assets/icon-trash.svg" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="right__slide">
                                     <div class="right__slideTitle">This is the title</div>
-                                    <div class="right__slideImage"><img src="images/slide3.jpg" alt=""></div>
+                                    <div class="right__slideImage"><img src="${pageContext.request.contextPath}/images/slide3.jpg" alt=""></div>
                                     <div class="right__slideIcons">
-                                        <a class="right__slideIcon" href="edit_slide.html"><img src="assets/icon-pencil.svg" alt=""></a>
-                                        <a class="right__slideIcon" href=""><img src="assets/icon-trash.svg" alt=""></a>
+                                        <a class="right__slideIcon" href="edit_slide.html"><img src="${pageContext.request.contextPath}/assets/icon-pencil.svg" alt=""></a>
+                                        <a class="right__slideIcon" href=""><img src="${pageContext.request.contextPath}/assets/icon-trash.svg" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="right__slide">
                                     <div class="right__slideTitle">This is the title</div>
-                                    <div class="right__slideImage"><img src="images/slide4.jpg" alt=""></div>
+                                    <div class="right__slideImage"><img src="${pageContext.request.contextPath}/images/slide4.jpg" alt=""></div>
                                     <div class="right__slideIcons">
-                                        <a class="right__slideIcon" href="edit_slide.html"><img src="assets/icon-pencil.svg" alt=""></a>
-                                        <a class="right__slideIcon" href=""><img src="assets/icon-trash.svg" alt=""></a>
+                                        <a class="right__slideIcon" href="${pageContext.request.contextPath}/admin/editslide"><img src="${pageContext.request.contextPath}/assets/icon-pencil.svg" alt=""></a>
+                                        <a class="right__slideIcon" href=""><img src="${pageContext.request.contextPath}/assets/icon-trash.svg" alt=""></a>
                                     </div>
                                 </div>
                             </div>
@@ -59,6 +59,6 @@
         </div>
     </div>
 
-    <script src="js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/js/main.js"></script>
 </body>
 </html>

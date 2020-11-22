@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class AdminCustomerController {
-	@RequestMapping (value = "/admin/customers",method = RequestMethod.GET)
+	@RequestMapping (value = "/admin/viewcustomers",method = RequestMethod.GET)
 	public String customers(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {
 		return "admin/view_customers";
 	}

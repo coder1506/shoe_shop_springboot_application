@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
 	<jsp:include page="/WEB-INF/views/front-end/common/css.jsp"></jsp:include>
-	<link rel="stylesheet" type="text/css" href="../../css/stylechitiet.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/stylechitiet.css">
 </head>
 <body>
 	<div class="wrapper">
@@ -25,44 +25,44 @@
 						<ul>
 							<li>
 								<div class="prd">
-									<img src="../../images/product/sp.jpg">
+									<img src="${pageContext.request.contextPath}/images/product/sp.jpg">
 								</div>	
 							</li>
 							<li>
 								<div class="prd">
-									<img src="../../images/product/sp.jpg">
+									<img src="${pageContext.request.contextPath}/images/product/sp.jpg">
 								</div>	
 							</li>
 							<li>
 								<div class="prd">
-									<img src="../../images/product/sp.jpg">
+									<img src="${pageContext.request.contextPath}/images/product/sp.jpg">
 								</div>	
 							</li>
 						</ul>
 						<ul>
 							<li>
 								<div class="prd">
-									<img src="../../images/product/sp.jpg">
+									<img src="${pageContext.request.contextPath}/images/product/sp.jpg">
 								</div>	
 							</li>
 							<li>
 								<div class="prd">
-									<img src="../../images/product/sp.jpg">
+									<img src="${pageContext.request.contextPath}/images/product/sp.jpg">
 								</div>	
 							</li>
 							<li>
 								<div class="prd">
-									<img src="../../images/product/sp.jpg">
+									<img src="${pageContext.request.contextPath}/images/product/sp.jpg">
 								</div>	
 							</li>
 						</ul>
 					</div>
 					<div class="col-xl-4 right-info">
-						<h3>ALEXSANDER MCQUEEN</h3>
+						<h3>${product.title}</h3>
 						<div class="code-prd">
-							Code:<span>6d635y5zs</span>
+							Code:<span>${product.id}</span>
 						</div>
-						<h5>500,000₫</h5>
+						<h5>${product.price}₫</h5>
 						<div class="amount">
 							<button class="btn minus">-</button>
 							<div class="current-amount"></div>
@@ -93,26 +93,11 @@
 							<!-- Tab panes -->
 							<div class="tab-content">
 								<div id="home" class="container tab-pane active"><br>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-										quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-										consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-										cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-										proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-										quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-										consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-										cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-										proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-										quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-										consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.
+									<p>${product.shortDetails}
 									</p>
 								</div>
 								<div id="menu1" class="container tab-pane fade"><br>
-									<p>Chất liệu</p>
+									<p>${product.metarial_vs_skill}</p>
 								</div>
 								<div id="menu2" class="container tab-pane fade"><br>
 									<p>kích cỡ</p>
@@ -129,17 +114,17 @@
 				<div class="row justify-content-center">
 					<div class="col-xl-2 col-lg-2 col-md-5 prd prd1">
 						<a href="#">
-							<img src="../../images/product/sp.jpg">
+							<img src="${pageContext.request.contextPath}/images/product/sp.jpg">
 						</a>
 					</div>	
 					<div class="col-xl-2 col-lg-2 col-md-5 prd">
-						<a href="#"><img src="../../images/product/sp1.jpg"></a>
+						<a href="#"><img src="${pageContext.request.contextPath}/images/product/sp1.jpg"></a>
 					</div>	
 					<div class="col-xl-2 col-lg-2 col-md-5 prd">
-						<a href="#"><img src="../../images/product/sp2.jpg"></a>
+						<a href="#"><img src="${pageContext.request.contextPath}/images/product/sp2.jpg"></a>
 					</div>
 					<div class="col-xl-2 col-lg-2 col-md-5 prd">
-						<a href="#"><img src="../../images/product/sp3.jpg"></a>
+						<a href="#"><img src="${pageContext.request.contextPath}/images/product/sp3.jpg"></a>
 					</div>
 				</div>
 					</div>

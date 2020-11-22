@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
 </head>
 <body>
     <div class="wrapper">
@@ -35,15 +35,15 @@
                                             <td data-label="STT">1</td>
                                             <td data-label="Tiêu đề">Nữ</td>
                                             <td data-label="Mô tả">Rất thơ và lãng mạn</td>
-                                            <td data-label="Sửa" class="right__iconTable"><a href=""><img src="assets/icon-edit.svg" alt=""></a></td>
-                                            <td data-label="Xoá" class="right__iconTable"><a href=""><img src="assets/icon-trash-black.svg" alt=""></a></td>
+                                            <td data-label="Sửa" class="right__iconTable"><a href=""><img src="${pageContext.request.contextPath}/assets/icon-edit.svg" alt=""></a></td>
+                                            <td data-label="Xoá" class="right__iconTable"><a href=""><img src="${pageContext.request.contextPath}/assets/icon-trash-black.svg" alt=""></a></td>
                                         </tr>
                                         <tr>
                                             <td data-label="STT">1</td>
                                             <td data-label="Tiêu đề">Nữ</td>
                                             <td data-label="Mô tả">lãng mạn</td>
-                                            <td data-label="Sửa" class="right__iconTable"><a href=""><img src="assets/icon-edit.svg" alt=""></a></td>
-                                            <td data-label="Xoá" class="right__iconTable"><a href=""><img src="assets/icon-trash-black.svg" alt=""></a></td>
+                                            <td data-label="Sửa" class="right__iconTable"><a href=""><img src="${pageContext.request.contextPath}/assets/icon-edit.svg" alt=""></a></td>
+                                            <td data-label="Xoá" class="right__iconTable"><a href=""><img src="${pageContext.request.contextPath}/assets/icon-trash-black.svg" alt=""></a></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -55,6 +55,6 @@
         </div>
     </div>
 
-    <script src="js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/js/main.js"></script>
 </body>
 </html>

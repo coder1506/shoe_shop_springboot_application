@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +8,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
 	<jsp:include page="/WEB-INF/views/front-end/common/css.jsp"></jsp:include>
-	<link rel="stylesheet" type="text/css" href="../../css/styledanhmuc.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styledanhmuc.css">
 </head>
 <body>
 	<div class="wrapper">
@@ -21,7 +22,7 @@
 		<div class="content">
 			<div class="filter">
 				<div class="part-filter top-filter">
-					<h3>Tất cả sản phẩm</h3>
+					<h3>${categoryname.name }</h3>
 					<div href="#" class="buttn top-btn">
 						Giới tính
 						&nbsp
@@ -181,6 +182,21 @@
 			</div>
 			<div class="container-fluid">
 				<div class="row justify-content-center">
+			<c:forEach var = "product" items = "${products}">
+			
+				<div class="col-xl-3 col-lg-3 col-md-5 prd">
+						<img src="${pageContext.request.contextPath}/images/product/sp.jpg">
+						<div class="btn-more add-btn add-btn-m"><a href="#">THÊM VÀO GIỎ</a></div>
+						<div class="btn-more add-btn ct-btn"><a href="${pageContext.request.contextPath}/product/detail/${product.id}">CHI TIẾT</a></div>
+						<div class="cost">
+							<a href="#">${product.title}</a>
+							<br>
+							${product.price}Đ
+						</div>
+					</div>
+			</c:forEach>
+			</div>
+				<!--<div class="row justify-content-center">
 					<div class="col-xl-2 col-lg-2 col-md-5 prd">
 						<img src="../../images/product/sp.jpg">
 						<div class="btn-more add-btn add-btn-m"><a href="#">THÊM VÀO GIỎ</a></div>
@@ -431,8 +447,8 @@
 							150.000Đ
 						</div>
 					</div>
-				</div>
-		</div>
+				</div> -->
+		</div> 
 		<!-- /content -->
 		<jsp:include page="/WEB-INF/views/front-end/common/footer.jsp"></jsp:include>
 	</div>

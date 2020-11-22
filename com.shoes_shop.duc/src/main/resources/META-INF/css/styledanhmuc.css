@@ -1,3 +1,4 @@
+@charset "utf-8";
 .header{
 	transition: 0.6s;
 	background-color: #eeeeee;
@@ -88,6 +89,9 @@
 	border-top-width: 0;
 	padding: 10px 3px;
 	display: none;
+}
+.prd{
+	height:250px;
 }
 .sub-menu-filter li{
 	padding:5px 0;

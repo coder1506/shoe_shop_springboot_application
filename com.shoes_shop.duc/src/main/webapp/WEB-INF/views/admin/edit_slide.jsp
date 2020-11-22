@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
 </head>
 <body>
     <div class="wrapper">
@@ -35,7 +35,7 @@
                                     <label for="image">Hình ảnh</label>
                                     <input type="file">
                                 </div>
-                                <div class="right__inputImageReview"><img src="images/slide1.jpg" alt=""></div>
+                                <div class="right__inputImageReview"><img src="${pageContext.request.contextPath}/images/slide1.jpg" alt=""></div>
                                 <button class="btn" type="submit">Cập nhật</button>
                             </form>
                         </div>
@@ -45,6 +45,6 @@
         </div>
     </div>
 
-    <script src="js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/js/main.js"></script>
 </body>
 </html>

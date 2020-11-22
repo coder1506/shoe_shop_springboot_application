@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
 </head>
 <body>
     <div class="wrapper">
@@ -18,25 +18,25 @@
                         <div class="right__title">Bảng điều khiển</div>
                         <p class="right__desc">Bảng điều khiển</p>
                         <div class="right__cards">
-                            <a class="right__card" href="view_product.html">
+                            <a class="right__card" href="${pageContext.request.contextPath}/admin/product">
                                 <div class="right__cardTitle">Sản Phẩm</div>
-                                <div class="right__cardNumber">72</div>
-                                <div class="right__cardDesc">Xem Chi Tiết <img src="assets/arrow-right.svg" alt=""></div>
+                                <div class="right__cardNumber">${products.size()}</div>
+                                <div class="right__cardDesc">Xem Chi Tiết <img src="${pageContext.request.contextPath}/assets/arrow-right.svg" alt=""></div>
                             </a>
-                            <a class="right__card" href="view_customers.html">
+                            <a class="right__card" href="${pageContext.request.contextPath}/admin/viewcustomers">
                                 <div class="right__cardTitle">Khách Hàng</div>
                                 <div class="right__cardNumber">12</div>
-                                <div class="right__cardDesc">Xem Chi Tiết <img src="/assets/arrow-right.svg" alt=""></div>
+                                <div class="right__cardDesc">Xem Chi Tiết <img src="${pageContext.request.contextPath}/assets/arrow-right.svg" alt=""></div>
                             </a>
-                            <a class="right__card" href="view_p_category.html">
+                            <a class="right__card" href="${pageContext.request.contextPath}/admin/viewcategory">
                                 <div class="right__cardTitle">Danh Mục</div>
-                                <div class="right__cardNumber">4</div>
-                                <div class="right__cardDesc">Xem Chi Tiết <img src="/assets/arrow-right.svg" alt=""></div>
+                                <div class="right__cardNumber">${categories.size()}</div>
+                                <div class="right__cardDesc">Xem Chi Tiết <img src="${pageContext.request.contextPath}/assets/arrow-right.svg" alt=""></div>
                             </a>
-                            <a class="right__card" href="view_orders.html">
+                            <a class="right__card" href="${pageContext.request.contextPath}/admin/vieworders">
                                 <div class="right__cardTitle">Đơn Hàng</div>
                                 <div class="right__cardNumber">72</div>
-                                <div class="right__cardDesc">Xem Chi Tiết <img src="/assets/arrow-right.svg" alt=""></div>
+                                <div class="right__cardDesc">Xem Chi Tiết <img src="${pageContext.request.contextPath}/assets/arrow-right.svg" alt=""></div>
                             </a>
                         </div>
                         <div class="right__table">
@@ -103,7 +103,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <a href="" class="right__tableMore"><p>Xem tất cả các đơn đặt hàng</p> <img src="/assets/arrow-right-black.svg" alt=""></a>
+                            <a href="" class="right__tableMore"><p>Xem tất cả các đơn đặt hàng</p> <img src="${pageContext.request.contextPath}/assets/arrow-right-black.svg" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -111,6 +111,6 @@
         </div>
     </div>
 
-    <script src="/js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/js/main.js"></script>
 </body>
 </html>

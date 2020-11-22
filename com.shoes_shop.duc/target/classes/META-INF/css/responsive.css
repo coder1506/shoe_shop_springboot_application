@@ -87,10 +87,10 @@
 		display: none !important;
 	}
 	.cart-content{
-		background-color:white !important;
+		right:-25px;
+		top:45px;
 	}
 	.cart-content:before{
-  		border-top:10px solid white !important;
 	}
 	/*header*/
 	/*footer*/

@@ -30,3 +30,6 @@ window.addEventListener("load", event => {
         }
     };
 })
+    ClassicEditor.create( document.querySelector( '#editor' ) ).catch( error => {
+            console.error( error );
+        } );     

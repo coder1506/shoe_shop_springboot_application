@@ -14,7 +14,7 @@
 	<div class="wrapper">
 		<!-- message -->
 		<div class="message">
-			<img src="../../images/logo/messege-image.png">
+			<img src="${pageContext.request.contextPath}/images/logo/messege-image.png">
 			<div class="message-text">Xin chào bạn ! chúng tôi có thể giúp gì cho bạn ?</div>
 			<div class="message-box">
 				<header class="header-box">Chăm sóc khách hàng</header>
@@ -39,19 +39,19 @@
 			  <!-- The slideshow -->
 			  <div class="carousel-inner">
 			    <div class="carousel-item active">
-				      <img src="../../images/slide/6.jpg" alt="3" width="1100" height="500">
+				      <img src="${pageContext.request.contextPath}/images/slide/6.jpg" alt="3" width="1100" height="500">
 				  	<h3 class="clsl1 title-slide">CONVERSE BLACK CHUCK 70 HIGH SNEAKERS</h3>
 				  	<div class="btn-more btn-mn"><a href="${pageContext.request.contextPath}/detail">Mua ngay</a></div>
 			    </div>
 			    <div class="carousel-item">
-			      	<img src="../../images/slide/2.jpg" alt="4" width="1100" height="500">
+			      	<img src="${pageContext.request.contextPath}/images/slide/2.jpg" alt="4" width="1100" height="500">
 			 	 	<h3 class="title-slide">BORN ORIGINALS</h3>
 				  	<div class="btn-more btn-mn"><a href="${pageContext.request.contextPath}/detail">Mua ngay</a></div>
 			    </div>
 			    <div class="carousel-item">
-			      	<img src="../../images/slide/3.jpg" alt="5" width="1100" height="500">
+			      	<img src="${pageContext.request.contextPath}/images/slide/3.jpg" alt="5" width="1100" height="500">
 			  		<h3 class="title-slide">JACK & JILL</h3>
-				  	<div class="btn-more btn-mn"><a href="${pageContext.request.contextPath}/detail">Mua ngay</a></div>
+				  	<div class="btn-more btn-mn"><a href="${pageContext.request.contextPath}/detail/product/${product.id}">Mua ngay</a></div>
 			    </div>
 			  </div>
 			  
@@ -79,9 +79,9 @@
 					<c:forEach var = "product" items = "${products}">
 					<c:if test ="${product.producttype.equals('sản phẩm mới') == true}">
 						<div class="col-xl-3 col-lg-3 col-md-5 prd">
-						<img src="../../images/product/sp.jpg">
+						<img src="${pageContext.request.contextPath}/images/product/sp.jpg">
 						<div class="btn-more add-btn add-btn-m"><a href="#">THÊM VÀO GIỎ</a></div>
-						<div class="btn-more add-btn ct-btn"><a href="${pageContext.request.contextPath}/detail">CHI TIẾT</a></div>
+						<div class="btn-more add-btn ct-btn"><a href="${pageContext.request.contextPath}/product/detail/${product.id}">CHI TIẾT</a></div>
 						<div class="cost">
 							<a>${product.title}</a>
 							<br>
@@ -101,9 +101,9 @@
 					 <c:forEach var = "product" items = "${products}">
 					<c:if test ="${product.producttype.equals('sản phẩm nổi bật') == true}">
 						<div class="col-xl-3 col-lg-3 col-md-5 prd">
-						<img src="../../images/product/sp.jpg">
+						<img src="${pageContext.request.contextPath}/images/product/sp.jpg">
 						<div class="btn-more add-btn add-btn-m"><a href="#">THÊM VÀO GIỎ</a></div>
-						<div class="btn-more add-btn ct-btn"><a href="${pageContext.request.contextPath}/detail">CHI TIẾT</a></div>
+						<div class="btn-more add-btn ct-btn"><a href="${pageContext.request.contextPath}/product/detail/${product.id}">CHI TIẾT</a></div>
 						<div class="cost">
 							<a>${product.title}</a>
 							<br>
@@ -123,9 +123,9 @@
 					<c:forEach var = "product" items = "${products}">
 					<c:if test ="${product.producttype.equals('sản phẩm giảm giá') == true}">
 						<div class="col-xl-3 col-lg-3 col-md-5 prd">
-						<img src="../../images/product/sp.jpg">
+						<img src="${pageContext.request.contextPath}/images/product/sp.jpg">
 						<div class="btn-more add-btn add-btn-m"><a href="#">THÊM VÀO GIỎ</a></div>
-						<div class="btn-more add-btn ct-btn"><a href="${pageContext.request.contextPath}/detail">CHI TIẾT</a></div>
+						<div class="btn-more add-btn ct-btn"><a href="${pageContext.request.contextPath}/product/detail/${product.id}">CHI TIẾT</a></div>
 						<div class="cost">
 							<a>${product.title}</a>
 							<br>

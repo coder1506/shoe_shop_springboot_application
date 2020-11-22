@@ -26,7 +26,7 @@
 						    <ul class="sub-menu sub-menu-sp color-hover">
 						    	<c:forEach var = "category" items = "${categories}">
 						    		<c:if test="${category.categorytype.equals('sản phẩm')}">
-						    			<li><a href="${base}/category">${category.name}</a></li>
+						    			<li><a href="${base}/category/${category.id}">${category.name}</a></li>
 						    		</c:if>
 								</c:forEach>
 						    </ul>
@@ -36,7 +36,7 @@
 						    <ul class="sub-menu sub-menu-lc">
 						    	<c:forEach var = "category" items = "${categories}">
 						    		<c:if test="${category.categorytype.equals('phụ kiện khác')}">
-						    			<li><a href="${base}/category">${category.name}</a></li>
+						    			<li><a href="${base}/category/${category.id}">${category.name}</a></li>
 						    		</c:if>
 								</c:forEach>
 						    </ul>
@@ -69,7 +69,7 @@
 										    <ul class="sub-menu-sp color-hover">
 										    	<c:forEach var = "category" items = "${categories}">
 										    		<c:if test="${category.categorytype.equals('sản phẩm')}">
-										    			<li><a href="${base}/category">${category.name}</a></li>
+										    			<li><a href="${base}/category/${category.id}">${category.name}</a></li>
 										    		</c:if>
 												</c:forEach>
 										    </ul>
@@ -79,7 +79,7 @@
 										    <ul class="sub-menu-lc">
 										    	<c:forEach var = "category" items = "${categories}">
 										    		<c:if test="${category.categorytype.equals('phụ kiện khác')}">
-										    			<li><a href="${base}/category">${category.name}</a></li>
+										    			<li><a href="${base}/category/${category.id}">${category.name}</a></li>
 										    		</c:if>
 												</c:forEach>
 										    </ul>
@@ -113,7 +113,7 @@
 						    <ul class="sub-menu sub-menu-sp color-hover">
 						    	<c:forEach var = "category" items = "${categories}">
 						    		<c:if test="${category.categorytype.equals('sản phẩm')}">
-						    			<li><a href="${base}/category">${category.name}</a></li>
+						    			<li><a href="${base}/category/${category.id}">${category.name}</a></li>
 						    		</c:if>
 								</c:forEach>
 						    </ul>
@@ -123,7 +123,7 @@
 						    <ul class="sub-menu sub-menu-lc">
 						    	<c:forEach var = "category" items = "${categories}">
 						    		<c:if test="${category.categorytype.equals('phụ kiện khác')}">
-						    			<li><a href="${base}/category">${category.name}</a></li>
+						    			<li><a href="${base}/category/${category.id}">${category.name}</a></li>
 						    		</c:if>
 								</c:forEach>
 						    </ul>
