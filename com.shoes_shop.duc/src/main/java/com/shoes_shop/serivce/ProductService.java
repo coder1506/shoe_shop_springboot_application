@@ -30,6 +30,23 @@ public class ProductService {
 	}
 	
 	public void save(MultipartFile[] productImages, ProductEntity product) throws IllegalStateException, IOException {
+		if(product.getId() != null) {//Case that product had
+			ProductEntity oldProduct = productRepo.findById(product.getId()).get();// get data from target product
+			if(!isEmptyUploadFile(productImages)) {// if admin uploads images
+				//take old image list
+				List<ProductImages> imageList = oldProduct.getProductImages();
+				//delete images of this product on host
+				for(ProductImages prdImage : imageList) {
+					new File("C:\\Users\\Duc\\Desktop\\shoe_shop_springboot_application\\com.shoes_shop.duc\\src\\main\\resources\\META-INF\\images\\product\\"+prdImage.getPath()).delete();
+				}
+				//delete images of this product on database
+				product.removeProductImages();
+				
+			}
+			else {
+				product.setProductImages(oldProduct.getProductImages());
+			}
+		}
 		if(!isEmptyUploadFile(productImages)) {
 			for(MultipartFile productImg : productImages) {
 				productImg.transferTo(new File("C:\\Users\\Duc\\Desktop\\shoe_shop_springboot_application\\com.shoes_shop.duc\\src\\main\\resources\\META-INF\\images\\product\\" + productImg.getOriginalFilename()));
@@ -42,7 +59,7 @@ public class ProductService {
 		productRepo.save(product);
 	}
 	public List<ProductEntity> search(final ProductSearching productSearching){
-		String sql = "select * from tbl_products where 1=1";
+		String sql = "select * from tbl_products where 1=1 and status = 1";
 		
 		if(productSearching.getCategoryId() != null && productSearching != null) {
 			sql+= " and category_id = "+ productSearching.getCategoryId();

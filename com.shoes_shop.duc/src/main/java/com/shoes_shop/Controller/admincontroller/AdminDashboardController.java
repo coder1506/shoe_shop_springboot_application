@@ -20,7 +20,7 @@ public class AdminDashboardController {
 	CategoryRepo categoryRepo;
 	@RequestMapping (value = "/admin/dashboard",method = RequestMethod.GET)
 	public String Dashboard(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {
-		model.addAttribute("products", productRepo.findAll());
+		model.addAttribute("products", productRepo.findByStatus(true));
 		model.addAttribute("categories", categoryRepo.findAll());
 		return "admin/index";
 	}

@@ -6,6 +6,4 @@ import org.springframework.stereotype.Repository;
 import com.shoes_shop.entities.CategoryEntity;
 @Repository
 public interface CategoryRepo extends JpaRepository<CategoryEntity,Integer>{
-
-
 }

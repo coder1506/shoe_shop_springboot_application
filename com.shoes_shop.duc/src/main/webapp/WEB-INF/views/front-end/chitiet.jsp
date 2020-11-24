@@ -3,11 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Chi tiết</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
-	<jsp:include page="/WEB-INF/views/front-end/common/css.jsp"></jsp:include>
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/stylechitiet.css">
+<title>Chi tiết</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+<jsp:include page="/WEB-INF/views/front-end/common/css.jsp"></jsp:include>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/stylechitiet.css">
 </head>
 <body>
 	<div class="wrapper">
@@ -15,7 +17,7 @@
 		<div class="title">Welcome to shoes-shop!</div>
 		<!-- /title -->
 		<!-- menu -->
-			<jsp:include page="/WEB-INF/views/front-end/common/header.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/views/front-end/common/header.jsp"></jsp:include>
 		<!-- /menu -->
 		<!-- content -->
 		<div class="content">
@@ -25,35 +27,41 @@
 						<ul>
 							<li>
 								<div class="prd">
-									<img src="${pageContext.request.contextPath}/images/product/sp.jpg">
-								</div>	
+									<img
+										src="${pageContext.request.contextPath}/images/product/sp.jpg">
+								</div>
 							</li>
 							<li>
 								<div class="prd">
-									<img src="${pageContext.request.contextPath}/images/product/sp.jpg">
-								</div>	
+									<img
+										src="${pageContext.request.contextPath}/images/product/sp.jpg">
+								</div>
 							</li>
 							<li>
 								<div class="prd">
-									<img src="${pageContext.request.contextPath}/images/product/sp.jpg">
-								</div>	
+									<img
+										src="${pageContext.request.contextPath}/images/product/sp.jpg">
+								</div>
 							</li>
 						</ul>
 						<ul>
 							<li>
 								<div class="prd">
-									<img src="${pageContext.request.contextPath}/images/product/sp.jpg">
-								</div>	
+									<img
+										src="${pageContext.request.contextPath}/images/product/sp.jpg">
+								</div>
 							</li>
 							<li>
 								<div class="prd">
-									<img src="${pageContext.request.contextPath}/images/product/sp.jpg">
-								</div>	
+									<img
+										src="${pageContext.request.contextPath}/images/product/sp.jpg">
+								</div>
 							</li>
 							<li>
 								<div class="prd">
-									<img src="${pageContext.request.contextPath}/images/product/sp.jpg">
-								</div>	
+									<img
+										src="${pageContext.request.contextPath}/images/product/sp.jpg">
+								</div>
 							</li>
 						</ul>
 					</div>
@@ -76,30 +84,31 @@
 							<li><a href="#" class="s4"><i class="far fa-star"></i></a></li>
 							<li><a href="#" class="s5"><i class="far fa-star"></i></a></li>
 						</ul>
-						<div class="btn-more ct-add-btn"><a href="#">THÊM VÀO GIỎ</a></div>
+						<div class="btn-more ct-add-btn">
+							<a href="#">THÊM VÀO GIỎ</a>
+						</div>
 						<div class="tab">
 							<ul class="nav nav-tabs" role="tablist">
-								<li class="nav-item">
-									<a class="nav-link active" data-toggle="tab" href="#home">Giới thiệu</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" data-toggle="tab" href="#menu1">Chất liệu & kỹ thuật</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" data-toggle="tab" href="#menu2">kích cỡ</a>
-								</li>
+								<li class="nav-item"><a class="nav-link active"
+									data-toggle="tab" href="#home">Giới thiệu</a></li>
+								<li class="nav-item"><a class="nav-link" data-toggle="tab"
+									href="#menu1">Chất liệu & kỹ thuật</a></li>
+								<li class="nav-item"><a class="nav-link" data-toggle="tab"
+									href="#menu2">kích cỡ</a></li>
 							</ul>
 
 							<!-- Tab panes -->
 							<div class="tab-content">
-								<div id="home" class="container tab-pane active"><br>
-									<p>${product.shortDetails}
-									</p>
+								<div id="home" class="container tab-pane active">
+									<br>
+									<p>${product.shortDetails}</p>
 								</div>
-								<div id="menu1" class="container tab-pane fade"><br>
+								<div id="menu1" class="container tab-pane fade">
+									<br>
 									<p>${product.metarial_vs_skill}</p>
 								</div>
-								<div id="menu2" class="container tab-pane fade"><br>
+								<div id="menu2" class="container tab-pane fade">
+									<br>
 									<p>kích cỡ</p>
 								</div>
 							</div>
@@ -111,29 +120,32 @@
 						<h2>SẢN PHẨM LIÊN QUAN</h2>
 					</div>
 					<div class="col-12">
-				<div class="row justify-content-center">
-					<div class="col-xl-2 col-lg-2 col-md-5 prd prd1">
-						<a href="#">
-							<img src="${pageContext.request.contextPath}/images/product/sp.jpg">
-						</a>
-					</div>	
-					<div class="col-xl-2 col-lg-2 col-md-5 prd">
-						<a href="#"><img src="${pageContext.request.contextPath}/images/product/sp1.jpg"></a>
-					</div>	
-					<div class="col-xl-2 col-lg-2 col-md-5 prd">
-						<a href="#"><img src="${pageContext.request.contextPath}/images/product/sp2.jpg"></a>
-					</div>
-					<div class="col-xl-2 col-lg-2 col-md-5 prd">
-						<a href="#"><img src="${pageContext.request.contextPath}/images/product/sp3.jpg"></a>
-					</div>
-				</div>
+						<div class="row justify-content-center">
+							<div class="col-xl-2 col-lg-2 col-md-5 prd prd1">
+								<a href="#"> <img
+									src="${pageContext.request.contextPath}/images/product/sp.jpg">
+								</a>
+							</div>
+							<div class="col-xl-2 col-lg-2 col-md-5 prd">
+								<a href="#"><img
+									src="${pageContext.request.contextPath}/images/product/sp1.jpg"></a>
+							</div>
+							<div class="col-xl-2 col-lg-2 col-md-5 prd">
+								<a href="#"><img
+									src="${pageContext.request.contextPath}/images/product/sp2.jpg"></a>
+							</div>
+							<div class="col-xl-2 col-lg-2 col-md-5 prd">
+								<a href="#"><img
+									src="${pageContext.request.contextPath}/images/product/sp3.jpg"></a>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- /content -->
-			<jsp:include page="/WEB-INF/views/front-end/common/footer.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/views/front-end/common/footer.jsp"></jsp:include>
 	</div>
 </body>
-	<jsp:include page="/WEB-INF/views/front-end/common/js.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/front-end/common/js.jsp"></jsp:include>
 </html>
