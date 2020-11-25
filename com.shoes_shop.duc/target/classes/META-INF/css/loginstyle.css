@@ -100,20 +100,11 @@ footer a:hover {
 	color: white;
 }
 
-@
-keyframes moveToTop { 0%{
+@keyframes moveToTop { 
+	0%{
 	margin-top: 70px;
 	opacity: 0;
 }
-100
-%
-{
-opacity
-:
-1;
-margin-top
-:
-50px;
-}
-}
+100%{opacity:1;
+margin-top:50px;}
 }

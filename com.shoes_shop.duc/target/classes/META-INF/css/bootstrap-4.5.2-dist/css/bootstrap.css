@@ -2122,7 +2122,7 @@ textarea.form-control {
 }
 
 .form-check-input[disabled] ~ .form-check-label, .form-check-input:disabled 
-	~ .form-check-label {
+	 ~ .form-check-label {
 	color: #6c757d;
 }
 
@@ -2221,7 +2221,7 @@ textarea.form-control {
 }
 
 .was-validated .form-check-input:valid ~ .valid-feedback, .was-validated .form-check-input:valid 
-	~ .valid-tooltip, .form-check-input.is-valid ~ .valid-feedback,
+	 ~ .valid-tooltip, .form-check-input.is-valid ~ .valid-feedback,
 	.form-check-input.is-valid ~ .valid-tooltip {
 	display: block;
 }
@@ -2238,7 +2238,7 @@ textarea.form-control {
 
 .was-validated .custom-control-input:valid:checked ~
 	.custom-control-label::before, .custom-control-input.is-valid:checked 
-	~ .custom-control-label::before {
+	 ~ .custom-control-label::before {
 	border-color: #34ce57;
 	background-color: #34ce57;
 }
@@ -2250,7 +2250,7 @@ textarea.form-control {
 
 .was-validated .custom-control-input:valid:focus:not(:checked) ~
 	.custom-control-label::before, .custom-control-input.is-valid:focus:not(:checked) 
-	~ .custom-control-label::before {
+	 ~ .custom-control-label::before {
 	border-color: #28a745;
 }
 
@@ -2343,7 +2343,7 @@ textarea.form-control {
 .was-validated .form-check-input:invalid ~ .invalid-feedback,
 	.was-validated .form-check-input:invalid ~ .invalid-tooltip,
 	.form-check-input.is-invalid ~ .invalid-feedback, .form-check-input.is-invalid 
-	~ .invalid-tooltip {
+	 ~ .invalid-tooltip {
 	display: block;
 }
 
@@ -2359,20 +2359,20 @@ textarea.form-control {
 
 .was-validated .custom-control-input:invalid:checked ~
 	.custom-control-label::before, .custom-control-input.is-invalid:checked 
-	~ .custom-control-label::before {
+	 ~ .custom-control-label::before {
 	border-color: #e4606d;
 	background-color: #e4606d;
 }
 
 .was-validated .custom-control-input:invalid:focus ~
 	.custom-control-label::before, .custom-control-input.is-invalid:focus 
-	~ .custom-control-label::before {
+	 ~ .custom-control-label::before {
 	box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
 
 .was-validated .custom-control-input:invalid:focus:not(:checked) ~
 	.custom-control-label::before, .custom-control-input.is-invalid:focus:not(:checked) 
-	~ .custom-control-label::before {
+	 ~ .custom-control-label::before {
 	border-color: #dc3545;
 }
 
@@ -3970,7 +3970,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 }
 
 .custom-file-input[disabled] ~ .custom-file-label, .custom-file-input:disabled 
-	~ .custom-file-label {
+	 ~ .custom-file-label {
 	background-color: #e9ecef;
 }
 
@@ -6663,17 +6663,40 @@ keyframes spinner-border {to { -webkit-transform:rotate(360deg);
 }
 
 50
+
+
 %
 {
 opacity
+
+
 :
-1;
+
+
+1
+;
+
+
 -webkit-transform
+
+
 :
-none;
+
+
+none
+;
+
+
 transform
+
+
 :
-none;
+
+
+none
+;
+
+
 }
 }
 @
@@ -6683,17 +6706,40 @@ keyframes spinner-grow { 0% {
 }
 
 50
+
+
 %
 {
 opacity
+
+
 :
-1;
+
+
+1
+;
+
+
 -webkit-transform
+
+
 :
-none;
+
+
+none
+;
+
+
 transform
+
+
 :
-none;
+
+
+none
+;
+
+
 }
 }
 .spinner-grow {

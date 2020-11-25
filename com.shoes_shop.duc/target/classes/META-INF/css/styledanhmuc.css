@@ -137,22 +137,14 @@
 }
 /*/filter*/
 /*animation*/
-@
-keyframes moveSub-menu-filter { 0%{
+@keyframes moveSub-menu-filter { 
+	0%{
 	top: 45px;
 	opacity: 0;
 }
-
-100
-%
-{
-top
-:
-36px;
-opacity
-:
-1;
-}
+100%{
+	top:36px;
+	opacity:1;}
 }
 /*/animation*/
 @media all and (max-width: 833px) {

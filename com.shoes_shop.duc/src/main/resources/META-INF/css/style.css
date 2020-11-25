@@ -750,135 +750,67 @@ body {
 }
 /*footer*/
 /*animation*/
-@
-keyframes moveTop { 0%{
+@keyframes moveTop { 
+	0%{
 	top: 45%;
-	opacity: 0;
+	opacity: 0;}
+	100%{
+	top:40%;
+	opacity:1;}
 }
-
-100
-%
-{
-top
-:
-40%;
-opacity
-:
-1;
-}
-}
-@
-keyframes moveTopTitle { 0%{
+@keyframes moveTopTitle { 
+	0%{
 	transform: translateY(-300px);
 }
-
-100
-%
-{
-transform
-:
-translateY(
--380px
-);
+	100%{transform:translateY(-380px);}
 }
-}
-@
-keyframes moveTopBtn { 0%{
+@keyframes moveTopBtn { 0%{
 	transform: translateY(-280px);
 }
-
-100
-%
-{
-transform
-:
-translateY(
--380px
-);
+	100%{transform:translateY(-380px);}
 }
-}
-@
-keyframes moveTop1 { 0%{
+@keyframes moveTop1 { 
+	0%{
 	top: 55%;
 	opacity: 0;
 }
-
-100
-%
-{
-top
-:
-50%;
-opacity
-:
-1;
+	100%{top:50%;
+	opacity:1;}
 }
-}
-@
-keyframes moveRightToLeft { 0%{
+@keyframes moveRightToLeft { 0%{
 	right: -378px;
 	opacity: 0;
 }
 
-100
-%
-{
-right
-:
-0px;
-opacity
-:
-1;
+100%{
+	right:0px;
+	opacity:1;}
 }
-}
-@
-keyframes moveLeftToRight { 0%{
+@keyframes moveLeftToRight { 
+	0%{
 	right: -28px;
 	opacity: 1;
 }
-
-100
-%
-{
-right
-:
--378px;
-opacity
-:
-0;
+	100%{
+	right:-378px;
+	opacity:0;}
 }
-}
-@
-keyframes moveRight { 0%{
+@keyframes moveRight { 
+	0%{
 	opacity: 0;
 	right: 0;
 }
-
-100
-%
-{
-right
-:
--3%;
-opacity
-:
-1;
+	100%{
+	right:-3%;
+	opacity:1;}
 }
-}
-@
-keyframes moveLeft { 0%{
+@keyframes moveLeft { 0%{
 	opacity: 0;
 	left: 0;
 }
-100
-%
-{
-left
-:
--3%;
-opacity
-:
-1;
-}
+100%{
+	left:-3%;
+	opacity:1;
+	}
 }
 /*/animation*/

@@ -118,18 +118,12 @@
 		color: black;
 	}
 	/*footer*/
-	@
-	keyframes moveTopBtn { 0%{
+	@keyframes moveTopBtn { 
+	0%{
 		transform: translateY(-280px);
 	}
-	100
-	%
-{
-	transform
-	:
-	translateY(
-	-330px
-	);
-}
+	100%{
+	transform:
+	translateY(-330px);}
 }
 }
