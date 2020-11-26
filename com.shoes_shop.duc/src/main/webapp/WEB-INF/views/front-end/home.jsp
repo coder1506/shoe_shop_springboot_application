@@ -101,7 +101,7 @@
 								<img
 									src="${pageContext.request.contextPath}/images/product/sp.jpg">
 								<div class="btn-more add-btn add-btn-m">
-									<a href="#">THÊM VÀO GIỎ</a>
+									<a onclick = "Shop.cartData(${product.id},1)">THÊM VÀO GIỎ</a>
 								</div>
 								<div class="btn-more add-btn ct-btn">
 									<a

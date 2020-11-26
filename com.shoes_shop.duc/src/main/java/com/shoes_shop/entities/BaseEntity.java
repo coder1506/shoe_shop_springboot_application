@@ -29,7 +29,7 @@ public abstract class BaseEntity {
 	private Integer updatedBy;
 
 	@Column(name = "status", nullable = false)
-	private Boolean status = Boolean.FALSE;
+	private Boolean status = Boolean.TRUE;
 
 	public Integer getId() {
 		return id;

@@ -2,7 +2,9 @@
 	margin: 0;
 	padding: 0;
 }
-
+a{
+	cursor:pointer;
+}
 body {
 	font-family: arial;
 	overflow-x: hidden;
@@ -777,12 +779,12 @@ body {
 	100%{top:50%;
 	opacity:1;}
 }
-@keyframes moveRightToLeft { 0%{
+@keyframes moveRightToLeft { 
+	0%{
 	right: -378px;
 	opacity: 0;
 }
-
-100%{
+	100%{
 	right:0px;
 	opacity:1;}
 }
@@ -804,11 +806,12 @@ body {
 	right:-3%;
 	opacity:1;}
 }
-@keyframes moveLeft { 0%{
+@keyframes moveLeft { 
+	0%{
 	opacity: 0;
 	left: 0;
 }
-100%{
+	100%{
 	left:-3%;
 	opacity:1;
 	}
