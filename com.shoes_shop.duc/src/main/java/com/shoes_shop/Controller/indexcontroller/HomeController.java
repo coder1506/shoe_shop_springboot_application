@@ -19,13 +19,10 @@ import com.shoes_shop.repositories.ProductRepo;
 public class HomeController extends BaseController{
 	@Autowired
 	ProductRepo productRepo;
-	@Autowired
-	CartController cart;
 	@RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
 	public String index(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 		model.addAttribute("products", productRepo.findByStatus(true));
-		model.addAttribute("amount",cart.getAmount());
 		return "front-end/home";
 	}
 	@RequestMapping(value = {"/save-contact-with-ajax"}, method = RequestMethod.POST)

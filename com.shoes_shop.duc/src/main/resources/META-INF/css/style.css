@@ -572,6 +572,11 @@ body {
 	font-size: 15px;
 	margin-top: 5px;
 	z-index: 0;
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer */
+	-khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+	-webkit-user-select: none; /* Chrome, Safari, and Opera */
+	-webkit-touch-callout: none;
 }
 
 .heading-panel>.btn-more {

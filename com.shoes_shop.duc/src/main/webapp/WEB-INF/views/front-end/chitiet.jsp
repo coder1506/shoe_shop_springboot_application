@@ -78,7 +78,7 @@
 							<li><a href="#" class="s5"><i class="far fa-star"></i></a></li>
 						</ul>
 						<div class="btn-more ct-add-btn">
-							<a href="#">THÊM VÀO GIỎ</a>
+							<a onclick = "Shop.cartData(${product.id},1)" >THÊM VÀO GIỎ</a>
 						</div>
 						<div class="tab">
 							<ul class="nav nav-tabs" role="tablist">

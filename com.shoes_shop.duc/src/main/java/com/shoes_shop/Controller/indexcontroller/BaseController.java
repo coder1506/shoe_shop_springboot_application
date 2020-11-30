@@ -17,4 +17,10 @@ public abstract class BaseController {
 	public List<CategoryEntity> getCategories() {
 		return categoryRepo.findAll();
 	}
+	@Autowired
+	CartController cart;
+	@ModelAttribute("amount")
+	public int getAmount() {
+		return cart.getAmount();
+	}
 }
