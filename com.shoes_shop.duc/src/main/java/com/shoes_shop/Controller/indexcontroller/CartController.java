@@ -15,13 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.shoes_shop.entities.ProductEntity;
 import com.shoes_shop.model.AjaxResponse;
 import com.shoes_shop.model.ProductCart;
-import com.shoes_shop.model.Subcriber;
 import com.shoes_shop.repositories.ProductRepo;
 import com.shoes_shop.model.Cart;
-import com.shoes_shop.model.Product;
 
 @Controller
 public class CartController {
+	private int amount;
 	@Autowired 
 	ProductRepo productRepo;
 	@RequestMapping (value = {"/save-product-to-cart-with-ajax"},method = RequestMethod.POST)
@@ -55,6 +54,20 @@ public class CartController {
 			data.setProductPrice(productInRepo.getPrice());
 			cart.getCart().add(data);
 		}
-		return ResponseEntity.ok(new AjaxResponse(200,String.valueOf(cart.getCart().size())));
+		this.setAmount(countProduct(cart));
+		return ResponseEntity.ok(new AjaxResponse(200,String.valueOf(countProduct(cart))));
+	}
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	public int countProduct(Cart cart) {
+		int sum = 0;
+		for(ProductCart p : cart.getCart()) {
+			sum+=p.getProductAmount();
+		}
+		return sum;
 	}
 }

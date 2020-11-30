@@ -96,10 +96,10 @@
 						</div>
 					</div>
 					<c:forEach var="product" items="${products}">
-						<c:if test="${product.producttype.equals('sản phẩm mới') == true}">
+						<c:if test="${product.producttype.equals('sản phẩm mới nhất') == true}">
 							<div class="col-xl-3 col-lg-3 col-md-5 prd">
 								<img
-									src="${pageContext.request.contextPath}/images/product/sp.jpg">
+									src="${pageContext.request.contextPath}/file/uploads/${product.avatar}">
 								<div class="btn-more add-btn add-btn-m">
 									<a onclick = "Shop.cartData(${product.id},1)">THÊM VÀO GIỎ</a>
 								</div>
@@ -130,9 +130,9 @@
 							test="${product.producttype.equals('sản phẩm nổi bật') == true}">
 							<div class="col-xl-3 col-lg-3 col-md-5 prd">
 								<img
-									src="${pageContext.request.contextPath}/images/product/sp.jpg">
+									src="${pageContext.request.contextPath}/file/uploads/${product.avatar}">
 								<div class="btn-more add-btn add-btn-m">
-									<a href="#">THÊM VÀO GIỎ</a>
+									<a onclick = "Shop.cartData(${product.id},1)">THÊM VÀO GIỎ</a>
 								</div>
 								<div class="btn-more add-btn ct-btn">
 									<a
@@ -161,9 +161,9 @@
 							test="${product.producttype.equals('sản phẩm giảm giá') == true}">
 							<div class="col-xl-3 col-lg-3 col-md-5 prd">
 								<img
-									src="${pageContext.request.contextPath}/images/product/sp.jpg">
+									src="${pageContext.request.contextPath}/file/uploads/${product.avatar}">
 								<div class="btn-more add-btn add-btn-m">
-									<a href="#">THÊM VÀO GIỎ</a>
+									<a onclick = "Shop.cartData(${product.id},1)">THÊM VÀO GIỎ</a>
 								</div>
 								<div class="btn-more add-btn ct-btn">
 									<a

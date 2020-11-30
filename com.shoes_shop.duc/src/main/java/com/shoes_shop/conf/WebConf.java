@@ -34,6 +34,7 @@ public class WebConf implements WebMvcConfigurer {
 		registry.addResourceHandler("/js/**").addResourceLocations("classpath:/META-INF/js/");
 		registry.addResourceHandler("/images/**").addResourceLocations("classpath:/META-INF/images/");
 		registry.addResourceHandler("/assets/**").addResourceLocations("classpath:/META-INF/assets/");
+		registry.addResourceHandler("/file/uploads/**").addResourceLocations("file:C:\\Users\\Duc\\Desktop\\shoe_shop_springboot_application\\com.shoes_shop.duc\\uploads\\");
 	}
 	
 }

@@ -58,7 +58,11 @@ public class ProductEntity extends BaseEntity {
 		_productImages.setProduct(null);
 		productImages.remove(_productImages);
 	}
-
+	
+	public void removeProductAvatar() {
+		this.setAvatar(null);
+	}
+	
 	public void removeProductImages() {
 		for(ProductImages productImages : productImages) {
 			removeProductImages(productImages);

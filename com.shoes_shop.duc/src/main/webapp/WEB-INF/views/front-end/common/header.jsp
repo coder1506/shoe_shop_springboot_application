@@ -51,7 +51,7 @@
 						class="fas fa-cart-plus"></i> <span class="cart-text">Giỏ
 							hàng</span>
 				</a>
-					<div class="small-circle-cart" id="small-circle-cart">0</div>
+					<div class="small-circle-cart" id="small-circle-cart">${amount}</div>
 					<div class="cart-content">Bạn chưa có sản phẩm nào</div>
 				</span> <span class="responsive-menu">
 					<div class="rp-menu-exit">

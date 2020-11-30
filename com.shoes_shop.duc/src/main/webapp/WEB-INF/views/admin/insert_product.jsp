@@ -49,19 +49,16 @@
                                     </select>
                                 </div> -->
 								<div class="right__inputWrapper">
-									<label for="image">Ảnh đại diện</label> <input type="file"
-										name="avartarImage">
-								</div>
-								<div class="right__inputWrapper">
-									<label for="image">Ảnh giới thiệu</label> <input type="file"
+									<label for="image">Ảnh sản phẩm</label> <input type="file"
 										name="product_images" multiple="multiple">
 								</div>
 								<div class="right__inputWrapper">
-									<label for="label">Nhãn sản phẩm</label> <select name="">
-										<option disabled selected>Nhãn sản phẩm</option>
-										<option value="new">Mới</option>
-										<option value="sale">Giảm giá</option>
-									</select>
+									<label for="label">Nhãn sản phẩm</label> 
+									<form:select path="producttype">
+										<form:option value="sản phẩm mới nhất" label="Sản phẩm mới nhất"/>
+										<form:option value="sản phẩm nổi bật" label="Sản phẩm nổi bật"/>
+										<form:option value="sản phẩm giảm giá" label="Sản phẩm giảm giá"/>
+									</form:select>
 								</div>
 								<div class="right__inputWrapper">
 									<label for="title">Giá sản phẩm</label>

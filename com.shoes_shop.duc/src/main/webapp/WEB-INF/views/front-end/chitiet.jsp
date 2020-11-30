@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,34 +25,13 @@
 			<div class="container-fluid">
 				<div class="row justify-content-center">
 					<div class="col-xl-8 left-info">
-						<ul>
-							<li>
+						<c:forEach var = "image" items = "${images }">
 								<div class="prd">
-									<img
-										src="${pageContext.request.contextPath}/images/product/sp.jpg">
+									<img src="${pageContext.request.contextPath}/file/uploads/${image.path}">
 								</div>
-							</li>
-							<li>
-								<div class="prd">
-									<img
-										src="${pageContext.request.contextPath}/images/product/sp.jpg">
-								</div>
-							</li>
-							<li>
-								<div class="prd">
-									<img
-										src="${pageContext.request.contextPath}/images/product/sp.jpg">
-								</div>
-							</li>
-						</ul>
-						<ul>
-							<li>
-								<div class="prd">
-									<img
-										src="${pageContext.request.contextPath}/images/product/sp.jpg">
-								</div>
-							</li>
-							<li>
+						</c:forEach>
+							
+							<!--<li>
 								<div class="prd">
 									<img
 										src="${pageContext.request.contextPath}/images/product/sp.jpg">
@@ -64,6 +44,19 @@
 								</div>
 							</li>
 						</ul>
+						<ul>
+							<li>
+								<div class="prd">
+									<img
+										src="${pageContext.request.contextPath}/images/product/sp.jpg">
+								</div>
+							</li>
+							<li>
+								<div class="prd">
+									<img
+										src="${pageContext.request.contextPath}/images/product/sp.jpg">
+								</div>
+							</li>--> 
 					</div>
 					<div class="col-xl-4 right-info">
 						<h3>${product.title}</h3>
@@ -121,12 +114,14 @@
 					</div>
 					<div class="col-12">
 						<div class="row justify-content-center">
+						<c:forEach var ="product" items = "${products }">
 							<div class="col-xl-2 col-lg-2 col-md-5 prd prd1">
-								<a href="#"> <img
-									src="${pageContext.request.contextPath}/images/product/sp.jpg">
+								<a href="${pageContext.request.contextPath}/product/detail/${product.id}"> <img
+									src="${pageContext.request.contextPath}/file/uploads/${product.avatar}">
 								</a>
 							</div>
-							<div class="col-xl-2 col-lg-2 col-md-5 prd">
+						</c:forEach>
+							<!--<div class="col-xl-2 col-lg-2 col-md-5 prd">
 								<a href="#"><img
 									src="${pageContext.request.contextPath}/images/product/sp1.jpg"></a>
 							</div>
@@ -137,7 +132,7 @@
 							<div class="col-xl-2 col-lg-2 col-md-5 prd">
 								<a href="#"><img
 									src="${pageContext.request.contextPath}/images/product/sp3.jpg"></a>
-							</div>
+							</div>  -->
 						</div>
 					</div>
 				</div>

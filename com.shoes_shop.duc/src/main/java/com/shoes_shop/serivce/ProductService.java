@@ -42,6 +42,7 @@ public class ProductService {
 				//delete images of this product on database
 				product.removeProductImages();
 				
+				product.removeProductAvatar();
 			}
 			else {
 				product.setProductImages(oldProduct.getProductImages());
@@ -55,6 +56,7 @@ public class ProductService {
 				_productImg.setTitle(productImg.getOriginalFilename());
 				product.addProductImages(_productImg);
 			}
+			product.setAvatar(productImages[0].getOriginalFilename());
 		}
 		productRepo.save(product);
 	}

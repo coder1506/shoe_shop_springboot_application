@@ -42,7 +42,7 @@
 												<td data-label="STT">${products.indexOf(product)+1}</td>
 												<td data-label="Tên sản phẩm">${product.title}</td>
 												<td data-label="Hình ảnh"><img
-													src="${pageContext.request.contextPath}/images/product1.jpg"
+													src="${pageContext.request.contextPath}/file/uploads/${product.avatar}"
 													alt=""></td>
 												<td data-label="Giá SP">${product.price}</td>
 												<td data-label="Đã bán">1</td>
