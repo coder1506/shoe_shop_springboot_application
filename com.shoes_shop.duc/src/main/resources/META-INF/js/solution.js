@@ -1,6 +1,5 @@
 $(document).ready(function(){
-	var amout = 1;
-	$('.current-amount').text(amout);
+	var amout = parseInt($('.current-amount').html());
 	 $('.plus').click(function(){
 	 	amout++;
 	 	$('.current-amount').text(amout);

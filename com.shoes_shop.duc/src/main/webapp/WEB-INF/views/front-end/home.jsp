@@ -105,7 +105,7 @@
 								</div>
 								<div class="btn-more add-btn ct-btn">
 									<a
-										href="${pageContext.request.contextPath}/product/detail/${product.id}">CHI
+										href="${pageContext.request.contextPath}/product/detail/${product.seo}">CHI
 										TIẾT</a>
 								</div>
 								<div class="cost">
@@ -136,7 +136,7 @@
 								</div>
 								<div class="btn-more add-btn ct-btn">
 									<a
-										href="${pageContext.request.contextPath}/product/detail/${product.id}">CHI
+										href="${pageContext.request.contextPath}/product/detail/${product.seo}">CHI
 										TIẾT</a>
 								</div>
 								<div class="cost">
@@ -167,7 +167,7 @@
 								</div>
 								<div class="btn-more add-btn ct-btn">
 									<a
-										href="${pageContext.request.contextPath}/product/detail/${product.id}">CHI
+										href="${pageContext.request.contextPath}/product/detail/${product.seo}">CHI
 										TIẾT</a>
 								</div>
 								<div class="cost">

@@ -26,7 +26,7 @@
 						<ul class="sub-menu sub-menu-sp color-hover">
 							<c:forEach var="category" items="${categories}">
 								<c:if test="${category.categorytype.equals('sản phẩm')}">
-									<li><a href="${base}/category/${category.id}">${category.name}</a></li>
+									<li><a href="${base}/category/${category.seo}">${category.name}</a></li>
 								</c:if>
 							</c:forEach>
 						</ul></li>
@@ -37,7 +37,7 @@
 						<ul class="sub-menu sub-menu-lc">
 							<c:forEach var="category" items="${categories}">
 								<c:if test="${category.categorytype.equals('phụ kiện khác')}">
-									<li><a href="${base}/category/${category.id}">${category.name}</a></li>
+									<li><a href="${base}/category/${category.seo}">${category.name}</a></li>
 								</c:if>
 							</c:forEach>
 						</ul></li>
@@ -47,12 +47,13 @@
 				<span class="account"><a
 					href="${pageContext.request.contextPath }/account"
 					class="color-hover"><i class="far fa-user"></i> Tài khoản</a></span> <span
-					class="cart"> <a href="#" class="color-hover"> <i
+					class="cart"> <a href="${pageContext.request.contextPath }/cart" class="color-hover"> <i
 						class="fas fa-cart-plus"></i> <span class="cart-text">Giỏ
 							hàng</span>
 				</a>
 					<div class="small-circle-cart" id="small-circle-cart">${amount}</div>
-					<div class="cart-content">Bạn chưa có sản phẩm nào</div>
+					<div class="cart-content">
+					</div>
 				</span> <span class="responsive-menu">
 					<div class="rp-menu-exit">
 						<i class="fas fa-times"></i>
@@ -68,7 +69,7 @@
 								<ul class="sub-menu-sp color-hover">
 									<c:forEach var="category" items="${categories}">
 										<c:if test="${category.categorytype.equals('sản phẩm')}">
-											<li><a href="${base}/category/${category.id}">${category.name}</a></li>
+											<li><a href="${base}/category/${category.seo}">${category.name}</a></li>
 										</c:if>
 									</c:forEach>
 								</ul></li>
@@ -78,7 +79,7 @@
 								<ul class="sub-menu-lc">
 									<c:forEach var="category" items="${categories}">
 										<c:if test="${category.categorytype.equals('phụ kiện khác')}">
-											<li><a href="${base}/category/${category.id}">${category.name}</a></li>
+											<li><a href="${base}/category/${category.seo}">${category.name}</a></li>
 										</c:if>
 									</c:forEach>
 								</ul></li>
@@ -115,7 +116,7 @@
 					<ul class="sub-menu sub-menu-sp color-hover">
 						<c:forEach var="category" items="${categories}">
 							<c:if test="${category.categorytype.equals('sản phẩm')}">
-								<li><a href="${base}/category/${category.id}">${category.name}</a></li>
+								<li><a href="${base}/category/${category.seo}">${category.name}</a></li>
 							</c:if>
 						</c:forEach>
 					</ul></li>
@@ -124,7 +125,7 @@
 					<ul class="sub-menu sub-menu-lc">
 						<c:forEach var="category" items="${categories}">
 							<c:if test="${category.categorytype.equals('phụ kiện khác')}">
-								<li><a href="${base}/category/${category.id}">${category.name}</a></li>
+								<li><a href="${base}/category/${category.seo}">${category.name}</a></li>
 							</c:if>
 						</c:forEach>
 					</ul></li>

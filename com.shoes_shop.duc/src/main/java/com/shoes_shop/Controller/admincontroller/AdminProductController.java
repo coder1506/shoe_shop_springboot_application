@@ -41,6 +41,7 @@ public class AdminProductController extends BaseController{
 			final ModelMap model,final HttpServletRequest request,final HttpServletResponse response 
 			,@ModelAttribute("product") ProductEntity product) throws IllegalStateException, IOException {
 		productservice.save(productImages, product);
+		model.addAttribute("product", new ProductEntity());	
 		return "admin/insert_product";
 	}
 	@RequestMapping (value = "/admin/repairproduct/{id}",method = RequestMethod.GET)

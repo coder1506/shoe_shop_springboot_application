@@ -17,10 +17,12 @@ import com.shoes_shop.model.AjaxResponse;
 import com.shoes_shop.model.ProductCart;
 import com.shoes_shop.repositories.ProductRepo;
 import com.shoes_shop.model.Cart;
+import com.shoes_shop.model.Product;
+
+
 
 @Controller
 public class CartController {
-	private int amount;
 	@Autowired 
 	ProductRepo productRepo;
 	@RequestMapping (value = {"/save-product-to-cart-with-ajax"},method = RequestMethod.POST)
@@ -52,21 +54,22 @@ public class CartController {
 			ProductEntity productInRepo = productRepo.getOne(data.getProductCode());
 			data.setProductTitle(productInRepo.getTitle());
 			data.setProductPrice(productInRepo.getPrice());
+			data.setProductAvatar(productInRepo.getAvatar());
+			data.setProductSeo(productInRepo.getSeo());
 			cart.getCart().add(data);
 		}
-		this.setAmount(countProduct(cart));
+		ss.setAttribute("amount", countProduct(cart));
 		return ResponseEntity.ok(new AjaxResponse(200,String.valueOf(countProduct(cart))));
 	}
-	public int getAmount() {
-		return amount;
-	}
-	public void setAmount(int amount) {
-		this.amount = amount;
+	@RequestMapping (value = "/cart" , method = RequestMethod.GET)
+	public String accountSingInIndex(final ModelMap model ,final HttpServletRequest request,final HttpServletResponse response ) {
+		model.addAttribute("form", "/WEB-INF/views/front-end/common/cartContent.jsp")	;
+		return "front-end/cartindex";
 	}
 	public int countProduct(Cart cart) {
 		int sum = 0;
 		for(ProductCart p : cart.getCart()) {
-			sum+=p.getProductAmount();
+			sum += p.getProductAmount();
 		}
 		return sum;
 	}

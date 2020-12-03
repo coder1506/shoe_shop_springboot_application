@@ -24,14 +24,14 @@ public class CategoryController extends BaseController{
 	ProductService productService;
 	@Autowired
 	CategoryRepo categoryRepo;
-	@RequestMapping (value = "/category/{id}", method = RequestMethod.GET)
-	public String index(@PathVariable("id") Integer id,final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
+	@RequestMapping (value = "/category/{seo}", method = RequestMethod.GET)
+	public String index(@PathVariable("seo") String seo,final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 		ProductSearching productSearch = new ProductSearching();
-		productSearch.setCategoryId(id);
+		productSearch.setSeoCategory(seo);;
 		List<ProductEntity> productList = productService.search(productSearch);
 		model.addAttribute("products", productList);
-		model.addAttribute("categoryname", categoryRepo.getOne(id));
+		model.addAttribute("categoryname", categoryRepo.findBySeo(seo));
 		return "front-end/danhmuc";
 	}
 }

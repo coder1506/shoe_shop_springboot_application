@@ -25,7 +25,7 @@
 			<div class="container-fluid">
 				<div class="row justify-content-center">
 					<div class="col-xl-8 left-info">
-						<c:forEach var = "image" items = "${images }">
+						<c:forEach var = "image" items = "${images}">
 								<div class="prd">
 									<img src="${pageContext.request.contextPath}/file/uploads/${image.path}">
 								</div>
@@ -66,7 +66,7 @@
 						<h5>${product.price}₫</h5>
 						<div class="amount">
 							<button class="btn minus">-</button>
-							<div class="current-amount"></div>
+							<div class="current-amount">1</div>
 							<button class="btn plus">+</button>
 						</div>
 						<h4>Đánh giá</h4>
@@ -78,7 +78,7 @@
 							<li><a href="#" class="s5"><i class="far fa-star"></i></a></li>
 						</ul>
 						<div class="btn-more ct-add-btn">
-							<a onclick = "Shop.cartData(${product.id},1)" >THÊM VÀO GIỎ</a>
+							<a onclick = "Shop.cartData(${product.id},parseInt($('.current-amount').html()))" >THÊM VÀO GIỎ</a>
 						</div>
 						<div class="tab">
 							<ul class="nav nav-tabs" role="tablist">

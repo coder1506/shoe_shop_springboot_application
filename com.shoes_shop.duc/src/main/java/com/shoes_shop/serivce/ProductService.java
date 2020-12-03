@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.github.slugify.Slugify;
 import com.shoes_shop.entities.ProductEntity;
 import com.shoes_shop.entities.ProductImages;
 import com.shoes_shop.model.ProductSearching;
@@ -58,6 +59,8 @@ public class ProductService {
 			}
 			product.setAvatar(productImages[0].getOriginalFilename());
 		}
+		Slugify slg = new Slugify();
+		product.setSeo(slg.slugify(product.getTitle() +""+System.currentTimeMillis()));
 		productRepo.save(product);
 	}
 	public List<ProductEntity> search(final ProductSearching productSearching){
@@ -66,10 +69,16 @@ public class ProductService {
 		if(productSearching.getCategoryId() != null && productSearching != null) {
 			sql+= " and category_id = "+ productSearching.getCategoryId();
 		}
+		if(productSearching.getSeoCategory() != null && productSearching != null) {
+			sql+= " and category_id in (select id from tbl_category where seo = '"+productSearching.getSeoCategory()+"')";
+		}
 		if(productSearching.getId() != null && productSearching != null) {
 			sql+= " and id = "+ productSearching.getId();
 		}
 		Query query = entityManager.createNativeQuery(sql, ProductEntity.class);
+		
+		//query.setFirstResult(0);
+		//query.setMaxResults(4);
 		
 		return query.getResultList();
 	}

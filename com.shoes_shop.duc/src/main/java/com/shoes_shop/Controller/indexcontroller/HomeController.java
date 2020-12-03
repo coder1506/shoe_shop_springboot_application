@@ -19,6 +19,8 @@ import com.shoes_shop.repositories.ProductRepo;
 public class HomeController extends BaseController{
 	@Autowired
 	ProductRepo productRepo;
+	@Autowired
+ 	CartController cart;
 	@RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
 	public String index(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {

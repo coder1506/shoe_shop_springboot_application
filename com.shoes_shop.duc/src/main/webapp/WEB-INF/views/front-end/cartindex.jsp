@@ -10,6 +10,7 @@
 <jsp:include page="/WEB-INF/views/front-end/common/css.jsp"></jsp:include>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/stylechitiet.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/account.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/cart.css">
 
 </head>
 <body>

@@ -154,13 +154,13 @@
 
 						<div class="col-xl-3 col-lg-3 col-md-5 prd">
 							<img
-								src="${pageContext.request.contextPath}/images/product/sp.jpg">
+								src="${pageContext.request.contextPath}/file/uploads/${product.avatar}">
 							<div class="btn-more add-btn add-btn-m">
 								<a onclick = "Shop.cartData(${product.id},1)">THÊM VÀO GIỎ</a>
 							</div>
 							<div class="btn-more add-btn ct-btn">
 								<a
-									href="${pageContext.request.contextPath}/product/detail/${product.id}">CHI
+									href="${pageContext.request.contextPath}/product/detail/${product.seo}">CHI
 									TIẾT</a>
 							</div>
 							<div class="cost">

@@ -4,9 +4,11 @@ import java.math.BigDecimal;
 
 public class ProductCart {
 	private int productCode;
-	private int productAmount;
+	private int productAmount = 0;
 	private BigDecimal productPrice;
 	private String productTitle;
+	private String productAvatar;
+	private String productSeo;
 	public int getProductCode() {
 		return productCode;
 	}
@@ -34,10 +36,23 @@ public class ProductCart {
 	}
 	public ProductCart() {
 	}
-	public ProductCart(int productCode, String productName,BigDecimal productPrice,String productTitle) {
+	public ProductCart(int productCode, int productAmount, BigDecimal productPrice, String productTitle) {
 		this.productCode = productCode;
 		this.productAmount = productAmount;
 		this.productPrice = productPrice;
-		this.productTitle =productTitle;
+		this.productTitle = productTitle;
 	}
+	public String getProductAvatar() {
+		return productAvatar;
+	}
+	public void setProductAvatar(String productAvatar) {
+		this.productAvatar = productAvatar;
+	}
+	public String getProductSeo() {
+		return productSeo;
+	}
+	public void setProductSeo(String productSeo) {
+		this.productSeo = productSeo;
+	}
+	
 }
