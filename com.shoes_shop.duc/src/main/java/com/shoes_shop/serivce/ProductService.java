@@ -47,6 +47,7 @@ public class ProductService {
 			}
 			else {
 				product.setProductImages(oldProduct.getProductImages());
+				product.setAvatar(oldProduct.getAvatar());
 			}
 		}
 		if(!isEmptyUploadFile(productImages)) {
@@ -63,7 +64,8 @@ public class ProductService {
 		product.setSeo(slg.slugify(product.getTitle() +""+System.currentTimeMillis()));
 		productRepo.save(product);
 	}
-	public List<ProductEntity> search(final ProductSearching productSearching){
+	@SuppressWarnings("unchecked")
+	public List<ProductEntity> search(ProductSearching productSearching){
 		String sql = "select * from tbl_products where 1=1 and status = 1";
 		
 		if(productSearching.getCategoryId() != null && productSearching != null) {

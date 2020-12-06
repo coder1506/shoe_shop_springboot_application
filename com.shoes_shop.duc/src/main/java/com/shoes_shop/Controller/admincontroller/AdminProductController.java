@@ -42,7 +42,7 @@ public class AdminProductController extends BaseController{
 			,@ModelAttribute("product") ProductEntity product) throws IllegalStateException, IOException {
 		productservice.save(productImages, product);
 		model.addAttribute("product", new ProductEntity());	
-		return "admin/insert_product";
+		return "redirect:/admin/product";
 	}
 	@RequestMapping (value = "/admin/repairproduct/{id}",method = RequestMethod.GET)
 	public String repairProduct(@PathVariable("id") Integer id,
@@ -52,6 +52,17 @@ public class AdminProductController extends BaseController{
 		model.addAttribute("product", prd);
 		model.addAttribute("title", "Sửa sản phẩm");
 		return "admin/insert_product";
+	}
+	@RequestMapping (value = "/admin/productlist",method = RequestMethod.GET)
+	public String returnProductList(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {
+		model.addAttribute("products", productRepo.findByStatus(true));
+//		if(request.getParameter("repair") != null) {
+//		if(request.getParameter("repair").equalsIgnoreCase("success"))
+//			model.addAttribute("message", "<script>$(document).ready(function(){alert('Sửa thành công')})</script>");}
+//		else if(request.getParameter("add").equalsIgnoreCase("success"))
+//			model.addAttribute("message", "$<script>(document).ready(function(){alert('Thêm thành công')})</script>");
+//		else model.addAttribute("message", " ");
+		return "admin/view_product";
 	}
 	@RequestMapping (value = "/admin/product",method = RequestMethod.GET)
 	public String viewProduct(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {

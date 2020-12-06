@@ -49,5 +49,10 @@
 		<jsp:include page="/WEB-INF/views/front-end/common/footer.jsp"></jsp:include>
 	</div>
 </body>
-<jsp:include page="/WEB-INF/views/front-end/common/js.jsp"></jsp:include>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/jquery/jquery-3.5.1.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/scroll.js"></script>
+	<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/shop.js"></script>
 </html>

@@ -22,7 +22,7 @@ import com.shoes_shop.model.Product;
 
 
 @Controller
-public class CartController {
+public class CartController extends BaseController{
 	@Autowired 
 	ProductRepo productRepo;
 	@RequestMapping (value = {"/save-product-to-cart-with-ajax"},method = RequestMethod.POST)
@@ -66,6 +66,17 @@ public class CartController {
 		model.addAttribute("form", "/WEB-INF/views/front-end/common/cartContent.jsp")	;
 		return "front-end/cartindex";
 	}
+	@RequestMapping(value = {"/deletecartproduct"}, method = RequestMethod.DELETE)
+	public ResponseEntity<AjaxResponse> deleteProductCartWithAjax(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response,
+			@RequestBody Product data)
+	throws Exception {
+		HttpSession ss = request.getSession();
+		Cart cart = (Cart)ss.getAttribute("shop_cart");
+		cart.getCart().remove(cart.findById(data.getId()));
+		ss.removeAttribute("amount");
+		ss.setAttribute("amount",countProduct(cart));
+		return ResponseEntity.ok(new AjaxResponse(200,"Xoá thành công"));
+ }
 	public int countProduct(Cart cart) {
 		int sum = 0;
 		for(ProductCart p : cart.getCart()) {

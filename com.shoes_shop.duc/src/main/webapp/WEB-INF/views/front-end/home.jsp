@@ -96,7 +96,7 @@
 						</div>
 					</div>
 					<c:forEach var="product" items="${products}">
-						<c:if test="${product.producttype.equals('sản phẩm mới nhất') == true}">
+						<c:if test="${product.producttype.equals('sản phẩm mới nhất') == true && products.indexOf(product) < 5}">
 							<div class="col-xl-3 col-lg-3 col-md-5 prd">
 								<img
 									src="${pageContext.request.contextPath}/file/uploads/${product.avatar}">
@@ -105,7 +105,7 @@
 								</div>
 								<div class="btn-more add-btn ct-btn">
 									<a
-										href="${pageContext.request.contextPath}/product/detail/${product.seo}">CHI
+										href="${pageContext.request.contextPath}/products/${product.seo}">CHI
 										TIẾT</a>
 								</div>
 								<div class="cost">
@@ -136,7 +136,7 @@
 								</div>
 								<div class="btn-more add-btn ct-btn">
 									<a
-										href="${pageContext.request.contextPath}/product/detail/${product.seo}">CHI
+										href="${pageContext.request.contextPath}/products/${product.seo}">CHI
 										TIẾT</a>
 								</div>
 								<div class="cost">
@@ -167,7 +167,7 @@
 								</div>
 								<div class="btn-more add-btn ct-btn">
 									<a
-										href="${pageContext.request.contextPath}/product/detail/${product.seo}">CHI
+										href="${pageContext.request.contextPath}/products/${product.seo}">CHI
 										TIẾT</a>
 								</div>
 								<div class="cost">

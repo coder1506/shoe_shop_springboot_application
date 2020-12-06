@@ -30,33 +30,6 @@
 									<img src="${pageContext.request.contextPath}/file/uploads/${image.path}">
 								</div>
 						</c:forEach>
-							
-							<!--<li>
-								<div class="prd">
-									<img
-										src="${pageContext.request.contextPath}/images/product/sp.jpg">
-								</div>
-							</li>
-							<li>
-								<div class="prd">
-									<img
-										src="${pageContext.request.contextPath}/images/product/sp.jpg">
-								</div>
-							</li>
-						</ul>
-						<ul>
-							<li>
-								<div class="prd">
-									<img
-										src="${pageContext.request.contextPath}/images/product/sp.jpg">
-								</div>
-							</li>
-							<li>
-								<div class="prd">
-									<img
-										src="${pageContext.request.contextPath}/images/product/sp.jpg">
-								</div>
-							</li>--> 
 					</div>
 					<div class="col-xl-4 right-info">
 						<h3>${product.title}</h3>
@@ -115,24 +88,17 @@
 					<div class="col-12">
 						<div class="row justify-content-center">
 						<c:forEach var ="product" items = "${products }">
+						<c:if test="${ products.indexOf(product) < 5}">
 							<div class="col-xl-2 col-lg-2 col-md-5 prd prd1">
-								<a href="${pageContext.request.contextPath}/product/detail/${product.id}"> <img
+								<a href="${pageContext.request.contextPath}/products/${product.seo}"> <img
 									src="${pageContext.request.contextPath}/file/uploads/${product.avatar}">
 								</a>
+								<div class="cost">
+									<a>${product.title}</a> <br> ${product.price}Đ
+								</div>
 							</div>
+							</c:if>
 						</c:forEach>
-							<!--<div class="col-xl-2 col-lg-2 col-md-5 prd">
-								<a href="#"><img
-									src="${pageContext.request.contextPath}/images/product/sp1.jpg"></a>
-							</div>
-							<div class="col-xl-2 col-lg-2 col-md-5 prd">
-								<a href="#"><img
-									src="${pageContext.request.contextPath}/images/product/sp2.jpg"></a>
-							</div>
-							<div class="col-xl-2 col-lg-2 col-md-5 prd">
-								<a href="#"><img
-									src="${pageContext.request.contextPath}/images/product/sp3.jpg"></a>
-							</div>  -->
 						</div>
 					</div>
 				</div>

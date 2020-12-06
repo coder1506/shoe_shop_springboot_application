@@ -20,24 +20,24 @@
 					<li class="nav-item"><a class="nav-link color-hover"
 						href="${pageContext.request.contextPath}/home"> TRANG CHỦ </a></li>
 					<li class="nav-item sp"><a class="nav-link color-hover"
-						href="${pageContext.request.contextPath}/category">SẢN PHẨM
+						href="${pageContext.request.contextPath}/product-all">SẢN PHẨM
 							&nbsp<i class="fas fa-angle-down"></i>
 					</a>
 						<ul class="sub-menu sub-menu-sp color-hover">
 							<c:forEach var="category" items="${categories}">
 								<c:if test="${category.categorytype.equals('sản phẩm')}">
-									<li><a href="${base}/category/${category.seo}">${category.name}</a></li>
+									<li><a href="${base}/shoes-shop/${category.seo}">${category.name}</a></li>
 								</c:if>
 							</c:forEach>
 						</ul></li>
 					<li class="nav-item lc"><a class="nav-link color-hover"
-						href="${pageContext.request.contextPath}/category">PHỤ KIỆN
+						href="${pageContext.request.contextPath}/accessory-all">PHỤ KIỆN
 							KHÁC &nbsp<i class="fas fa-angle-down"></i>
 					</a>
 						<ul class="sub-menu sub-menu-lc">
 							<c:forEach var="category" items="${categories}">
 								<c:if test="${category.categorytype.equals('phụ kiện khác')}">
-									<li><a href="${base}/category/${category.seo}">${category.name}</a></li>
+									<li><a href="${base}/shoes-shop/${category.seo}">${category.name}</a></li>
 								</c:if>
 							</c:forEach>
 						</ul></li>
@@ -64,22 +64,22 @@
 							<div class="title-rp-menu">Menu</div>
 							<li class="nav-item"><a class="nav-link color-hover"
 								href="${pageContext.request.contextPath}/home"> TRANG CHỦ </a></li>
-							<li class="nav-item sp"><a href="#">SẢN PHẨM &nbsp</a><i
+							<li class="nav-item sp"><a href="${pageContext.request.contextPath}/product-all">SẢN PHẨM &nbsp</a><i
 								class="fas fa-angle-down sp-icon"></i>
 								<ul class="sub-menu-sp color-hover">
 									<c:forEach var="category" items="${categories}">
 										<c:if test="${category.categorytype.equals('sản phẩm')}">
-											<li><a href="${base}/category/${category.seo}">${category.name}</a></li>
+											<li><a href="${base}/shoes-shop/${category.seo}">${category.name}</a></li>
 										</c:if>
 									</c:forEach>
 								</ul></li>
 							<li class="nav-item lc"><a
-								href="${pageContext.request.contextPath}/category">PHỤ KIỆN
+								href="${pageContext.request.contextPath}/accessory-all">PHỤ KIỆN
 									KHÁC &nbsp</a><i class="fas fa-angle-down lc-icon"></i>
 								<ul class="sub-menu-lc">
 									<c:forEach var="category" items="${categories}">
 										<c:if test="${category.categorytype.equals('phụ kiện khác')}">
-											<li><a href="${base}/category/${category.seo}">${category.name}</a></li>
+											<li><a href="${base}/shoes-shop/${category.seo}">${category.name}</a></li>
 										</c:if>
 									</c:forEach>
 								</ul></li>
@@ -110,22 +110,22 @@
 				<li class="nav-item"><a class="nav-link color-hover"
 					href="${pageContext.request.contextPath}/home"> TRANG CHỦ </a></li>
 				<li class="nav-item sp"><a class="nav-link color-hover"
-					href="${pageContext.request.contextPath}/category">SẢN PHẨM
+					href="${pageContext.request.contextPath}/product-all">SẢN PHẨM
 						&nbsp<i class="fas fa-angle-down"></i>
 				</a>
 					<ul class="sub-menu sub-menu-sp color-hover">
 						<c:forEach var="category" items="${categories}">
 							<c:if test="${category.categorytype.equals('sản phẩm')}">
-								<li><a href="${base}/category/${category.seo}">${category.name}</a></li>
+								<li><a href="${base}/shoes-shop/${category.seo}">${category.name}</a></li>
 							</c:if>
 						</c:forEach>
 					</ul></li>
 				<li class="nav-item lc"><a class="nav-link color-hover"
-					href="#">PHỤ KIỆN KHÁC &nbsp<i class="fas fa-angle-down"></i></a>
+					href="${pageContext.request.contextPath}/accessory-all">PHỤ KIỆN KHÁC &nbsp<i class="fas fa-angle-down"></i></a>
 					<ul class="sub-menu sub-menu-lc">
 						<c:forEach var="category" items="${categories}">
 							<c:if test="${category.categorytype.equals('phụ kiện khác')}">
-								<li><a href="${base}/category/${category.seo}">${category.name}</a></li>
+								<li><a href="${base}/shoes-shop/${category.seo}">${category.name}</a></li>
 							</c:if>
 						</c:forEach>
 					</ul></li>

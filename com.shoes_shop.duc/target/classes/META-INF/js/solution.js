@@ -74,8 +74,8 @@ $(document).ready(function(){
      })
 })
 function myFunction() {
-    //menu up to 500px
-  if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+    //menu up to 400px
+  if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
     $('.header').attr('style','position: fixed;width: 100%;height:80px;transition: 0.3s;top:-8px;border:0;background-color: rgba(255,255,255,1);z-index:10;box-shadow:2px 2px #eeeeee;');
     $('.search').attr('style','display:none');
     $('.header-content').attr('style','width:100%;padding-top:0');

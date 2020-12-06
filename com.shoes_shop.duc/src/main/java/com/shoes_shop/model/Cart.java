@@ -28,6 +28,12 @@ public class Cart {
 		this.Cart = cart;
 	}
 	
+	public ProductCart findById(int id) {
+		for(ProductCart p : Cart) {
+			if(p.getProductCode() == id) return p;
+		}
+		return null;
+	}
 	public Cart() {
 	}	
 }

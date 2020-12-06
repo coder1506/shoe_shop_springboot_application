@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class AdminLoginController {
-	@RequestMapping(value = {"/admin"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/login"}, method = RequestMethod.GET)
 	public String adminIndex(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 		return "admin/login";

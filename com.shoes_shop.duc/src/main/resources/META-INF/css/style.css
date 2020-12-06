@@ -553,7 +553,8 @@ body {
 }
 
 .product-block {
-	height: 390px;
+	height: 340px;
+	margin-left:30px;
 }
 
 .heading-panel {
@@ -612,18 +613,17 @@ body {
 
 .prd img {
 	width: 100%;
-	height: 90%;
+	height: 80%;
 }
 
 .prd {
 	padding: 10px 10px;
 	margin-left: 30px;
-	margin-top: 40px;
+	margin-top: 30px;
 	text-align: center;
 	border: 1px solid #eeeeee;
 	position: relative;
 	background-color: #eeeeee;
-	box-shadow: 2px 2px grey;
 	height: 350px;
 }
 
@@ -689,11 +689,15 @@ body {
 
 .cost {
 	font-weight: bold;
+	line-height:25px;
+	padding:10px 2px;
+	font-size:14px;
 }
 
 .cost a {
 	color: #292929;
 	font-weight: lighter;
+	font-size:16px;
 }
 
 .cost a:hover {

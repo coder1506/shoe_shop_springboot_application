@@ -22,11 +22,11 @@ import com.shoes_shop.repositories.ProductRepo;
 public class DetailController extends BaseController{
 	@Autowired
 	ProductRepo productRepo;
-	@RequestMapping (value = "/product/detail/{seo}", method = RequestMethod.GET)
-	public String index(@PathVariable("seo") String seo,final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
+	@RequestMapping (value = "/products/{productseo}", method = RequestMethod.GET)
+	public String index(@PathVariable("productseo") String productSeo,final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 		// get data product 
-		ProductEntity prd = productRepo.findBySeo(seo);
+		ProductEntity prd = productRepo.findBySeo(productSeo);
 		model.addAttribute("product", prd);
 		// get images product
 		List<ProductImages> imageList =  prd.getProductImages();

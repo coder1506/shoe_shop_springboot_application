@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,7 @@
 				<b>Login</b>
 			</h1>
 			<div class="content">
-				<form action="${pageContext.request.contextPath}/admin"
+				<form action="${pageContext.request.contextPath}/login"
 					method="POST">
 					<input type="text" name="username" id="username"
 						placeholder="Username..." required> <input type="password"
@@ -27,7 +28,11 @@
 				</form>
 			</div>
 			<footer>
-				<h6 style="color: red">${errorMessageLogin}</h6>
+				<c:if test="${not empty param.error_login}">
+					<div class="alert alert-danger" role="alert">
+						Tài khoản hoặc mật khẩu không chính xác
+					</div>
+				</c:if>
 				<a href="#">Forgot password ?</a>
 			</footer>
 		</div>
