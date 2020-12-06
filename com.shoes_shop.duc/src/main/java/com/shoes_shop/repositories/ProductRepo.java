@@ -10,6 +10,7 @@ import com.shoes_shop.entities.ProductEntity;
 
 @Repository
 public interface ProductRepo extends JpaRepository<ProductEntity,Integer>{
+	public List<ProductEntity> findByStatusAndProducttype(boolean stt,String producttype);
 	public List<ProductEntity> findByStatus(boolean stt);
 	public ProductEntity findBySeo(String seo);
 }

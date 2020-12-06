@@ -47,7 +47,7 @@
 												<td data-label="Giá SP">${product.price}</td>
 												<td data-label="Đã bán">1</td>
 												<td data-label="Từ khoá">dress,vay</td>
-												<td data-label="Thời gian">2020-07-13 21:31:05</td>
+												<td data-label="Thời gian">${product.formatDate(product.createdDate)}</td>
 												<td data-label="Sửa" class="right__iconTable"><a
 													href="${pageContext.request.contextPath}/admin/repairproduct/${product.id}"><img
 														src="${pageContext.request.contextPath}/assets/icon-edit.svg"

@@ -95,8 +95,8 @@
 							</div>
 						</div>
 					</div>
-					<c:forEach var="product" items="${products}">
-						<c:if test="${product.producttype.equals('sản phẩm mới nhất') == true && products.indexOf(product) < 5}">
+					<c:forEach var="product" items="${productMn}">
+						<c:if test="${product.producttype.equals('sản phẩm mới nhất') == true && productMn.indexOf(product) < 5}">
 							<div class="col-xl-3 col-lg-3 col-md-5 prd">
 								<img
 									src="${pageContext.request.contextPath}/file/uploads/${product.avatar}">
@@ -125,9 +125,8 @@
 							</div>
 						</div>
 					</div>
-					<c:forEach var="product" items="${products}">
-						<c:if
-							test="${product.producttype.equals('sản phẩm nổi bật') == true}">
+					<c:forEach var="product" items="${productNb}">
+						<c:if test="${product.producttype.equals('sản phẩm nổi bật') == true && productNb.indexOf(product) < 5}">
 							<div class="col-xl-3 col-lg-3 col-md-5 prd">
 								<img
 									src="${pageContext.request.contextPath}/file/uploads/${product.avatar}">
@@ -156,9 +155,8 @@
 							</div>
 						</div>
 					</div>
-					<c:forEach var="product" items="${products}">
-						<c:if
-							test="${product.producttype.equals('sản phẩm giảm giá') == true}">
+					<c:forEach var="product" items="${productGg}">
+						<c:if test="${product.producttype.equals('sản phẩm giảm giá') == true && productGg.indexOf(product) < 5}">
 							<div class="col-xl-3 col-lg-3 col-md-5 prd">
 								<img
 									src="${pageContext.request.contextPath}/file/uploads/${product.avatar}">

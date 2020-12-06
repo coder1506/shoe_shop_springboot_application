@@ -34,6 +34,7 @@ ClassicEditor.create( document.querySelector( '#editor' ) ).catch( error => {
             console.error( error );
 } );   
 //ajax
+//delete product
  function deletePrd(id) {
  	var check = confirm("Bạn có muốn xoá sản phẩm này không ?");
  	if(check == true){
@@ -58,5 +59,52 @@ ClassicEditor.create( document.querySelector( '#editor' ) ).catch( error => {
 		 }
 	});}
 }
+//delete category
+function deleteCate(id) {
+ 	var check = confirm("Bạn có muốn xoá danh mục này không ?");
+ 	if(check == true){
+			var data = {};
+			data["id"] = id;
+			
+			$.ajax({
+				url: "/admin/deletecategory",
+				type: "delete",
+				contentType: "application/json", // dữ liệu gửi lên web-service có dạng là json.
+				data: JSON.stringify(data), // object json -> string json
+				dataType: "json", // dữ liệu từ web-service trả về là json.
+				success: function(jsonResult) { // được gọi khi web-service trả về dữ liệu.
+					if(jsonResult.status == 200) {
+						window.location.reload();
+					} else {
+						alert('loi');
+					}
+				},
+				error: function (jqXhr, textStatus, errorMessage) { // error callback 
+			        
+		 }
+	});}
+}
+//editor
+ClassicEditor.create( document.querySelector( '#editor1' ) )
+		.then( editor => {
+			window.editor1 = editor;
+		} )
+		.catch( err => {
+			console.error( err.stack );
+		} );
 
+	ClassicEditor.create( document.querySelector( '#editor2' ) )
+		.then( editor => {
+			window.editor2 = editor;
+		} )
+		.catch( err => {
+			console.error( err.stack );
+		} );
+	ClassicEditor.create( document.querySelector( '#editor3' ) )
+	.then( editor => {
+		window.editor3 = editor;
+	} )
+	.catch( err => {
+		console.error( err.stack );
+	} );
 		  

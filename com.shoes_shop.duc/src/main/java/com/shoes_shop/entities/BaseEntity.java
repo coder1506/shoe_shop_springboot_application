@@ -1,6 +1,7 @@
 package com.shoes_shop.entities;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -15,7 +16,7 @@ public abstract class BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto-increment.
 	@Column(name = "id")
 	private Integer id; // primary-key
-
+	
 	@Column(name = "created_date", nullable = false)
 	private LocalDateTime createdDate;
 
@@ -30,7 +31,7 @@ public abstract class BaseEntity {
 
 	@Column(name = "status", nullable = false)
 	private Boolean status = true;
-
+	
 	public Integer getId() {
 		return id;
 	}
@@ -78,5 +79,11 @@ public abstract class BaseEntity {
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
-
+	public String formatDate(LocalDateTime lD) {
+		if(lD != null) {
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");  
+	    String formatDateTime = lD.format(format); 
+	    return formatDateTime;}
+		return null;
+	}
 }

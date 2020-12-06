@@ -16,6 +16,6 @@ public abstract class BaseController {
 	CategoryRepo categoryRepo;
 	@ModelAttribute("categories")
 	public List<CategoryEntity> getCategories() {
-		return categoryRepo.findAll();
+		return categoryRepo.findByStatus(true);
 	}
 }

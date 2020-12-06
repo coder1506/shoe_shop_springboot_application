@@ -72,7 +72,7 @@
                                     <label for="title">Từ khoá</label>
                                     <input type="text" placeholder="Từ khoá">
                                 </div>-->
-								<div class="right__inputWrapper">
+								<!-- <div class="right__inputWrapper">
 									<label for="desc">Mô tả ngắn</label>
 									<form:textarea name="" id="" cols="30" rows="5"
 										placeholder="Mô tả được hiển thị ở sản phẩm" path="shortDes" />
@@ -81,10 +81,28 @@
 									<label for="desc">Chất liệu và kĩ thuật</label>
 									<form:textarea name="" id="" cols="30" rows="5"
 										placeholder="Chất liệu và kĩ thuật" path="metarial_vs_skill" />
+								</div> -->
+								<div class="right__inputWrapper">
+									<label for="desc">Mô tả ngắn</label>
+									<form:textarea id="editor"
+										placeholder="Mô tả được hiển thị ở sản phẩm"
+										class="form-control" path="shortDes" />
+								</div>
+								<div class="right__inputWrapper">
+									<label>Chất liệu và kĩ thuật</label>
+									<form:textarea id="editor1"
+										placeholder="Chất liệu và kĩ thuật"
+										class="form-control" path="metarial_vs_skill" />
+								</div>
+								<div class="right__inputWrapper">
+									<label>kích thước</label>
+									<form:textarea id="editor2"
+										placeholder="Các kích thước của sản phẩm"
+										class="form-control" path="size" />
 								</div>
 								<div class="right__inputWrapper">
 									<label>Details description</label>
-									<form:textarea id="editor"
+									<form:textarea id="editor3"
 										placeholder="Mô tả được hiển thị ở chi tiết sản phẩm"
 										class="form-control" path="shortDetails" />
 								</div>
@@ -99,5 +117,4 @@
 </body>
 <script src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script src="${pageContext.request.contextPath}/js/main.js"></script>
-${message}
 </html>

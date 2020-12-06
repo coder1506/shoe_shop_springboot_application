@@ -24,7 +24,9 @@ public class HomeController extends BaseController{
 	@RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
 	public String index(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
-		model.addAttribute("products", productRepo.findByStatus(true));
+		model.addAttribute("productMn", productRepo.findByStatusAndProducttype(true, "sản phẩm mới nhất"));
+		model.addAttribute("productNb", productRepo.findByStatusAndProducttype(true, "sản phẩm nổi bật"));
+		model.addAttribute("productGg", productRepo.findByStatusAndProducttype(true, "sản phẩm giảm giá"));
 		return "front-end/home";
 	}
 	@RequestMapping(value = {"/save-contact-with-ajax"}, method = RequestMethod.POST)

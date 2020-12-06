@@ -2,6 +2,8 @@ package com.shoes_shop.serivce;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -23,7 +25,6 @@ public class ProductService {
 	@PersistenceContext protected EntityManager entityManager;
 	@Autowired
 	private ProductRepo productRepo;
-	
 	public boolean isEmptyUploadFile(MultipartFile[] images) {
 		if(images == null || images.length <= 0 ) return true;
 		if(images.length == 0 || images[0].getOriginalFilename().isEmpty() == true) return true;
@@ -44,12 +45,35 @@ public class ProductService {
 				product.removeProductImages();
 				
 				product.removeProductAvatar();
+				
+			
 			}
 			else {
 				product.setProductImages(oldProduct.getProductImages());
 				product.setAvatar(oldProduct.getAvatar());
 			}
+			//created update
+			if(productRepo.findById(product.getId()).get().compare(product) || !isEmptyUploadFile(productImages))
+			{
+				LocalDateTime now = LocalDateTime.now();  
+			    DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");  
+			    String formatDateTime = now.format(format); 
+			    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+				product.setUpdatedDate(LocalDateTime.parse(formatDateTime, formatter));
+			}
+			else 
+			product.setUpdatedDate(oldProduct.getUpdatedDate());
+			product.setCreatedDate(oldProduct.getCreatedDate());
 		}
+		
+		else {
+			LocalDateTime now = LocalDateTime.now();  
+		    DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");  
+		    String formatDateTime = now.format(format); 
+		    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+			product.setCreatedDate(LocalDateTime.parse(formatDateTime, formatter));
+		}
+		
 		if(!isEmptyUploadFile(productImages)) {
 			for(MultipartFile productImg : productImages) {
 				productImg.transferTo(new File("C:\\Users\\Duc\\Desktop\\shoe_shop_springboot_application\\com.shoes_shop.duc\\src\\main\\resources\\META-INF\\images\\product\\" + productImg.getOriginalFilename()));

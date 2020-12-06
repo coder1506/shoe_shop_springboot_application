@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,30 +33,19 @@
 									</thead>
 
 									<tbody>
+									<c:forEach var ="category" items ="${categories }">
 										<tr>
-											<td data-label="STT">1</td>
-											<td data-label="Tiêu đề">Dress</td>
-											<td data-label="Mô tả">Thiết kế nhẹ nhàng, trẻ trung và
-												lãng đãng!</td>
-											<td data-label="Sửa" class="right__iconTable"><a href=""><img
+											<td data-label="STT">${categories.indexOf(category) + 1}</td>
+											<td data-label="Tiêu đề">${category.name}</td>
+											<td data-label="Mô tả">${category.description}</td>
+											<td data-label="Sửa" class="right__iconTable"><a href="${pageContext.request.contextPath}/admin/repaircategory/${category.id}"><img
 													src="${pageContext.request.contextPath}/assets/icon-edit.svg"
 													alt=""></a></td>
-											<td data-label="Xoá" class="right__iconTable"><a href=""><img
+											<td data-label="Xoá" class="right__iconTable"><a onclick = "deleteCate(${category.id})"><img
 													src="${pageContext.request.contextPath}/assets/icon-trash-black.svg"
 													alt=""></a></td>
 										</tr>
-										<tr>
-											<td data-label="STT">2</td>
-											<td data-label="Tiêu đề">Top + Skirt</td>
-											<td data-label="Mô tả">Thiết kế nhẹ nhàng, trẻ trung và
-												lãng đãng!</td>
-											<td data-label="Sửa" class="right__iconTable"><a href=""><img
-													src="${pageContext.request.contextPath}/assets/icon-edit.svg"
-													alt=""></a></td>
-											<td data-label="Xoá" class="right__iconTable"><a href=""><img
-													src="${pageContext.request.contextPath}/assets/icon-trash-black.svg"
-													alt=""></a></td>
-										</tr>
+										</c:forEach>
 									</tbody>
 								</table>
 							</div>
@@ -65,7 +55,7 @@
 			</div>
 		</div>
 	</div>
-
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery/jquery-3.5.1.js"></script>
 	<script src="${pageContext.request.contextPath}/js/main.js"></script>
 </body>
 </html>

@@ -34,7 +34,8 @@ public class ProductEntity extends BaseEntity {
 	private String metarial_vs_skill;
 	@Column(name = "code")
 	private String code;
-
+	@Column(name = "size", length = 500, nullable = false)
+	private String size;
 	@Lob
 	@Column(name = "detail_description", nullable = false, columnDefinition = "LONGTEXT")
 	private String shortDetails;
@@ -156,5 +157,21 @@ public class ProductEntity extends BaseEntity {
 	public void setCode(String code) {
 		this.code = code;
 	}
-	
+
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+	public boolean compare(ProductEntity prd) {
+		if(this.getCategory().getId() != prd.getCategory().getId() 
+			||!this.getMetarial_vs_skill().equals(prd.getMetarial_vs_skill()) || this.getPrice() != prd.getPrice()
+			||this.getProducttype() != prd.getProducttype()
+			||!this.getShortDes().equals(prd.getShortDes()) || !this.getShortDetails().equals(prd.getShortDes())
+			||!this.getSize().equals(prd.getSize()) ||!this.getTitle().equals(prd.getTitle()))	
+		return true;
+		return false;
+	}
 }

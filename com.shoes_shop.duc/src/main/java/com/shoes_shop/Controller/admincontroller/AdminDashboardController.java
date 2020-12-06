@@ -21,7 +21,7 @@ public class AdminDashboardController {
 	@RequestMapping (value = "/admin/dashboard",method = RequestMethod.GET)
 	public String Dashboard(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {
 		model.addAttribute("products", productRepo.findByStatus(true));
-		model.addAttribute("categories", categoryRepo.findAll());
+		model.addAttribute("categories", categoryRepo.findByStatus(true));
 		return "admin/index";
 	}
 }

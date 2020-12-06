@@ -75,7 +75,7 @@
 								</div>
 								<div id="menu2" class="container tab-pane fade">
 									<br>
-									<p>kích cỡ</p>
+									<p>${product.size}</p>
 								</div>
 							</div>
 						</div>

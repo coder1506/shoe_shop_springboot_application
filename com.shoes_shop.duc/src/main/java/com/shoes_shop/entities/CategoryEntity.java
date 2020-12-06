@@ -72,5 +72,10 @@ public class CategoryEntity extends BaseEntity{
 	public void setProducts(List<ProductEntity> products) {
 		this.products = products;
 	}
-	
+	public boolean isDifferent(CategoryEntity cate) {
+		if(!this.getName().equals(cate.getName()) || !this.getDescription().equals(cate.getDescription())
+				||!this.getCategorytype().equals(cate.getCategorytype()))
+		return true;
+		return false;
+	}
 }

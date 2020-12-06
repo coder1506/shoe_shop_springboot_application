@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,26 +18,35 @@
 				<div class="right">
 					<div class="right__content">
 						<div class="right__title">Bảng điều khiển</div>
-						<p class="right__desc">Chèn danh mục</p>
+						<p class="right__desc">${danhmuc }</p>
 						<div class="right__formWrapper">
-							<form action="" method="post">
+							<form:form action="${pageContext.request.contextPath}/admin/addcategory" modelAttribute="category" method="post">
+								<form:hidden path="id" />
 								<div class="right__inputWrapper">
-									<label for="title">Tiêu đề</label> <input type="text"
-										placeholder="Tiêu đề">
+									<label for="title">Tiêu đề</label> 
+									<form:input path = "name" type="text" placeholder="Tiêu đề"/>
 								</div>
 								<div class="right__inputWrapper">
 									<label for="desc">Mô tả</label>
-									<textarea name="" id="" cols="30" rows="10" placeholder="Mô tả"></textarea>
+									<form:textarea path ="description" id="editor" cols="30" rows="10" placeholder="Mô tả"></form:textarea>
+								</div>
+								<div class="right__inputWrapper">
+								<label for="label">Nhãn sản phẩm</label> 
+									<form:select path="categorytype">
+										<form:option value="sản phẩm" label="sản phẩm"/>
+										<form:option value="phụ kiện khác" label="phụ kiện khác"/>
+									</form:select>
 								</div>
 								<button class="btn" type="submit">Chèn</button>
-							</form>
+								
+							</form:form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 	<script src="${pageContext.request.contextPath}/js/main.js"></script>
+	<script src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 </body>
 </html>
