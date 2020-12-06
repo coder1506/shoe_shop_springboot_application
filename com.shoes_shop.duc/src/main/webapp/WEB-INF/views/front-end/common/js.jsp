@@ -9,3 +9,5 @@
 	src="${pageContext.request.contextPath}/js/shop.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/bootstrap-4.5.2-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/scroll.js"></script>

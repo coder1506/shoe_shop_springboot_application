@@ -104,3 +104,11 @@ function myFunction() {
  }
 }
 window.onscroll = function() {myFunction()};
+function changeImage(image){
+			var img = document.getElementById(image).getAttribute('src');
+			$("#image").fadeOut(300,function(){
+				document.getElementById("image").setAttribute("src",img);
+				$("li>img").attr("border","1px solid red");
+				$("#image").fadeIn(300);
+			});
+		}

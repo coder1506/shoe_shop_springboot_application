@@ -25,11 +25,18 @@
 			<div class="container-fluid">
 				<div class="row justify-content-center">
 					<div class="col-xl-8 left-info">
-						<c:forEach var = "image" items = "${images}">
-								<div class="prd">
-									<img src="${pageContext.request.contextPath}/file/uploads/${image.path}">
-								</div>
-						</c:forEach>
+						<fieldset style="width: 85%;margin:auto;height: 600px;">
+							<div class="box" id="box">
+								<img src="${pageContext.request.contextPath}/file/uploads/${images.get(0).path}" id="image">
+							</div>
+							<div class="sub">
+								<ul>
+									<c:forEach var = "image" items = "${images}">
+										<li><img id="${image.id}" src="${pageContext.request.contextPath}/file/uploads/${image.path}" onclick="changeImage(${image.id})"></li>
+									</c:forEach>
+								</ul>
+							</div>
+						</fieldset>
 					</div>
 					<div class="col-xl-4 right-info">
 						<h3>${product.title}</h3>
@@ -109,4 +116,6 @@
 	</div>
 </body>
 <jsp:include page="/WEB-INF/views/front-end/common/js.jsp"></jsp:include>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/solution.js"></script>
 </html>
