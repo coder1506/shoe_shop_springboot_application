@@ -9,7 +9,6 @@ body {
 	font-family: arial;
 	overflow-x: hidden;
 }
-
 .wrapper {
 	width: 100%;
 	height: auto;
@@ -258,6 +257,13 @@ body {
 	color: black;
 	font-weight: bolder;
 }
+.logo>a{
+	color:black;
+}
+.logo>a:hover{
+	color:black;
+	text-decoration:none;
+}
 /*/logo*/
 /*account-cart*/
 .account-cart {
@@ -382,7 +388,9 @@ body {
 	transition: 0.3s;
 	width: 180px;
 }
-
+.categoryactive:before{
+	width: 110px !important;
+}
 .header-menu>ul>li:first-child:hover:before {
 	transition: 0.3s;
 	width: 100%;

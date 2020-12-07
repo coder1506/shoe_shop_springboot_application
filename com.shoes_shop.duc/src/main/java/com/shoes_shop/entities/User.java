@@ -21,6 +21,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class User extends BaseEntity implements UserDetails{
 	private static final long serialVersionUID = 1L;
 
+	@Column(name = "name", length = 100, nullable = false)
+	private String name;
+	
 	@Column(name = "username", length = 45, nullable = false)
 	private String username;
 
@@ -29,7 +32,7 @@ public class User extends BaseEntity implements UserDetails{
 
 	@Column(name = "email", length = 45, nullable = false)
 	private String email;
-
+	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "tbl_users_roles",
 			  joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -66,7 +69,28 @@ public class User extends BaseEntity implements UserDetails{
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
+	
+	
+	
+	public String getName() {
+		return name;
+	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public boolean isSameUsername(User user) {
+		if(this.username.equals( user.getUsername()))
+			return true;
+		return false;
+	}
+	
+	public boolean isSameEmail(User user) {
+		if(this.email.equals( user.getEmail()))
+			return true;
+		return false;
+	}
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub

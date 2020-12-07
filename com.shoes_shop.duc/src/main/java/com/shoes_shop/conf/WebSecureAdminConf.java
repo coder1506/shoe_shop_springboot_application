@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration // -> tạo ra 1 bean tên webConf và được spring-container quản lí.
 // -> đồng thời module web sẽ biết được đây là file cấu hình của web.
 @EnableWebSecurity
-public class WebSecureConf extends WebSecurityConfigurerAdapter {
+public class WebSecureAdminConf extends WebSecurityConfigurerAdapter {
 	@Autowired private UserDetailsService userDetailsService;
 	@Override
 	protected void configure(final HttpSecurity http) throws Exception {
@@ -25,7 +25,7 @@ public class WebSecureConf extends WebSecurityConfigurerAdapter {
             
             // thực hiện xác thực với các url kiểu ..../admin/....
 //            .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
-            .antMatchers("/admin/**").authenticated()
+            .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
             
             .and() // kết hợp với điều kiện.
             
@@ -33,7 +33,7 @@ public class WebSecureConf extends WebSecurityConfigurerAdapter {
             // khi click vào button này thì dữ liệu user trên session sẽ bị xoá.
             .logout()
             .logoutUrl("/logout")
-            .logoutSuccessUrl("/login")
+            .logoutSuccessUrl("/admin")
             .invalidateHttpSession(true) // xoá hết dữ liệu trên seesion
             .deleteCookies("JSESSIONID") // xoá hết dữ liệu trên cokies.
             .permitAll()
@@ -41,10 +41,10 @@ public class WebSecureConf extends WebSecurityConfigurerAdapter {
             .and() // kết hợp với điều kiện.
             
             .formLogin() // thực hiện xác thực qua form(username và password)
-            .loginPage("/login") // trang login do mình thiết kế, trỏ vào request-mapping trong controller.
-            .loginProcessingUrl("/login") // link action for form post.
+            .loginPage("/admin") // trang login do mình thiết kế, trỏ vào request-mapping trong controller.
+            .loginProcessingUrl("/admin") // link action for form post.
             .defaultSuccessUrl("/admin/dashboard", true) // when user success authenticated then go to this url.
-            .failureUrl("/login?error_login=true") // nhập username, password sai thì redirect về trang nào.
+            .failureUrl("/admin?error_login=true") // nhập username, password sai thì redirect về trang nào.
             .permitAll();
 	}
 	@Bean public PasswordEncoder passwordEncoder() {

@@ -117,4 +117,5 @@
 </body>
 <script src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script src="${pageContext.request.contextPath}/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/js/editor-solution.js"></script>
 </html>

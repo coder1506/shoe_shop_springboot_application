@@ -18,7 +18,7 @@
 				<b>Login</b>
 			</h1>
 			<div class="content">
-				<form action="${pageContext.request.contextPath}/login"
+				<form action="${pageContext.request.contextPath}/admin"
 					method="POST">
 					<input type="text" name="username" id="username"
 						placeholder="Username..." required> <input type="password"

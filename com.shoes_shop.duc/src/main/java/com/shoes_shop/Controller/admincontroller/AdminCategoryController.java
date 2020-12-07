@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.shoes_shop.entities.CategoryEntity;
-import com.shoes_shop.entities.ProductEntity;
 import com.shoes_shop.model.AjaxResponse;
 import com.shoes_shop.model.Product;
 import com.shoes_shop.repositories.CategoryRepo;

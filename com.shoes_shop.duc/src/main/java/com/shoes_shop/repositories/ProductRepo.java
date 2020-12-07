@@ -13,4 +13,6 @@ public interface ProductRepo extends JpaRepository<ProductEntity,Integer>{
 	public List<ProductEntity> findByStatusAndProducttype(boolean stt,String producttype);
 	public List<ProductEntity> findByStatus(boolean stt);
 	public ProductEntity findBySeo(String seo);
+	@Query("SELECT p FROM ProductEntity p WHERE CONCAT(p.title, ' ', p.price, ' ', p.shortDes, ' ', p.producttype) LIKE %?1%")
+	public List<ProductEntity> search(String keyword);
 }
