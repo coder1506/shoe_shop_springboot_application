@@ -18,9 +18,14 @@ import com.shoes_shop.serivce.UserService;
 public class AccountController extends BaseController{
 	@Autowired
 	UserService userService;
+	@Autowired
+	UserRepo userRepo;
 	@RequestMapping (value = "/userlogin" , method = RequestMethod.GET)
 	public String accountIndex(final ModelMap model ,final HttpServletRequest request,final HttpServletResponse response ) {
-		model.addAttribute("user", new User());
+		return "front-end/userlogin";
+	}
+	@RequestMapping (value = "/user" , method = RequestMethod.GET)
+	public String userAccess(final ModelMap model ,final HttpServletRequest request,final HttpServletResponse response ) {
 		return "front-end/userlogin";
 	}
 	@RequestMapping (value = "/account" , method = RequestMethod.POST)
@@ -43,8 +48,10 @@ public class AccountController extends BaseController{
 			model.addAttribute("error_message", "Email của bạn đã được sử dụng");
 			return "front-end/accountRegister";
 		}
-		else {model.addAttribute("error_message", "Đăng kí thành công");
-		return "front-end/home";}
+		else {
+			model.addAttribute("error_message", "Đăng kí thành công");
+		return "front-end/home";
+		}
 	}
 	@RequestMapping (value = "/forgetPassword" , method = RequestMethod.GET)
 	public String accountForgetPassword(final ModelMap model ,final HttpServletRequest request,final HttpServletResponse response ) {

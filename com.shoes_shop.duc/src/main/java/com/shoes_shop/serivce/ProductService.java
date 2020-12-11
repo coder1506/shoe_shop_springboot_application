@@ -5,19 +5,25 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.github.slugify.Slugify;
+import com.shoes_shop.entities.EmailEntity;
 import com.shoes_shop.entities.ProductEntity;
 import com.shoes_shop.entities.ProductImages;
 import com.shoes_shop.model.ProductSearching;
+import com.shoes_shop.repositories.EmailRepo;
 import com.shoes_shop.repositories.ProductRepo;
 
 @Service
@@ -25,13 +31,17 @@ public class ProductService {
 	@PersistenceContext protected EntityManager entityManager;
 	@Autowired
 	private ProductRepo productRepo;
+	@Autowired
+	public JavaMailSender emailSender;
+	@Autowired
+	EmailRepo emailRepo;
 	public boolean isEmptyUploadFile(MultipartFile[] images) {
 		if(images == null || images.length <= 0 ) return true;
 		if(images.length == 0 || images[0].getOriginalFilename().isEmpty() == true) return true;
 		return false;
 	}
 	
-	public void save(MultipartFile[] productImages, ProductEntity product) throws IllegalStateException, IOException {
+	public void save(MultipartFile[] productImages, ProductEntity product) throws IOException{
 		if(product.getId() != null) {//Case that product had
 			ProductEntity oldProduct = productRepo.findById(product.getId()).get();// get data from target product
 			if(!isEmptyUploadFile(productImages)) {// if admin uploads images
@@ -39,7 +49,7 @@ public class ProductService {
 				List<ProductImages> imageList = oldProduct.getProductImages();
 				//delete images of this product on host
 				for(ProductImages prdImage : imageList) {
-					new File("C:\\Users\\Duc\\Desktop\\shoe_shop_springboot_application\\com.shoes_shop.duc\\src\\main\\resources\\META-INF\\images\\product\\"+prdImage.getPath()).delete();
+					new File("C:\\Users\\Duc\\Desktop\\shoe_shop_springboot_application\\com.shoes_shop.duc\\uploads\\"+prdImage.getPath()).delete();
 				}
 				//delete images of this product on database
 				product.removeProductImages();
@@ -76,7 +86,7 @@ public class ProductService {
 		
 		if(!isEmptyUploadFile(productImages)) {
 			for(MultipartFile productImg : productImages) {
-				productImg.transferTo(new File("C:\\Users\\Duc\\Desktop\\shoe_shop_springboot_application\\com.shoes_shop.duc\\src\\main\\resources\\META-INF\\images\\product\\" + productImg.getOriginalFilename()));
+				productImg.transferTo(new File("C:\\Users\\Duc\\Desktop\\shoe_shop_springboot_application\\com.shoes_shop.duc\\uploads\\" + productImg.getOriginalFilename()));
 				ProductImages _productImg = new ProductImages();
 				_productImg.setPath(productImg.getOriginalFilename());
 				_productImg.setTitle(productImg.getOriginalFilename());
@@ -87,6 +97,28 @@ public class ProductService {
 		Slugify slg = new Slugify();
 		product.setSeo(slg.slugify(product.getTitle() +""+System.currentTimeMillis()));
 		productRepo.save(product);
+	}
+	@Async
+	public void sendNoti(ProductEntity product) {
+		//send noti to user by email
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				SimpleMailMessage message = new SimpleMailMessage();
+		        for(EmailEntity em : emailRepo.findAll()) {
+			        message.setTo(em.getEmail());
+			        message.setSubject("HOT NEW");
+			        message.setText("Chúng tôi mới bán thêm một sản phẩm mới tên là " +product.getTitle()+
+			        		". nhấn vào đây để biết thêm thông tin chi tiết");
+			        emailSender.send(message);
+		        }
+	}
+	@Async("asyncExecutor")
+	public CompletableFuture<Boolean> returnPage() {
+		return CompletableFuture.completedFuture(Boolean.TRUE);
 	}
 	@SuppressWarnings("unchecked")
 	public List<ProductEntity> search(ProductSearching productSearching){
@@ -108,4 +140,5 @@ public class ProductService {
 		
 		return query.getResultList();
 	}
+	
 }

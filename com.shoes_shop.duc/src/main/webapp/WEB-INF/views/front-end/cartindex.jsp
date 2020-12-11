@@ -50,6 +50,8 @@
 	</div>
 </body>
 <script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/solution.js"></script>
+<script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/scroll.js"></script>

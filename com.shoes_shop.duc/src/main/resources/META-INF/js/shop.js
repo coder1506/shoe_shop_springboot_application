@@ -27,9 +27,12 @@ var Shop = {
 			});
 		},
 		saveContact: function() {
+			if(!ValidateEmail($("#email").val())) {
+				alert('Email bạn nhập không đúng dạng vui lòng nhập lại');
+				return;
+			}
 			var data = {};
 			data["email"] = $("#email").val();
-			
 			$.ajax({
 				url: "/save-contact-with-ajax",
 				type: "post",
@@ -75,4 +78,12 @@ var Shop = {
 			});
 		}
 		
+}
+function ValidateEmail(mail) 
+{
+ if (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(mail))
+  {
+    return (true)
+  }
+    return (false)
 }

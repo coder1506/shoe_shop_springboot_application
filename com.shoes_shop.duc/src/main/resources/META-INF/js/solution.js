@@ -72,6 +72,11 @@ $(document).ready(function(){
         else
         $('.message-box').fadeToggle(200);
      })
+     //first-subImage
+     $(".sub li:first-child>img").addClass("border-sub");
+     
+     //auto complete search
+     //auto complete search
 })
 function myFunction() {
     //menu up to 400px
@@ -106,9 +111,10 @@ function myFunction() {
 window.onscroll = function() {myFunction()};
 function changeImage(image){
 			var img = document.getElementById(image).getAttribute('src');
+			$(".sub img").removeClass("border-sub");
+			$("#"+image).addClass("border-sub");
 			$("#image").fadeOut(300,function(){
 				document.getElementById("image").setAttribute("src",img);
-				$("li>img").attr("border","1px solid red");
 				$("#image").fadeIn(300);
 			});
 		}

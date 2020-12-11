@@ -27,7 +27,7 @@
 					<div class="col-xl-8 left-info">
 						<fieldset style="width: 85%;margin:auto;height: 600px;">
 							<div class="box" id="box">
-								<img src="${pageContext.request.contextPath}/file/uploads/${images.get(0).path}" id="image">
+								<img src="${pageContext.request.contextPath}/file/uploads/${images.size() > 0 ? images.get(0).path : 'unnamed.png'}" id="image">
 							</div>
 							<div class="sub">
 								<ul>
@@ -43,7 +43,7 @@
 						<div class="code-prd">
 							Code:<span>${product.id}</span>
 						</div>
-						<h5>${product.price}₫</h5>
+						<h5>${product.price_sale != null ? product.price_sale : product.price}₫</h5>
 						<div class="amount">
 							<button class="btn minus">-</button>
 							<div class="current-amount">1</div>

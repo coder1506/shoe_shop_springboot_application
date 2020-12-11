@@ -81,11 +81,10 @@
 										</c:if>
 									</c:forEach>
 								</ul></li>
-							<li class="nav-item rp-account"><a
-								href="${pageContext.request.contextPath}/userlogin">
+							<li class="nav-item rp-account"><!-- <a
+								href="${pageContext.request.contextPath}/userlogin"> -->
 								<span class="account">
-								<a href="${pageContext.request.contextPath}/account"
-										class="color-hover"><i class="far fa-user"></i> Tài khoản</a></span></i></li>
+								<a href="${pageContext.request.contextPath}/userlogin" class="color-hover"><i class="far fa-user"></i> Tài khoản</a></span></i></li>
 						</ul>
 					</button>
 				</span>
@@ -94,7 +93,7 @@
 		<!-- responsive-search -->
 		<div class="search responsive-search">
 			<form action="${pageContext.request.contextPath}/search" method = "get">
-				<input type="text" name="key" class="color-hover" id="input-search"
+				<input type="text" name="key" class="color-hover"
 					placeholder="Tìm kiếm sản phẩm..." required>
 				<button class="color-hover">
 					<i class="fas fa-search"></i>

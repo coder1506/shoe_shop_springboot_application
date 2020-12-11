@@ -55,14 +55,18 @@
 								<div class="right__inputWrapper">
 									<label for="label">Nhãn sản phẩm</label> 
 									<form:select path="producttype">
-										<form:option value="sản phẩm mới nhất" label="Sản phẩm mới nhất"/>
-										<form:option value="sản phẩm nổi bật" label="Sản phẩm nổi bật"/>
-										<form:option value="sản phẩm giảm giá" label="Sản phẩm giảm giá"/>
+										<form:option value="san-pham-moi-nhat" label="Sản phẩm mới nhất"/>
+										<form:option value="san-pham-noi-bat" label="Sản phẩm nổi bật"/>
+										<form:option value="san-pham-giam-gia" label="Sản phẩm giảm giá"/>
 									</form:select>
 								</div>
 								<div class="right__inputWrapper">
 									<label for="title">Giá sản phẩm</label>
 									<form:input type="text" placeholder="Giá sản phẩm" path="price" />
+								</div>
+								<div class="right__inputWrapper">
+									<label for="title">Giá sản phẩm giảm còn</label>
+									<form:input type="text" placeholder="Giá sản phẩm sau khi giảm" path="price_sale" />
 								</div>
 								<!--  <div class="right__inputWrapper">
                                     <label for="title">Giá giảm sản phẩm</label>

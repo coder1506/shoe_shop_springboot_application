@@ -25,16 +25,20 @@ public class ProductEntity extends BaseEntity {
 	
 	@Column(name = "price", precision = 13, scale = 2, nullable = false)
 	private BigDecimal price;
+	
+	@Column(name = "price_sale", precision = 13, scale = 2, nullable = false)
+	private BigDecimal price_sale;
+	
 	@Column(name = "producttype", nullable = false)
 	private String producttype;
 
-	@Column(name = "short_description", length = 3000, nullable = false)
+	@Column(name = "short_description", columnDefinition = "LONGTEXT", nullable = false)
 	private String shortDes;
-	@Column(name = "metarial_vs_skill")
+	@Column(name = "metarial_vs_skill",columnDefinition = "LONGTEXT")
 	private String metarial_vs_skill;
 	@Column(name = "code")
 	private String code;
-	@Column(name = "size", length = 500, nullable = false)
+	@Column(name = "size", columnDefinition = "LONGTEXT", nullable = false)
 	private String size;
 	@Lob
 	@Column(name = "detail_description", nullable = false, columnDefinition = "LONGTEXT")
@@ -165,6 +169,15 @@ public class ProductEntity extends BaseEntity {
 	public void setSize(String size) {
 		this.size = size;
 	}
+	
+	public BigDecimal getPrice_sale() {
+		return price_sale;
+	}
+
+	public void setPrice_sale(BigDecimal price_sale) {
+		this.price_sale = price_sale;
+	}
+
 	public boolean compare(ProductEntity prd) {
 		if(this.getCategory().getId() != prd.getCategory().getId() 
 			||!this.getMetarial_vs_skill().equals(prd.getMetarial_vs_skill()) || this.getPrice() != prd.getPrice()

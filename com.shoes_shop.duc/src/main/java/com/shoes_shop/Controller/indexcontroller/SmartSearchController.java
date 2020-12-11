@@ -21,8 +21,12 @@ public class SmartSearchController extends BaseController{
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public String resultSearch(final HttpServletRequest request,final HttpServletResponse response,final ModelMap model) {
 		String key = request.getParameter("key");
-		List<ProductEntity> resultSearching = productRepo.search(key);
+		List<ProductEntity> resultSearching = productRepo.search(key,true);
 		model.addAttribute("resultSearching", resultSearching);
 		return "front-end/searchingIndex";
+	}
+	@RequestMapping(value = "/autocomplete", method = RequestMethod.GET)
+	public List<ProductEntity> resultSearchAutoComplete(final HttpServletRequest request,final HttpServletResponse response,final ModelMap model) {
+		return productRepo.findByStatus(true);
 	}
 }

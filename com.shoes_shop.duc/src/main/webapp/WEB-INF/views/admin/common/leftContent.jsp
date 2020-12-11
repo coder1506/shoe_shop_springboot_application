@@ -1,5 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
+<%@page import="org.springframework.security.core.userdetails.UserDetails"%>
+<%@page import="com.shoes_shop.entities.User"%>
+<%!
+	public String getEmailUserLogined() {
+		String email = "";
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal instanceof UserDetails) {
+			email = ((User)principal).getEmail();
+		}
+		return email;
+	}
+%>
 <div class="left">
 	<span class="left__icon"> <span></span> <span></span> <span></span>
 	</span>
@@ -10,7 +23,7 @@
 				<img src="${pageContext.request.contextPath}/assets/profile1.jpg"
 					alt="">
 			</div>
-			<p class="left__name">${usernameAdmin}</p>
+			<p class="left__name"><%=getEmailUserLogined()%></p>
 		</div>
 		<ul class="left__menu">
 			<li class="left__menuItem"><a

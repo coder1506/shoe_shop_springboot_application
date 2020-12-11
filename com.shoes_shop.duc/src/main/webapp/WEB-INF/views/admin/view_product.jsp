@@ -27,9 +27,9 @@
 											<th>STT</th>
 											<th>Tên sản phẩm</th>
 											<th>Hình ảnh</th>
-											<th>Giá SP</th>
+											<th>Giá cũ SP</th>
+											<th>Giá mới</th>
 											<th>Đã bán</th>
-											<th>Từ khoá</th>
 											<th>Thời gian</th>
 											<th>Sửa</th>
 											<th>Xoá</th>
@@ -44,9 +44,9 @@
 												<td data-label="Hình ảnh"><img
 													src="${pageContext.request.contextPath}/file/uploads/${product.avatar}"
 													alt=""></td>
-												<td data-label="Giá SP">${product.price}</td>
+												<td data-label="Giá cũ">${product.price}</td>
+												<td data-label="Giá mới">${product.price_sale != null ? product.price_sale : 'chưa có'}</td>
 												<td data-label="Đã bán">1</td>
-												<td data-label="Từ khoá">dress,vay</td>
 												<td data-label="Thời gian">${product.formatDate(product.createdDate)}</td>
 												<td data-label="Sửa" class="right__iconTable"><a
 													href="${pageContext.request.contextPath}/admin/repairproduct/${product.id}"><img

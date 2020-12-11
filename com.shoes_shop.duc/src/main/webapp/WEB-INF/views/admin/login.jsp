@@ -28,6 +28,7 @@
 				</form>
 			</div>
 			<footer>
+			${error_message_accessing}
 				<c:if test="${not empty param.error_login}">
 					<div class="alert alert-danger" role="alert">
 						Tài khoản hoặc mật khẩu không chính xác

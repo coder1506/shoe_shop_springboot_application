@@ -13,8 +13,10 @@ import org.springframework.stereotype.Service;
 
 import com.github.slugify.Slugify;
 import com.shoes_shop.entities.CategoryEntity;
+import com.shoes_shop.entities.EmailEntity;
 import com.shoes_shop.entities.User;
 import com.shoes_shop.repositories.CategoryRepo;
+import com.shoes_shop.repositories.EmailRepo;
 import com.shoes_shop.repositories.UserRepo;
 
 @Service
@@ -22,7 +24,8 @@ public class UserService {
 	@PersistenceContext protected EntityManager entityManager;
 	@Autowired
 	private UserRepo userRepo;
-	
+	@Autowired
+	private EmailRepo emailRepo;
 	public int save(User user) {
 			if(userRepo.findByUsername(user.getUsername()) != null) {
 				return 1;
@@ -38,4 +41,18 @@ public class UserService {
 				return 0;
 				}
 	}
+	public boolean saveEmailNoti(String email) {
+		EmailEntity eml = new EmailEntity();
+		eml.setEmail(email);
+		if(emailRepo.findByEmail(eml.getEmail()) != null) return false;
+		else {
+			LocalDateTime now = LocalDateTime.now();  
+		    DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");  
+		    String formatDateTime = now.format(format); 
+		    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+		    eml.setCreatedDate(LocalDateTime.parse(formatDateTime, formatter));
+			emailRepo.save(eml);
+			return true;
+		}
+}
 }

@@ -1,12 +1,17 @@
 package com.shoes_shop.Controller.admincontroller;
 
 import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,9 +23,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.shoes_shop.Controller.indexcontroller.BaseController;
+import com.shoes_shop.entities.EmailEntity;
 import com.shoes_shop.entities.ProductEntity;
 import com.shoes_shop.model.AjaxResponse;
 import com.shoes_shop.model.Product;
+import com.shoes_shop.repositories.EmailRepo;
 import com.shoes_shop.repositories.ProductRepo;
 import com.shoes_shop.serivce.ProductService;
 
@@ -40,8 +47,14 @@ public class AdminProductController extends BaseController{
 	public String addProductSave(@RequestParam("product_images") MultipartFile[] productImages,
 			final ModelMap model,final HttpServletRequest request,final HttpServletResponse response 
 			,@ModelAttribute("product") ProductEntity product) throws IllegalStateException, IOException {
-		productservice.save(productImages, product);
 		model.addAttribute("product", new ProductEntity());	
+		productservice.save(productImages, product);
+		// send a notification
+		try {
+			productservice.sendNoti(product);
+			}catch( Exception e ){
+			new Exception("cannot send email");
+		}
 		return "redirect:/admin/product";
 	}
 	@RequestMapping (value = "/admin/repairproduct/{id}",method = RequestMethod.GET)

@@ -9,7 +9,6 @@
 <meta name="viewport"
 	content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
 <jsp:include page="/WEB-INF/views/front-end/common/css.jsp"></jsp:include>
-
 </head>
 <body>
 	<div class="wrapper">
@@ -90,13 +89,13 @@
 						<div class="heading-panel">
 							<h2>Sản phẩm mới nhất</h2>
 							<div class="btn-more">
-								<a href="${pageContext.request.contextPath}/category">Xem
+								<a href="${pageContext.request.contextPath}/productlabel/${'san-pham-moi-nhat'}">Xem
 									thêm</a>
 							</div>
 						</div>
 					</div>
 					<c:forEach var="product" items="${productMn}">
-						<c:if test="${product.producttype.equals('sản phẩm mới nhất') == true && productMn.indexOf(product) < 5}">
+						<c:if test="${product.producttype.equals('san-pham-moi-nhat') == true && productMn.indexOf(product) < 5}">
 							<div class="col-xl-3 col-lg-3 col-md-5 prd">
 								<img
 									src="${pageContext.request.contextPath}/file/uploads/${product.avatar}">
@@ -109,7 +108,10 @@
 										TIẾT</a>
 								</div>
 								<div class="cost">
-									<a>${product.title}</a> <br> ${product.price}Đ
+									<b>${product.title}</b>
+									<span style="display:${product.price_sale != null ? 'inline' :'none' }">${product.price_sale}Đ</span>
+									&nbsp &nbsp
+									<span class = "${product.price_sale != null ? 'old-cost' :'' }">${product.price}Đ</span> 
 								</div>
 							</div>
 						</c:if>
@@ -120,13 +122,13 @@
 						<div class="heading-panel">
 							<h2>Sản phẩm nổi bật</h2>
 							<div class="btn-more">
-								<a href="${pageContext.request.contextPath}/category">Xem
+								<a href="${pageContext.request.contextPath}/productlabel/${'san-pham-noi-bat'}">Xem
 									thêm</a>
 							</div>
 						</div>
 					</div>
 					<c:forEach var="product" items="${productNb}">
-						<c:if test="${product.producttype.equals('sản phẩm nổi bật') == true && productNb.indexOf(product) < 5}">
+						<c:if test="${product.producttype.equals('san-pham-noi-bat') == true && productNb.indexOf(product) < 5}">
 							<div class="col-xl-3 col-lg-3 col-md-5 prd">
 								<img
 									src="${pageContext.request.contextPath}/file/uploads/${product.avatar}">
@@ -139,7 +141,9 @@
 										TIẾT</a>
 								</div>
 								<div class="cost">
-									<a>${product.title}</a> <br> ${product.price}Đ
+									<a>${product.title}</a> <br> 
+									<span style="display:${product.price_sale != null ? 'inline' :'none' }">${product.price}Đ</span>
+									<span class = "${product.price_sale != null ? 'old-cost' :'' }">${product.price}Đ</span> 
 								</div>
 							</div>
 						</c:if>
@@ -150,13 +154,13 @@
 						<div class="heading-panel">
 							<h2>Sản phẩm giảm giá</h2>
 							<div class="btn-more">
-								<a href="${pageContext.request.contextPath}/category">Xem
+								<a href="${pageContext.request.contextPath}/productlabel/${'san-pham-giam-gia'}">Xem
 									thêm</a>
 							</div>
 						</div>
 					</div>
 					<c:forEach var="product" items="${productGg}">
-						<c:if test="${product.producttype.equals('sản phẩm giảm giá') == true && productGg.indexOf(product) < 5}">
+						<c:if test="${product.producttype.equals('san-pham-giam-gia') == true && productGg.indexOf(product) < 5}">
 							<div class="col-xl-3 col-lg-3 col-md-5 prd">
 								<img
 									src="${pageContext.request.contextPath}/file/uploads/${product.avatar}">

@@ -1,6 +1,6 @@
 function myFunction() {
     //menu up to 400px
-  if (document.body.scrollTop > 50|| document.documentElement.scrollTop > 50) {
+  if (document.body.scrollTop > 700|| document.documentElement.scrollTop > 700) {
     $('.header').attr('style','position: fixed;width: 100%;height:80px;transition: 0.3s;top:-8px;border:0;background-color: rgba(255,255,255,1);z-index:10;box-shadow:2px 2px #eeeeee;');
     $('.search').attr('style','display:none');
     $('.header-content').attr('style','width:100%;padding-top:0');

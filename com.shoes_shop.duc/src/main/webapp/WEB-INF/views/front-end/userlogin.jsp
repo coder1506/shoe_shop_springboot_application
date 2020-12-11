@@ -40,13 +40,13 @@
 		<!-- slider -->
 		<div class="slider">
 			<jsp:include page="/WEB-INF/views/front-end/common/header.jsp"></jsp:include>
-			<form action="${pageContext.request.contextPath}/user" method="POST"
+			<form action="${pageContext.request.contextPath}/usercheckout" method="POST"
 				class="frmaccount">
 				<h1>ĐĂNG NHẬP</h1>
 				<input type="text" id ="username" name="username" class="text" placeholder="Tài khoản"
-					required> </br> <input type="password" id = "password" name="password" class="text"
-					placeholder="Mật khẩu" required> </br> <input type="submit"
-					value="ĐĂNG NHẬP" id="btn-send"> </br> 
+					required> </br> <input type="password" id ="password" name="password" class="text"
+					placeholder="Mật khẩu" required> </br> 
+					<input type="submit" value="ĐĂNG NHẬP" id="btn-send"> </br> 
 					<span> <a
 					href="${pageContext.request.contextPath }/accountRegister">Đăng kí</a>
 					or <a href="${pageContext.request.contextPath }/forgetPassword">Quên

@@ -3,6 +3,7 @@ package com.shoes_shop.conf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -16,6 +17,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class WebSecureAdminConf extends WebSecurityConfigurerAdapter {
 	@Autowired private UserDetailsService userDetailsService;
+	@Configuration
+	@Order(1)
+	public class AdminSecure extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(final HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests() // thực hiện xác thực request ngưười dùng gửi lên.
@@ -26,7 +30,9 @@ public class WebSecureAdminConf extends WebSecurityConfigurerAdapter {
             // thực hiện xác thực với các url kiểu ..../admin/....
 //            .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
             .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
-            
+//            .antMatchers("/user/**").hasAnyAuthority("USER")
+            .and()
+            .exceptionHandling().accessDeniedPage("/admin?error_access=loi")
             .and() // kết hợp với điều kiện.
             
             // khi click vào button logout thì không cần login.
@@ -47,7 +53,8 @@ public class WebSecureAdminConf extends WebSecurityConfigurerAdapter {
             .failureUrl("/admin?error_login=true") // nhập username, password sai thì redirect về trang nào.
             .permitAll();
 	}
-	@Bean public PasswordEncoder passwordEncoder() {
+	}
+	@Bean("PasswordEncoder") public PasswordEncoder passwordEncoder() {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(8);
 		return encoder;
     }
@@ -56,4 +63,3 @@ public class WebSecureAdminConf extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
 }
-

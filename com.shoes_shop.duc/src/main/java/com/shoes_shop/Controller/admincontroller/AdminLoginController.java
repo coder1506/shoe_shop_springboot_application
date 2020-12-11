@@ -13,6 +13,13 @@ public class AdminLoginController {
 	@RequestMapping(value = {"/admin"}, method = RequestMethod.GET)
 	public String adminIndexLogin(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
+		if(request.getParameter("error_access") != null)
+			{if(request.getParameter("error_access").equals("loi"));
+			model.addAttribute("error_message_accessing","<div class=\"alert alert-danger\" role=\"alert\">\r\n"
+					+ "						bạn không có quyền truy cập vào trang này\r\n"
+					+ "					</div>");
+			}
+			else model.addAttribute("error_message_accessing","");
 		return "admin/login";			
 	}
 }

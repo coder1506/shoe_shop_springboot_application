@@ -24,7 +24,7 @@
 		<div class="content">
 			<div class="filter">
 				<div class="part-filter top-filter">
-					<h3>${categoryname.name }</h3>
+					<h3 name = "category_name">${categoryname}</h3>
 					<div href="#" class="buttn top-btn">
 						Giới tính &nbsp &nbsp <i class="fas fa-angle-down"></i>
 						<ul class="sub-menu sub-menu-filter">
@@ -111,29 +111,33 @@
 					<div href="#" class="buttn bot-btn">
 						Giá sản phẩm &nbsp &nbsp <i class="fas fa-angle-down"></i>
 						<ul class="sub-menu sub-menu-filter">
-							<li><a><input type="checkbox" name=""> Dưới
+						<form action = "/filter" method = "get">
+							<li><a><input type="checkbox" name="price" value = "duoi-500000" onchange = "this.form.submit()"> Dưới
 									500,000₫</a></li>
-							<li><a><input type="checkbox" name=""> 500,000₫
+							<li><a><input type="checkbox" name="price" value = "500000-1000000" onchange = "this.form.submit()"> 500,000₫
 									- 1,000,000₫</a></li>
-							<li><a><input type="checkbox" name="">
+							<li><a><input type="checkbox" name="price" value = "1000000-1500000" onchange = "this.form.submit()">
 									1,000,000₫ - 1,500,000₫</a></li>
-							<li><a><input type="checkbox" name="">
+							<li><a><input type="checkbox" name="price" value = "2000000-5000000" onchange = "this.form.submit()">
 									2,000,000₫ - 5,000,000₫</a></li>
-							<li><a><input type="checkbox" name=""> Trên
+							<li><a><input type="checkbox" name="price" value = "tren-500000" onchange = "this.form.submit()"> Trên
 									5,000,000₫</a></li>
+						</form>
 						</ul>
 					</div>
 					<div href="#" class="buttn bot-btn">
 						Màu sắc &nbsp &nbsp <i class="fas fa-angle-down"></i>
 						<ul class="sub-menu sub-menu-filter">
-							<li><a><input type="checkbox" name=""> Xanh</a></li>
-							<li><a><input type="checkbox" name=""> Đỏ</a></li>
-							<li><a><input type="checkbox" name=""> Tím</a></li>
-							<li><a><input type="checkbox" name=""> Vàng</a></li>
-							<li><a><input type="checkbox" name=""> Hồng</a></li>
-							<li><a><input type="checkbox" name=""> Nâu</a></li>
-							<li><a><input type="checkbox" name=""> Đen</a></li>
-							<li><a><input type="checkbox" name=""> Trắng</a></li>
+						<form action = "/filter" method = "get">
+							<li><a><input type="checkbox" name="color" value = "blue" onchange = "this.form.submit()"> Xanh</a></li>
+							<li><a><input type="checkbox" name="color" value = "red" onchange = "this.form.submit()"> Đỏ</a></li>
+							<li><a><input type="checkbox" name="color" value = "purple" onchange = "this.form.submit()"> Tím</a></li>
+							<li><a><input type="checkbox" name="color" value = "yellow" onchange = "this.form.submit()"> Vàng</a></li>
+							<li><a><input type="checkbox" name="color" value = "pink" onchange = "this.form.submit()"> Hồng</a></li>
+							<li><a><input type="checkbox" name="color" value = "brown" onchange = "this.form.submit()"> Nâu</a></li>
+							<li><a><input type="checkbox" name="color" value = "black" onchange = "this.form.submit()"> Đen</a></li>
+							<li><a><input type="checkbox" name="color" value = "white" onchange = "this.form.submit()"> Trắng</a></li>
+						</form>
 						</ul>
 					</div>
 					<div href="#" class="buttn bot-btn">
