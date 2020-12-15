@@ -2,16 +2,25 @@ package com.shoes_shop.Controller.indexcontroller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.shoes_shop.entities.SaleOrder;
 import com.shoes_shop.entities.User;
+import com.shoes_shop.model.Cart;
+import com.shoes_shop.model.UserDetail;
 import com.shoes_shop.repositories.UserRepo;
+import com.shoes_shop.serivce.OrderService;
 import com.shoes_shop.serivce.UserService;
 
 @Controller
@@ -20,18 +29,28 @@ public class AccountController extends BaseController{
 	UserService userService;
 	@Autowired
 	UserRepo userRepo;
-	@RequestMapping (value = "/userlogin" , method = RequestMethod.GET)
+	@Autowired
+	OrderService orderSerivce;
+	@RequestMapping (value = "/user" , method = RequestMethod.GET)
 	public String accountIndex(final ModelMap model ,final HttpServletRequest request,final HttpServletResponse response ) {
 		return "front-end/userlogin";
 	}
-	@RequestMapping (value = "/user" , method = RequestMethod.GET)
+	@RequestMapping (value = "/user/checkout" , method = RequestMethod.GET)
 	public String userAccess(final ModelMap model ,final HttpServletRequest request,final HttpServletResponse response ) {
-		return "front-end/userlogin";
+		model.addAttribute("order", new SaleOrder());
+		return "front-end/checkout";
 	}
-	@RequestMapping (value = "/account" , method = RequestMethod.POST)
-	public String accountAccess(@ModelAttribute("user") User user,final ModelMap model ,final HttpServletRequest request,final HttpServletResponse response ) {
-		model.addAttribute("form", "/WEB-INF/views/front-end/common/userLogin.jsp");
-		return "front-end/account";
+	@RequestMapping (value = "/user/saveorder" , method = RequestMethod.POST)
+	public String saveOrder(@AuthenticationPrincipal UserDetail userDetails,@ModelAttribute("order") SaleOrder order,final ModelMap model ,final HttpServletRequest request,final HttpServletResponse response ) {
+		HttpSession ss = request.getSession();
+		Cart cart = (Cart) ss.getAttribute("shop_cart");
+			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			int id = 0;
+			if (principal instanceof UserDetails) {
+				id  = ((User)principal).getId();
+			}
+		orderSerivce.saveOrder(cart, order,id);
+		return "front-end/checkout";
 	}
 	@RequestMapping (value = "/accountRegister" , method = RequestMethod.GET)
 	public String accountSingInIndex(final ModelMap model ,final HttpServletRequest request,final HttpServletResponse response ) {

@@ -118,3 +118,8 @@ function changeImage(image){
 				$("#image").fadeIn(300);
 			});
 		}
+//check cart
+function validateForm(s){
+	if(s == 0) return false;
+	return true;
+}

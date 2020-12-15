@@ -63,7 +63,6 @@ public class CartController extends BaseController{
 	}
 	@RequestMapping (value = "/cart" , method = RequestMethod.GET)
 	public String accountSingInIndex(final ModelMap model ,final HttpServletRequest request,final HttpServletResponse response ) {
-		model.addAttribute("form", "/WEB-INF/views/front-end/common/cartContent.jsp")	;
 		return "front-end/cartindex";
 	}
 	@RequestMapping(value = {"/deletecartproduct"}, method = RequestMethod.DELETE)
@@ -73,7 +72,6 @@ public class CartController extends BaseController{
 		HttpSession ss = request.getSession();
 		Cart cart = (Cart)ss.getAttribute("shop_cart");
 		cart.getCart().remove(cart.findById(data.getId()));
-		ss.removeAttribute("amount");
 		ss.setAttribute("amount",countProduct(cart));
 		return ResponseEntity.ok(new AjaxResponse(200,"Xoá thành công"));
  }

@@ -116,10 +116,6 @@ public class ProductService {
 			        emailSender.send(message);
 		        }
 	}
-	@Async("asyncExecutor")
-	public CompletableFuture<Boolean> returnPage() {
-		return CompletableFuture.completedFuture(Boolean.TRUE);
-	}
 	@SuppressWarnings("unchecked")
 	public List<ProductEntity> search(ProductSearching productSearching){
 		String sql = "select * from tbl_products where 1=1 and status = 1";

@@ -45,7 +45,7 @@
 			</nav>
 			<div class="account-cart">
 				<span class="account"><a
-					href="${pageContext.request.contextPath }/userlogin"
+					href="${pageContext.request.contextPath }/user"
 					class="color-hover"><i class="far fa-user"></i> Tài khoản</a></span> <span
 					class="cart"> <a href="${pageContext.request.contextPath }/cart" class="color-hover"> 
 					<i class="fas fa-cart-plus"></i> 
@@ -84,7 +84,7 @@
 							<li class="nav-item rp-account"><!-- <a
 								href="${pageContext.request.contextPath}/userlogin"> -->
 								<span class="account">
-								<a href="${pageContext.request.contextPath}/userlogin" class="color-hover"><i class="far fa-user"></i> Tài khoản</a></span></i></li>
+								<a href="${pageContext.request.contextPath}/user" class="color-hover"><i class="far fa-user"></i> Tài khoản</a></span></i></li>
 						</ul>
 					</button>
 				</span>

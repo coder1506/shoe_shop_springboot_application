@@ -11,11 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.github.slugify.Slugify;
-import com.shoes_shop.entities.CategoryEntity;
 import com.shoes_shop.entities.EmailEntity;
 import com.shoes_shop.entities.User;
-import com.shoes_shop.repositories.CategoryRepo;
 import com.shoes_shop.repositories.EmailRepo;
 import com.shoes_shop.repositories.UserRepo;
 

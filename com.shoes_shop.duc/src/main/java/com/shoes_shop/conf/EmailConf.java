@@ -20,7 +20,7 @@ public class EmailConf {
 	        mailSender.setHost("smtp.gmail.com");
 	        mailSender.setPort(587);
 	 
-	        mailSender.setUsername("duc5061@gmail.com");
+	        mailSender.setUsername("duc50611@gmail.com");
 	        mailSender.setPassword("akakduc12345");
 	 
 	        Properties props = mailSender.getJavaMailProperties();

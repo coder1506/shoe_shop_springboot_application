@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,24 +40,14 @@
 		<!-- slider -->
 		<div class="slider">
 			<jsp:include page="/WEB-INF/views/front-end/common/header.jsp"></jsp:include>
-			<form action="${pageContext.request.contextPath}/user" method="POST"
-				class="frmaccount">
-				<h1>ĐĂNG NHẬP</h1>
-				<input type="text" id ="username" name="username" class="text" placeholder="Tài khoản"
-					required> </br> <input type="password" id ="password" name="password" class="text"
-					placeholder="Mật khẩu" required> </br> 
-					<input type="submit" value="ĐĂNG NHẬP" id="btn-send"> </br> 
-					<span> <a
-					href="${pageContext.request.contextPath }/accountRegister">Đăng kí</a>
-					or <a href="${pageContext.request.contextPath }/forgetPassword">Quên
-						mật khẩu</a>
-					</span>
-					<c:if test="${not empty param.error_login}">
-					<div class="alert alert-danger" role="alert">
-						Tài khoản hoặc mật khẩu không chính xác
-					</div>
-				</c:if>
-			</form>
+			<form:form action = "${pageContext.request.contextPath}/user/saveorder" method = "post" modelAttribute = "order" class="frmaccount">
+				<h1>XÁC NHẬN ĐƠN HÀNG</h1>
+				<h3>Thông tin giao hàng</h3>
+				<form:input type="text" path = "customerName" name="name" class="text" placeholder="Họ và tên" required="required" /> 
+				<form:input type="tel" pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}" path ="customerPhone" name="telephone_number" class="text" placeholder="1234-456-678" required="required"/> </br> 
+				<form:input type="text" path = "customerAddress" name="adress" class="text" placeholder="Địa chỉ" required="required"/>
+				<input type="submit" value="XÁC NHẬN" id="btn-send"> </br> <span> </span>
+			</form:form>
 		</div>
 		<!-- /slider -->
 		<!-- content -->
@@ -66,4 +56,5 @@
 		<jsp:include page="/WEB-INF/views/front-end/common/footer.jsp"></jsp:include>
 	</div>
 </body>
+<jsp:include page="/WEB-INF/views/front-end/common/js.jsp"></jsp:include>
 </html>
