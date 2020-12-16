@@ -40,24 +40,13 @@
 		<!-- slider -->
 		<div class="slider">
 			<jsp:include page="/WEB-INF/views/front-end/common/header.jsp"></jsp:include>
-			<form:form action="${pageContext.request.contextPath}/accountRegister"
-				modelAttribute = "user"
-				method="POST" 
-				class="frmaccount">
-				<a href="${pageContext.request.contextPath}/userlogin"><i
-					class="fas fa-arrow-left back"></i></a>
-				<h1>ĐĂNG KÍ</h1>
-				<form:input type="text" path = "name" name="name" class="text" placeholder="Họ và tên" required="required" /> 
-				</br> 
-				<form:input type="email" path ="email" name="email" class="text" placeholder="Email" required="required"/> </br> 
-				<form:input type="text" path = "username" name="username" class="text" placeholder="Tên đăng nhập" required="required"/> </br> 
-				<form:input type="password" path = "password" name="password" class="text" placeholder="Mật khẩu" required="required"/>
-				</br> 
-				<input type="submit" value="ĐĂNG KÍ" id="btn-send"> </br> <span> </span>
-				<div class="alert alert-danger" role="alert">
-						${error_message}
-				</div>
-			</form:form>
+			<div class = "frmaccount">
+				<h1>THÔNG TIN TÀI KHOẢN</h1>
+				<h5>Tên tài khoản:${currentUser.getUsername()}</h5>
+				<h5>Họ và Tên:${currentUser.getName()}</h5>
+				<h5>Địa chỉ email:${currentUser.getEmail()}</h5>
+				<a class = "btn btn-danger" href =" ${pageContext.request.contextPath}/user/logout">Đăng xuất</a>
+			</div>
 		</div>
 		<!-- /slider -->
 		<!-- content -->

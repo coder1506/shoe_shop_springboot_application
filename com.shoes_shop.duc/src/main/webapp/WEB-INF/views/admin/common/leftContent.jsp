@@ -138,7 +138,7 @@
 				</div>
 			</li>
 			<li class="left__menuItem"><a
-				href="${pageContext.request.contextPath}/logout" class="left__title"><img
+				href="${pageContext.request.contextPath}/admin/logout" class="left__title"><img
 					src="${pageContext.request.contextPath}/assets/icon-logout.svg"
 					alt="">Đăng Xuất</a></li>
 		</ul>

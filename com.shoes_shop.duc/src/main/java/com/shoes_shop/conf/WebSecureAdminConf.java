@@ -62,7 +62,7 @@ public class WebSecureAdminConf extends WebSecurityConfigurerAdapter {
         // khi click vào button logout thì không cần login.
         // khi click vào button này thì dữ liệu user trên session sẽ bị xoá.
         .logout()
-        .logoutUrl("/logout")
+        .logoutUrl("/admin/logout")
         .logoutSuccessUrl("/admin")
         .invalidateHttpSession(true) // xoá hết dữ liệu trên seesion
         .deleteCookies("JSESSIONID") // xoá hết dữ liệu trên cokies.

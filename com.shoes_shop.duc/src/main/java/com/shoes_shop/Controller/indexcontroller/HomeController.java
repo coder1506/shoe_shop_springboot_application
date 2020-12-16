@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.shoes_shop.Contants;
+import com.shoes_shop.entities.User;
 import com.shoes_shop.model.AjaxResponse;
 import com.shoes_shop.model.Subcriber;
 import com.shoes_shop.repositories.EmailRepo;

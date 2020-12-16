@@ -41,11 +41,14 @@
 		<!-- slider -->
 		<div class="slider">
 			<jsp:include page="/WEB-INF/views/front-end/common/header.jsp"></jsp:include>
-			<form action = "${pageContext.request.contextPath }/user/checkout" method = "get" onsubmit="return validateForm(${shop_cart.getCart().size() > 0 ? 1 : 0})">
 				<div class = "cart_content">
 				<div class = "product_cart_list" style = "width:${shop_cart.getCart().size() > 0?'70%':'100%'}">
-				<h5 class = "title_cart">Giỏ hàng( ${amount} sản phẩm)</h5>
-				<h1 style = "display:${shop_cart.getCart().size() > 0?'none':'block'}" class = "noproduct">Bạn chưa có sản phẩm nào</h1>
+				<h5 class = "title_cart" style = "display:${shop_cart.getCart().size() > 0?'block':'none'}">Giỏ hàng( ${amount} sản phẩm)</h5>
+				<h1 style = "display:${shop_cart.getCart().size() > 0?'none':'block'}" class = "noproduct">
+				Bạn chưa có sản phẩm nào
+				<br>
+				<a href= "${pageContext.request.contextPath}/" class = "btn btn-dark">Tiếp tục mua sắm</a>
+				</h1>
 				<table>
 				<c:forEach var = "product" items = "${shop_cart.getCart()}">
 					<tr>
@@ -66,13 +69,12 @@
 				</table>
 				</div>
 				<div class = "paycart" style = "display:${shop_cart.getCart().size() > 0 ? 'block' : 'none'}">
-					<div class = "paysale">Mã khuyến mãi</div>
-					<div class = "sumprice">Tạm tính: <h5>${ shop_cart.sumPrice} ₫</h5></div>
-					<div class = "sumprice">Tổng tiền:<h5>${ shop_cart.sumPrice} ₫</h5></div>
-					<button type="submit" class="btn btn-danger">Tiến hành đặt hàng</button>
+					<div class = "paysale border-bottom">Mã khuyến mãi</div>
+					<div class = "sumprice border-bottom">Tạm tính: <h5>${ shop_cart.sumPrice} ₫</h5></div>
+					<div class = "sumprice border-bottom">Tổng tiền:<h5>${ shop_cart.sumPrice} ₫</h5></div>
+					<a href="${pageContext.request.contextPath }/user/checkout" class="btn-send btn btn-danger">${currentUser != null ? 'Tiến hành đặt hàng' : 'ĐĂNG NHẬP ĐỂ MUA HÀNG' }</a>
 				</div>
 				</div>
-				</form>
 		</div>
 		<!-- /slider -->
 		<!-- content -->

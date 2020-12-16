@@ -35,11 +35,11 @@
 	width:29%;
 	float:left;
 	text-align:center;
-	padding:50px 0;
 	display:none;
+	padding:0px 50px;
 }
 .paycart>div{
-	padding:60px 0;
+	padding:60px 0px;
 }
 .product_cart_list img{
 	height:200px;
@@ -64,4 +64,10 @@
 }
 .title_cart{
 	padding:10px 50px;
+}
+.btn-send {
+	margin:50px 20px;
+}
+.btn-dark:hover{
+	color:white !important;
 }

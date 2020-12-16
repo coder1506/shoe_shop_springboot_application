@@ -40,8 +40,13 @@ public class AccountController extends BaseController{
 		model.addAttribute("order", new SaleOrder());
 		return "front-end/checkout";
 	}
+	@RequestMapping (value = "/user/info" , method = RequestMethod.GET)
+	public String userInfor(final ModelMap model ,final HttpServletRequest request,final HttpServletResponse response ) {
+		model.addAttribute("order", new SaleOrder());
+		return "front-end/userinfor";
+	}
 	@RequestMapping (value = "/user/saveorder" , method = RequestMethod.POST)
-	public String saveOrder(@AuthenticationPrincipal UserDetail userDetails,@ModelAttribute("order") SaleOrder order,final ModelMap model ,final HttpServletRequest request,final HttpServletResponse response ) {
+	public String saveOrder(@ModelAttribute("order") SaleOrder order,final ModelMap model ,final HttpServletRequest request,final HttpServletResponse response ) {
 		HttpSession ss = request.getSession();
 		Cart cart = (Cart) ss.getAttribute("shop_cart");
 			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -69,7 +74,8 @@ public class AccountController extends BaseController{
 		}
 		else {
 			model.addAttribute("error_message", "Đăng kí thành công");
-		return "front-end/home";
+			
+			return "redirect:/";
 		}
 	}
 	@RequestMapping (value = "/forgetPassword" , method = RequestMethod.GET)

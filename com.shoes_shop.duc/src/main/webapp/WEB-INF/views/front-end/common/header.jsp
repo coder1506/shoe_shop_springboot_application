@@ -44,9 +44,11 @@
 				</ul>
 			</nav>
 			<div class="account-cart">
+			<c:set var="pathUser" value="${pageContext.request.contextPath}/user"/>
+			<c:set var="pathUserInfor" value="${pageContext.request.contextPath}/user/info"/>
 				<span class="account"><a
-					href="${pageContext.request.contextPath }/user"
-					class="color-hover"><i class="far fa-user"></i> Tài khoản</a></span> <span
+					href="${currentUser != null ? pathUserInfor : pathUser}"
+					class="color-hover"><i class="far fa-user"></i> ${currentUser != null ? currentUser.getUsername() : 'Tài khoản' }</a></span> <span
 					class="cart"> <a href="${pageContext.request.contextPath }/cart" class="color-hover"> 
 					<i class="fas fa-cart-plus"></i> 
 						<span class="cart-text">Giỏ hàng</span></a>
@@ -84,7 +86,7 @@
 							<li class="nav-item rp-account"><!-- <a
 								href="${pageContext.request.contextPath}/userlogin"> -->
 								<span class="account">
-								<a href="${pageContext.request.contextPath}/user" class="color-hover"><i class="far fa-user"></i> Tài khoản</a></span></i></li>
+								<a href="${currentUser != null ? pathUserInfor : pathUser}" class="color-hover"><i class="far fa-user"></i> ${currentUser != null ? currentUser.getUsername() : 'Tài khoản' }</a></span></i></li>
 						</ul>
 					</button>
 				</span>

@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.shoes_shop.entities.EmailEntity;
 import com.shoes_shop.entities.User;
@@ -23,6 +24,7 @@ public class UserService {
 	private UserRepo userRepo;
 	@Autowired
 	private EmailRepo emailRepo;
+	@Transactional 
 	public int save(User user) {
 			if(userRepo.findByUsername(user.getUsername()) != null) {
 				return 1;
@@ -32,9 +34,14 @@ public class UserService {
 				return 2;
 			}
 			else {
+				//hash password
 				BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(8);
 				user.setPassword(encoder.encode(user.getPassword()));
+				//set role
 				userRepo.save(user);
+				String sql = "INSERT INTO tbl_users_roles(user_id,role_id) VALUES (?1,?2)";
+				entityManager.createNativeQuery(sql).setParameter(1, userRepo.findByUsername(user.getUsername()).getId())
+				.setParameter(2, 10).executeUpdate();
 				return 0;
 				}
 	}
