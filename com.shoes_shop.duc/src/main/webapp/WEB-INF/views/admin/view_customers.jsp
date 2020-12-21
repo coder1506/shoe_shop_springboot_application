@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +25,6 @@
 									<thead>
 										<tr>
 											<th>STT</th>
-											<th style="text-align: center;">Hình ảnh</th>
 											<th>Tên</th>
 											<th>Email</th>
 											<th>Phone</th>
@@ -34,34 +34,18 @@
 									</thead>
 
 									<tbody>
+									<c:forEach var="customer" items="${customers}">
 										<tr>
-											<td data-label="STT">1</td>
-											<td data-label="Hình ảnh" style="text-align: center;"><img
-												style="width: 50px; height: 50px; border-radius: 100%; object-fit: cover;"
-												src="${pageContext.request.contextPath}/assets/profile1.jpg"
-												alt=""></td>
-											<td data-label="Tên">dangthimydung</td>
-											<td data-label="Email">dangthimydung@gmail.com</td>
-											<td data-label="Phone">0836730193</td>
-											<td data-label="Địa chỉ">Cà Mau</td>
+											<td data-label="STT">${customers.indexOf(customer) + 1}</td>
+											<td data-label="Tên">${customer.getCustomerName()}</td>
+											<td data-label="Email">${customer.getCustomerEmail()}</td>
+											<td data-label="Phone">${customer.getCustomerPhone()}</td>
+											<td data-label="Địa chỉ">${customer.getCustomerAddress()}</td>
 											<td data-label="Xoá" class="right__iconTable"><a href=""><img
 													src="${pageContext.request.contextPath}/assets/icon-trash-black.svg"
 													alt=""></a></td>
 										</tr>
-										<tr>
-											<td data-label="STT">1</td>
-											<td data-label="Hình ảnh" style="text-align: center;"><img
-												style="width: 50px; height: 50px; border-radius: 100%; object-fit: cover;"
-												src="${pageContext.request.contextPath}/assets/profile.jpg"
-												alt=""></td>
-											<td data-label="Tên">chibaosinger</td>
-											<td data-label="Email">chibaosinger@gmail.com</td>
-											<td data-label="Phone">0836730193</td>
-											<td data-label="Địa chỉ">Cà Mau</td>
-											<td data-label="Xoá" class="right__iconTable"><a href=""><img
-													src="${pageContext.request.contextPath}/assets/icon-trash-black.svg"
-													alt=""></a></td>
-										</tr>
+									</c:forEach>
 									</tbody>
 								</table>
 							</div>

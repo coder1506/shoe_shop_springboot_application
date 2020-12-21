@@ -158,6 +158,12 @@ body {
 	display: block !important;
 	animation: moveLeft 0.5s forwards;
 }
+.slide-btn{
+	border:1px solid white !important;
+}
+.slide-btn:hover{
+	border:1px solid black !important;
+}
 /*/slider*/
 /*header*/
 /*search*/

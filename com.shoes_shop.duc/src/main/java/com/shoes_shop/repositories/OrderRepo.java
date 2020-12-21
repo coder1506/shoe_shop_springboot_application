@@ -9,6 +9,7 @@ import com.shoes_shop.entities.SaleOrder;
 
 
 public interface OrderRepo extends JpaRepository<SaleOrder,Integer>{
-	public List<SaleOrder> findByStatus(boolean stt);
+	@Query(value = "select * from tbl_saleorder where created_date LIKE %?1%",nativeQuery = true)
+	public List<SaleOrder> findAllByCreatedDate(String date);
 	public SaleOrder findByStatusAndCustomerEmail(boolean stt,String email);
 }

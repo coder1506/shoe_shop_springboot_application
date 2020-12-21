@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,62 +59,55 @@
 							</a>
 						</div>
 						<div class="right__table">
-							<p class="right__tableTitle">Đơn hàng mới</p>
+							<p class="right__tableTitle">Đơn hàng ngày hôm nay</p>
 							<div class="right__tableWrapper">
 								<table>
 									<thead>
 										<tr>
 											<th>STT</th>
-											<th style="text-align: left;">Email</th>
+											<th>HỌ VÀ TÊN</th>
+											<th>SDT</th>
 											<th>Số Hoá Đơn</th>
 											<th>ID Sản Phẩm</th>
 											<th>Số Lượng</th>
 											<th>Kích thước</th>
+											<th>Tổng tiền</th>
 											<th>Trạng Thái</th>
 										</tr>
 									</thead>
 
 									<tbody>
+									<c:forEach var="order" items="${orders}">
 										<tr>
-											<td data-label="STT">1</td>
-											<td data-label="Email" style="text-align: left;">chibaosinger@gmail.com</td>
-											<td data-label="Số Hoá Đơn">6577544</td>
-											<td data-label="ID Sản Phẩm">2</td>
-											<td data-label="Số Lượng">1</td>
-											<td data-label="Kích thước">Trung Bình</td>
-											<td data-label="Trạng Thái">Đã Thanh Toán</td>
-										</tr>
-										<tr>
-											<td data-label="STT">2</td>
-											<td data-label="Email" style="text-align: left;">midu@gmail.com</td>
-											<td data-label="Số Hoá Đơn">4578644</td>
-											<td data-label="ID Sản Phẩm">4</td>
-											<td data-label="Số Lượng">2</td>
-											<td data-label="Kích thước">Nhỏ</td>
-											<td data-label="Trạng Thái">Đang Xử Lý</td>
-										</tr>
-										<tr>
-											<td data-label="STT">3</td>
-											<td data-label="Email" style="text-align: left;">miku@gmail.com</td>
-											<td data-label="Số Hoá Đơn">2657544</td>
-											<td data-label="ID Sản Phẩm">3</td>
-											<td data-label="Số Lượng">5</td>
-											<td data-label="Kích thước">Lớn</td>
-											<td data-label="Trạng Thái">Đang Xử Lý</td>
-										</tr>
-										<tr>
-											<td data-label="STT">4</td>
-											<td data-label="Email" style="text-align: left;">dangthimydung@gmail.com</td>
-											<td data-label="Số Hoá Đơn">9659544</td>
-											<td data-label="ID Sản Phẩm">8</td>
-											<td data-label="Số Lượng">12</td>
-											<td data-label="Kích thước">Trung Bình</td>
-											<td data-label="Trạng Thái">Đang Xử Lý</td>
+											<td data-label="STT">${orders.indexOf(order) + 1}</td>
+											<td data-label="HỌ VÀ TÊN">${order.customerName}</td>
+											<td data-label="SDT" style="text-align: left;">${order.customerPhone}</td>
+											<td data-label="Số Hoá Đơn">${order.code}</td>
+											<td data-label="ID Sản Phẩm">
+											<c:forEach var="product" items="${order.saleOrderProducts}">
+												<div>${product.getProduct().getId()}</div>
+											</c:forEach>
+											</td>
+											<td data-label="Số Lượng">
+											<c:forEach var="product" items="${order.saleOrderProducts}">
+												<div>${product.getQuality()}</div>
+											</c:forEach>
+											</td>
+											<td data-label="Kích thước">
+												<c:forEach var="product" items="${order.saleOrderProducts}">
+												<div>${product.getSize()}</div>
+												</c:forEach>
+											</td>
+											<td data-label="Tổng tiền">
+												${order.getTotal()}
+											</td>
+											<td data-label="Trạng Thái">${order.getStatus() == true ? 'Đang xử lý' : 'Đã thanh toán'}</td>
 										</tr>
 									</tbody>
+									</c:forEach>
 								</table>
 							</div>
-							<a href="" class="right__tableMore"><p>Xem tất cả các đơn
+							<a href="${pageContext.request.contextPath}/admin/vieworder" class="right__tableMore"><p>Xem tất cả các đơn
 									đặt hàng</p> <img
 								src="${pageContext.request.contextPath}/assets/arrow-right-black.svg"
 								alt=""></a>

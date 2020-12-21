@@ -1,29 +1,65 @@
 package com.shoes_shop.Controller.admincontroller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.shoes_shop.entities.ProductEntity;
+import com.shoes_shop.entities.SlideEntity;
+import com.shoes_shop.model.AjaxResponse;
+import com.shoes_shop.model.Product;
+import com.shoes_shop.repositories.SlideRepo;
+import com.shoes_shop.serivce.SlideService;
 
 @Controller
 public class AdminSlideController {
+	@Autowired
+	SlideService slideSerivce;
+	@Autowired
+	SlideRepo slideRepo;
 	@RequestMapping (value = "/admin/addslide",method = RequestMethod.GET)
 	public String addSlide(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {
+		model.addAttribute("slide", new SlideEntity());
+		return "admin/insert_slide";
+	}
+	@RequestMapping (value = "/admin/addslide",method = RequestMethod.POST)
+	public String saveSlide(@ModelAttribute("slide") SlideEntity slide,@RequestParam("slide_image") MultipartFile image ,
+			final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) throws IllegalStateException, IOException {
+		slideSerivce.save(image, slide);
+		return "redirect:/admin/viewslide";
+	}
+	@RequestMapping (value = "/admin/addslide/{id}",method = RequestMethod.GET)
+	public String repairSlide(@PathVariable("id") Integer id,
+			final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) throws IllegalStateException, IOException {
+		model.addAttribute("slide", slideRepo.getOne(id));
 		return "admin/insert_slide";
 	}
 	@RequestMapping (value = "/admin/viewslide",method = RequestMethod.GET)
-	public String viewSlide(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {
+	public String viewSlide(
+			final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) throws IllegalStateException, IOException {
+		model.addAttribute("slides", slideRepo.findByStatus(true));
 		return "admin/view_slides";
 	}
-	@RequestMapping (value = "/admin/repairslide",method = RequestMethod.GET)
-	public String repairSlide(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {
-		return "admin/view_slides";
-	}
-	@RequestMapping (value = "/admin/deleteslide",method = RequestMethod.GET)
-	public String deleteSlide(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {
-		return "admin/view_slides";
-	}
+	@RequestMapping(value = {"/admin/delete-slide"}, method = RequestMethod.DELETE)
+	public ResponseEntity<AjaxResponse> deleteSlideWithAjax(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response,
+			@RequestBody Product data)
+	throws Exception {
+		SlideEntity slide = slideRepo.getOne(data.getId());
+		slide.setStatus(false);
+		slideRepo.save(slide);
+		return ResponseEntity.ok(new AjaxResponse(200,"Xoá thành công"));
+ }
 }

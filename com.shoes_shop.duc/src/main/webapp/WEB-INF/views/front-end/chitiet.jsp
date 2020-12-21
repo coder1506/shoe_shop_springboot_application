@@ -27,11 +27,11 @@
 					<div class="col-xl-8 left-info">
 						<fieldset style="width: 85%;margin:auto;height: 600px;">
 							<div class="box" id="box">
-								<img src="${pageContext.request.contextPath}/file/uploads/${images.size() > 0 ? images.get(0).path : 'unnamed.png'}" id="image">
+								<img src="${pageContext.request.contextPath}/file/uploads/${product.getProductImages().size() > 0 ? product.getProductImages().get(0).path : 'unnamed.png'}" id="image">
 							</div>
 							<div class="sub">
 								<ul>
-									<c:forEach var = "image" items = "${images}">
+									<c:forEach var = "image" items = "${product.getProductImages()}">
 										<li><img id="${image.id}" src="${pageContext.request.contextPath}/file/uploads/${image.path}" onclick="changeImage(${image.id})"></li>
 									</c:forEach>
 								</ul>
@@ -49,6 +49,13 @@
 							<div class="current-amount">1</div>
 							<button class="btn plus">+</button>
 						</div>
+						<h4>Size</h4>
+						<div id = "size">
+							<c:forEach var = "size" items = "${product.getSizes()}">
+								<span id = "${size.getSize()}" class = "btn btn-outline-dark" onclick = "buttonSelected(${size.getSize()})">${size.getSize()}</span>
+							</c:forEach>
+						</div>
+						<br>
 						<h4>Đánh giá</h4>
 						<ul class="pagination">
 							<li><a href="#" class="s1"><i class="far fa-star"></i></a></li>
@@ -58,7 +65,7 @@
 							<li><a href="#" class="s5"><i class="far fa-star"></i></a></li>
 						</ul>
 						<div class="btn-more ct-add-btn">
-							<a onclick = "Shop.cartData(${product.id},parseInt($('.current-amount').html()))" >THÊM VÀO GIỎ</a>
+							<a onclick = "Shop.cartData(${product.id},parseInt($('.current-amount').html()),parseInt($('.selected').html()))" >THÊM VÀO GIỎ</a>
 						</div>
 						<div class="tab">
 							<ul class="nav nav-tabs" role="tablist">

@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,15 +15,18 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.github.slugify.Slugify;
 import com.shoes_shop.entities.EmailEntity;
 import com.shoes_shop.entities.ProductEntity;
 import com.shoes_shop.entities.ProductImages;
+import com.shoes_shop.entities.SizeEntity;
 import com.shoes_shop.model.ProductSearching;
 import com.shoes_shop.repositories.EmailRepo;
 import com.shoes_shop.repositories.ProductRepo;
+import com.shoes_shop.repositories.SizeRepo;
 
 @Service
 public class ProductService {
@@ -35,12 +37,14 @@ public class ProductService {
 	public JavaMailSender emailSender;
 	@Autowired
 	EmailRepo emailRepo;
+	@Autowired
+	SizeRepo sizeRepo;
 	public boolean isEmptyUploadFile(MultipartFile[] images) {
 		if(images == null || images.length <= 0 ) return true;
 		if(images.length == 0 || images[0].getOriginalFilename().isEmpty() == true) return true;
 		return false;
 	}
-	
+	@Transactional 
 	public void save(MultipartFile[] productImages, ProductEntity product) throws IOException{
 		if(product.getId() != null) {//Case that product had
 			ProductEntity oldProduct = productRepo.findById(product.getId()).get();// get data from target product
@@ -97,6 +101,19 @@ public class ProductService {
 		Slugify slg = new Slugify();
 		product.setSeo(slg.slugify(product.getTitle() +""+System.currentTimeMillis()));
 		productRepo.save(product);
+		for(String size : product.getSize().split("-")) 
+		{
+			LocalDateTime now = LocalDateTime.now();    
+			SizeEntity s = new SizeEntity();
+			s.setCreatedDate(now);
+			s.setSize(Integer.parseInt(size));
+			if(sizeRepo.findByStatusAndSize(true,Integer.parseInt(size)) == null)
+			sizeRepo.save(s);
+			product.addProductSizes(sizeRepo.findByStatusAndSize(true, Integer.parseInt(size)));
+			String sql = "INSERT INTO tbl_sizes_products(product_id,size_id) VALUES (?1,?2)";
+			entityManager.createNativeQuery(sql).setParameter(1, product.getId())
+			.setParameter(2, sizeRepo.findByStatusAndSize(true,Integer.parseInt(size)).getId()).executeUpdate();
+		}
 	}
 	@Async
 	public void sendNoti(ProductEntity product) {

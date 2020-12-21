@@ -11,10 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.shoes_shop.entities.ProductEntity;
 import com.shoes_shop.entities.SaleOrder;
+import com.shoes_shop.entities.SaleOrderProducts;
 import com.shoes_shop.model.Cart;
 import com.shoes_shop.model.ProductCart;
 import com.shoes_shop.repositories.OrderRepo;
+import com.shoes_shop.repositories.ProductRepo;
+import com.shoes_shop.repositories.SaleorderRepo;
 import com.shoes_shop.repositories.UserRepo;
 
 
@@ -25,6 +29,10 @@ public class OrderService {
 	private OrderRepo orderRepo;
 	@Autowired
 	private UserRepo userRepo;
+	@Autowired
+	private SaleorderRepo saleorderRepo;
+	@Autowired
+	private ProductRepo productRepo;
 	@Transactional 
 	public void saveOrder(Cart cart,SaleOrder order,int id) {
 		LocalDateTime now = LocalDateTime.now();  
@@ -37,14 +45,14 @@ public class OrderService {
 		order.setCode("sp"+id);
 		order.setCustomerEmail(userRepo.findById(id).get().getEmail());
 		orderRepo.save(order);
-		String sql = "INSERT INTO tbl_users_roles(saleorder_id,product_id,created_date,created_by) VALUES (?1,?2,?3,?4)";
-		Query qr = entityManager.createNativeQuery(sql);
 		for(ProductCart prC :  cart.getCart()) {
-			qr.setParameter(1, orderRepo.findByStatusAndCustomerEmail(true, userRepo.findById(id).get().getEmail()).getId());
-			qr.setParameter(2,prC.getProductCode());
-			qr.setParameter(3,LocalDateTime.parse(formatDateTime, formatter));
-			qr.setParameter(4,userRepo.findById(id).get().getUsername());
-			qr.executeUpdate();
+			SaleOrderProducts sop = new SaleOrderProducts();
+			sop.setSaleOrder(order);
+			sop.setProduct(productRepo.getOne(prC.getProductCode()));
+			sop.setCreatedDate(LocalDateTime.parse(formatDateTime, formatter));
+			sop.setQuality(prC.getProductAmount());
+			sop.setSize(prC.getSize());
+			saleorderRepo.save(sop);
 		}
 	}
 }

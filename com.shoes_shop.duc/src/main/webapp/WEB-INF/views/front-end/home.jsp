@@ -48,15 +48,15 @@
 							<h3 class="clsl1 title-slide">CONVERSE BLACK CHUCK 70 HIGH
 								SNEAKERS</h3>
 							<div class="btn-more btn-mn">
-								<a href="${pageContext.request.contextPath}/detail">Mua ngay</a>
+								<a href="${pageContext.request.contextPath}/detail" class = "slide-btn">Mua ngay</a>
 							</div>
 						</div>
 						<div class="carousel-item">
 							<img src="${pageContext.request.contextPath}/images/slide/2.jpg"
 								alt="4" width="1100" height="500">
 							<h3 class="title-slide">BORN ORIGINALS</h3>
-							<div class="btn-more btn-mn">
-								<a href="${pageContext.request.contextPath}/detail">Mua ngay</a>
+							<div class="btn-more btn-mn ">
+								<a href="${pageContext.request.contextPath}/detail" class = "slide-btn">Mua ngay</a>
 							</div>
 						</div>
 						<div class="carousel-item">
@@ -64,9 +64,7 @@
 								alt="5" width="1100" height="500">
 							<h3 class="title-slide">JACK & JILL</h3>
 							<div class="btn-more btn-mn">
-								<a
-									href="${pageContext.request.contextPath}/detail/product/${product.id}">Mua
-									ngay</a>
+								<a href="${pageContext.request.contextPath}/detail/product/${product.id}" class = "slide-btn">Mua ngay</a>
 							</div>
 						</div>
 					</div>

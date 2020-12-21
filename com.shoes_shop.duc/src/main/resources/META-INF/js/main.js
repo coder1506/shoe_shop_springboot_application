@@ -46,7 +46,7 @@ window.addEventListener("load", event => {
 				dataType: "json", // dữ liệu từ web-service trả về là json.
 				success: function(jsonResult) { // được gọi khi web-service trả về dữ liệu.
 					if(jsonResult.status == 200) {
-						window.location.reload();
+						$( "#product__table" ).load(window.location.href + " #product__table" );
 					} else {
 						alert('loi');
 					}
@@ -71,7 +71,31 @@ function deleteCate(id) {
 				dataType: "json", // dữ liệu từ web-service trả về là json.
 				success: function(jsonResult) { // được gọi khi web-service trả về dữ liệu.
 					if(jsonResult.status == 200) {
-						window.location.reload();
+						$( "#cate__table" ).load(window.location.href + " #cate__table" );
+					} else {
+						alert('loi');
+					}
+				},
+				error: function (jqXhr, textStatus, errorMessage) { // error callback 
+			        
+		 }
+	});}
+}
+//delete slide 
+function deleteSlide(id) {
+ 	var check = confirm("Bạn có muốn xoá slide này không ?");
+ 	if(check == true){
+			var data = {};
+			data["id"] = id;
+			$.ajax({
+				url: "/admin/delete-slide",
+				type: "delete",
+				contentType: "application/json", // dữ liệu gửi lên web-service có dạng là json.
+				data: JSON.stringify(data), // object json -> string json
+				dataType: "json", // dữ liệu từ web-service trả về là json.
+				success: function(jsonResult) { // được gọi khi web-service trả về dữ liệu.
+					if(jsonResult.status == 200) {
+						$( "#right__slides" ).load(window.location.href + " #right__slides" );
 					} else {
 						alert('loi');
 					}

@@ -9,7 +9,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -38,7 +40,7 @@ public class ProductEntity extends BaseEntity {
 	private String metarial_vs_skill;
 	@Column(name = "code")
 	private String code;
-	@Column(name = "size", columnDefinition = "LONGTEXT", nullable = false)
+	@Column(name = "size", length = 100, nullable = false)
 	private String size;
 	@Lob
 	@Column(name = "detail_description", nullable = false, columnDefinition = "LONGTEXT")
@@ -54,6 +56,21 @@ public class ProductEntity extends BaseEntity {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.EAGER, orphanRemoval = true)
 	private List<ProductImages> productImages = new ArrayList<ProductImages>();
 	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "tbl_sizes_products",
+	joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "size_id"))
+	private List<SizeEntity> sizes = new ArrayList<SizeEntity>();
+	//function of Size
+	public void addProductSizes(SizeEntity size) {
+		sizes.add(size);
+		size.getProducts().add(this);
+	}
+	
+	public void removeProductSizes(SizeEntity size) {
+		sizes.remove(size);
+		size.getProducts().remove(this);
+	}
+	//function of product
 	public void addProductImages(ProductImages _productImages) {
 		_productImages.setProduct(this);
 		productImages.add(_productImages);
@@ -73,7 +90,6 @@ public class ProductEntity extends BaseEntity {
 			removeProductImages(productImages);
 		}
 	}
-	
 	public String getTitle() {
 		return title;
 	}
@@ -176,6 +192,16 @@ public class ProductEntity extends BaseEntity {
 
 	public void setPrice_sale(BigDecimal price_sale) {
 		this.price_sale = price_sale;
+	}
+	
+	
+	
+	public List<SizeEntity> getSizes() {
+		return sizes;
+	}
+
+	public void setSizes(List<SizeEntity> sizes) {
+		this.sizes = sizes;
 	}
 
 	public boolean compare(ProductEntity prd) {

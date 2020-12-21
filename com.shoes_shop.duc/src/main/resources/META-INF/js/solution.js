@@ -118,6 +118,11 @@ function changeImage(image){
 				$("#image").fadeIn(300);
 			});
 		}
+function buttonSelected(sizeid){
+			var size_box = document.getElementById(sizeid).getAttribute('src');
+			$("#size span").removeClass("selected");
+			$("#"+sizeid).addClass("selected");
+}
 //check cart
 function validateForm(s){
 	if(s == 0) return false;

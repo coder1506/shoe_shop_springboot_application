@@ -37,7 +37,7 @@ public class SaleOrder extends BaseEntity {
 	
 	@Column(name = "seo")
 	private String seo;
-
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "saleOrder", fetch = FetchType.EAGER)
 	private List<SaleOrderProducts> saleOrderProducts = new ArrayList<SaleOrderProducts>();
 	
@@ -122,6 +122,8 @@ public class SaleOrder extends BaseEntity {
 		this.user_id = user_id;
 	}
 
+	
+	
 	
 //	public User getUser() {
 //		return user;

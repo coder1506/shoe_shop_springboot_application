@@ -16,7 +16,7 @@
 			<div class="dashboard">
 				<jsp:include page="/WEB-INF/views/admin/common/leftContent.jsp"></jsp:include>
 				<div class="right">
-					<div class="right__content">
+					<div class="right__content" id = "product__table">
 						<div class="right__title">Bảng điều khiển</div>
 						<p class="right__desc">Xem sản phẩm</p>
 						<div class="right__table">

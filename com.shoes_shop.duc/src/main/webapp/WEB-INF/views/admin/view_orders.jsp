@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,30 +25,44 @@
 									<thead>
 										<tr>
 											<th>STT</th>
-											<th>Email</th>
-											<th>Số hoá đơn</th>
-											<th>Tên sản phẩm</th>
-											<th>Số lượng</th>
-											<th>Kích cở</th>
-											<th>Ngày</th>
-											<th>Tổng</th>
-											<th>Trạng thái</th>
+											<th>HỌ VÀ TÊN</th>
+											<th style="text-align: left;">SDT</th>
+											<th>Số Hoá Đơn</th>
+											<th>ID Sản Phẩm</th>
+											<th>Số Lượng</th>
+											<th>Kích thước</th>
+											<th>Tổng tiền</th>
+											<th>Trạng Thái</th>
 											<th>Xoá</th>
 											<th>Thanh toán</th>
 										</tr>
 									</thead>
-
 									<tbody>
+									<c:forEach var="order" items="${allOrder}">
 										<tr>
-											<td data-label="STT">1</td>
-											<td data-label="Email">chibaosinger@gmail.com</td>
-											<td data-label="Số hoá đơn">337203544</td>
-											<td data-label="Tên sản phẩm">Bata Dress</td>
-											<td data-label="Số lượng">2</td>
-											<td data-label="Kích cở">Nhỏ</td>
-											<td data-label="Ngày">2020-07-13</td>
-											<td data-label="Tổng">1.180.000 ₫</td>
-											<td data-label="Trạng thái">Đang Chờ Xử Lý</td>
+											<td data-label="STT">${orders.indexOf(order) + 1}</td>
+											<td data-label="HỌ VÀ TÊN">${order.customerName}</td>
+											<td data-label="SDT">${order.customerPhone}</td>
+											<td data-label="Số Hoá Đơn">${order.code}</td>
+											<td data-label="ID Sản Phẩm">
+											<c:forEach var="product" items="${order.saleOrderProducts}">
+												<div>${product.getProduct().getId()}</div>
+											</c:forEach>
+											</td>
+											<td data-label="Số Lượng">
+											<c:forEach var="product" items="${order.saleOrderProducts}">
+												<div>${product.getQuality()}</div>
+											</c:forEach>
+											</td>
+											<td data-label="Kích thước">
+												<c:forEach var="product" items="${order.saleOrderProducts}">
+												<div>${product.getSize()}</div>
+												</c:forEach>
+											</td>
+											<td data-label="Tổng tiền">
+												${order.getTotal()}
+											</td>
+											<td data-label="Trạng Thái">${order.getStatus() == true ? 'Đang xử lý' : 'Đã thanh toán'}</td>
 											<td data-label="Xoá" class="right__iconTable"><a href=""><img
 													src="${pageContext.request.contextPath}/assets/icon-trash-black.svg"
 													alt=""></a></td>
@@ -58,27 +73,7 @@
 													src="${pageContext.request.contextPath}/assets/icon-x.svg"
 													alt=""></a></td>
 										</tr>
-										<tr>
-											<td data-label="STT">1</td>
-											<td data-label="Email">dangthimydung@gmail.com</td>
-											<td data-label="Số hoá đơn">238991444</td>
-											<td data-label="Tên sản phẩm">Dada Dress</td>
-											<td data-label="Số lượng">2</td>
-											<td data-label="Kích cở">Nhỏ</td>
-											<td data-label="Ngày">2020-07-13</td>
-											<td data-label="Tổng">590.000 ₫</td>
-											<td data-label="Trạng thái">Đang Chờ Xử Lý</td>
-											<td data-label="Xoá" class="right__iconTable"><a href=""><img
-													src="${pageContext.request.contextPath}/assets/icon-trash-black.svg"
-													alt=""></a></td>
-											<td data-label="Thanh toán"><a href=""
-												class="right__iconTable iconConfirm"><img
-													src="${pageContext.request.contextPath}/assets/icon-check.svg"
-													alt=""></a> <a href=""
-												class="right__iconTable iconConfirm"><img
-													src="${pageContext.request.contextPath}/assets/icon-x.svg"
-													alt=""></a></td>
-										</tr>
+									</c:forEach>
 									</tbody>
 								</table>
 							</div>

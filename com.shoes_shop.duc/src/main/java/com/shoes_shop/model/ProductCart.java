@@ -9,6 +9,7 @@ public class ProductCart {
 	private String productTitle;
 	private String productAvatar;
 	private String productSeo;
+	private int size;
 	public int getProductCode() {
 		return productCode;
 	}
@@ -53,6 +54,12 @@ public class ProductCart {
 	}
 	public void setProductSeo(String productSeo) {
 		this.productSeo = productSeo;
+	}
+	public int getSize() {
+		return size;
+	}
+	public void setSize(int size) {
+		this.size = size;
 	}
 	
 }

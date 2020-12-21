@@ -61,13 +61,14 @@
 						Danh Mục</a>
 				</div>
 			</li>
-			<li class="left__menuItem">
+			<!-- <li class="left__menuItem">
 				<div class="left__title">
 					<img src="${pageContext.request.contextPath}/assets/icon-book.svg"
 						alt="">Thể Loại<img class="left__iconDown"
 						src="${pageContext.request.contextPath}/assets/arrow-down.svg"
 						alt="">
 				</div>
+				
 				<div class="left__text">
 					<a class="left__link"
 						href="${pageContext.request.contextPath}/admin/addtypeproduct">Thêm
@@ -75,7 +76,7 @@
 						href="${pageContext.request.contextPath}/admin/viewtypeproduct">Xem
 						Thể Loại</a>
 				</div>
-			</li>
+			</li>-->
 			<li class="left__menuItem">
 				<div class="left__title">
 					<img
@@ -92,6 +93,7 @@
 						Slide</a>
 				</div>
 			</li>
+			<!-- 
 			<li class="left__menuItem">
 				<div class="left__title">
 					<img src="${pageContext.request.contextPath}/assets/icon-book.svg"
@@ -106,7 +108,7 @@
 						href="${pageContext.request.contextPath}/admin/viewcoupons">Xem
 						Coupons</a>
 				</div>
-			</li>
+			</li> -->
 			<li class="left__menuItem"><a
 				href="${pageContext.request.contextPath}/admin/viewcustomers"
 				class="left__title"><img
@@ -117,6 +119,7 @@
 				class="left__title"><img
 					src="${pageContext.request.contextPath}/assets/icon-book.svg"
 					alt="">Đơn Đặt Hàng</a></li>
+			<!-- 
 			<li class="left__menuItem"><a
 				href="${pageContext.request.contextPath}/admin/editcss"
 				class="left__title"><img
@@ -128,7 +131,7 @@
 						alt="">Admin<img class="left__iconDown"
 						src="${pageContext.request.contextPath}/assets/arrow-down.svg"
 						alt="">
-				</div>
+				</div>-->
 				<div class="left__text">
 					<a class="left__link"
 						href="${pageContext.request.contextPath}/admin/addadmin">Thêm

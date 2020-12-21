@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard</title>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/fontawesome/fontawesome-free-5.14.0-web/css/all.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/main.css">
 <script type="text/javascript"
@@ -40,14 +42,6 @@
 											itemLabel="name" />
 									</form:select>
 								</div>
-								<!-- <div class="right__inputWrapper">
-                                    <label for="category">Thể loại</label>
-                                    <select name="">
-                                        <option disabled selected>Chọn thể loại</option>
-                                        <option value="">Nữ</option>
-                                        <option value="">Nam</option>
-                                    </select>
-                                </div> -->
 								<div class="right__inputWrapper">
 									<label for="image">Ảnh sản phẩm</label> <input type="file"
 										name="product_images" multiple="multiple">
@@ -68,24 +62,6 @@
 									<label for="title">Giá sản phẩm giảm còn</label>
 									<form:input type="text" placeholder="Giá sản phẩm sau khi giảm" path="price_sale" />
 								</div>
-								<!--  <div class="right__inputWrapper">
-                                    <label for="title">Giá giảm sản phẩm</label>
-                                    <input type="text" placeholder="Giá giảm sản phẩm">
-                                </div>-->
-								<!--<div class="right__inputWrapper">
-                                    <label for="title">Từ khoá</label>
-                                    <input type="text" placeholder="Từ khoá">
-                                </div>-->
-								<!-- <div class="right__inputWrapper">
-									<label for="desc">Mô tả ngắn</label>
-									<form:textarea name="" id="" cols="30" rows="5"
-										placeholder="Mô tả được hiển thị ở sản phẩm" path="shortDes" />
-								</div>
-								<div class="right__inputWrapper">
-									<label for="desc">Chất liệu và kĩ thuật</label>
-									<form:textarea name="" id="" cols="30" rows="5"
-										placeholder="Chất liệu và kĩ thuật" path="metarial_vs_skill" />
-								</div> -->
 								<div class="right__inputWrapper">
 									<label for="desc">Mô tả ngắn</label>
 									<form:textarea id="editor"
@@ -99,17 +75,21 @@
 										class="form-control" path="metarial_vs_skill" />
 								</div>
 								<div class="right__inputWrapper">
-									<label>kích thước</label>
-									<form:textarea id="editor2"
-										placeholder="Các kích thước của sản phẩm"
-										class="form-control" path="size" />
-								</div>
-								<div class="right__inputWrapper">
 									<label>Details description</label>
 									<form:textarea id="editor3"
 										placeholder="Mô tả được hiển thị ở chi tiết sản phẩm"
 										class="form-control" path="shortDetails" />
 								</div>
+								<h2>Các biến thể</h2>
+								<br>
+								<div class="right__inputWrapper">
+									<label for="title">Kích thước</label>
+									<form:input type="tel" pattern="[0-9]{2}([-]{1}([[0-9]){2}){0,6}" path = "size"  class="text" placeholder="12-34-56..." required="required"/> 
+								</div>
+								<!-- <div class="right__inputWrapper">
+									<label for="title">Màu sắc</label>
+									<input type="text" placeholder="Màu sắc" id = "color"/>
+								</div> -->
 								<button class="btn" type="submit">Chèn</button>
 							</form:form>
 						</div>

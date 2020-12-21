@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,24 +20,22 @@
 						<div class="right__title">Bảng điều khiển</div>
 						<p class="right__desc">Chèn slide</p>
 						<div class="right__formWrapper">
-							<form action="" method="post">
+							<form:form action="${pageContext.request.contextPath}/admin/addslide" method="post" modelAttribute = "slide" enctype="multipart/form-data">
+								<form:hidden path = "id" />
 								<div class="right__inputWrapper">
-									<label for="name">Tên slide</label> <input type="text"
-										placeholder="Tên slide">
+									<label for="name">Tên slide</label> 
+									<form:input type="text" path = "title" placeholder="Tên slide" />
 								</div>
 								<div class="right__inputWrapper">
-									<label for="url">Url</label> <input type="text"
-										placeholder="Url">
+									<label for="url">Url</label> 
+									<form:input type="text" path = "url" placeholder="Url"/>
 								</div>
 								<div class="right__inputWrapper">
-									<label for="desc">Mô tả</label>
-									<textarea name="" id="" cols="30" rows="10" placeholder="Mô tả"></textarea>
-								</div>
-								<div class="right__inputWrapper">
-									<label for="image">Hình ảnh</label> <input type="file">
+									<label for="image">Hình ảnh</label> 
+									<input type="file" name = "slide_image">
 								</div>
 								<button class="btn" type="submit">Chèn</button>
-							</form>
+							</form:form>
 						</div>
 					</div>
 				</div>

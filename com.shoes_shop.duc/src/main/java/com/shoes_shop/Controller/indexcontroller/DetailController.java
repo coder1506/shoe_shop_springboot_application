@@ -28,9 +28,6 @@ public class DetailController extends BaseController{
 		// get data product 
 		ProductEntity prd = productRepo.findBySeo(productSeo);
 		model.addAttribute("product", prd);
-		// get images product
-		List<ProductImages> imageList =  prd.getProductImages();
-		model.addAttribute("images",imageList);
 		// get closer product 
 		List<ProductEntity> products = new ArrayList<ProductEntity>();
 		for(ProductEntity p : productRepo.findAll()) {

@@ -71,3 +71,6 @@
 .btn-dark:hover{
 	color:white !important;
 }
+.btn-deleted-align{
+	float:right;
+}

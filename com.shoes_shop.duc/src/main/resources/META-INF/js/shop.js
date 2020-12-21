@@ -3,10 +3,11 @@ var Shop = {
 		/**
 		 * https://www.w3schools.com/js/js_json_syntax.asp
 		 */
-		 cartData: function(productCode,productAmount) {
+		 cartData: function(productCode,productAmount,size) {
 			var data = {};
 			data["productCode"] = productCode;
 			data["productAmount"] = productAmount;
+			data["size"] = size;
 			$.ajax({
 				url: "/save-product-to-cart-with-ajax",
 				type: "post",
@@ -67,7 +68,8 @@ var Shop = {
 				dataType: "json", // dữ liệu từ web-service trả về là json.
 				success: function(jsonResult) { // được gọi khi web-service trả về dữ liệu.
 					if(jsonResult.status == 200) {
-						window.location.reload();
+						$( "#cart__product--table" ).load(window.location.href + " #cart__product--table" );
+						$( "#small-circle-cart" ).load(window.location.href + " #small-circle-cart" );
 					} else {
 						alert('loi');
 					}

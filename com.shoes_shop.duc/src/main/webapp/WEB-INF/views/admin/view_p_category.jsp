@@ -20,7 +20,7 @@
 						<div class="right__title">Bảng điều khiển</div>
 						<p class="right__desc">Xem danh mục</p>
 						<div class="right__table">
-							<div class="right__tableWrapper">
+							<div class="right__tableWrapper" id = "cate__table">
 								<table>
 									<thead>
 										<tr>
