@@ -168,7 +168,7 @@
 									TIẾT</a>
 							</div>
 							<div class="cost">
-								<a href="#">${product.title}</a> <br> ${product.price}Đ
+								<a href="#">${product.title}</a> <br> <span class = "price">${product.getPriceFormat(product.price)}</span>
 							</div>
 						</div>
 					</c:forEach>

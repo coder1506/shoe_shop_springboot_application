@@ -19,7 +19,7 @@ public class SlideService {
 		if(slide.getId() != null) {// if this slide had in db
 			SlideEntity oldSlide = slideRepo.getOne(slide.getId());
 			if(!image.isEmpty()) { //if admin uploads slide image
-				new File("C:\\Users\\Duc\\Desktop\\shoe_shop_springboot_application\\com.shoes_shop.duc\\uploads\\" + oldSlide.getImage()).delete();
+				new File("C:\\Users\\Duc\\Desktop\\shoe_shop_springboot_application\\com.shoes_shop.duc\\uploads\\slides\\" + oldSlide.getImage()).delete();
 			}
 			else {
 				slide.setImage(oldSlide.getImage());
@@ -27,7 +27,7 @@ public class SlideService {
 			slide.setUpdatedDate(LocalDateTime.now());
 		}
 		if(!image.isEmpty()) {
-			image.transferTo(new File("C:\\Users\\Duc\\Desktop\\shoe_shop_springboot_application\\com.shoes_shop.duc\\uploads\\"+image.getOriginalFilename())); 
+			image.transferTo(new File("C:\\Users\\Duc\\Desktop\\shoe_shop_springboot_application\\com.shoes_shop.duc\\uploads\\slides\\"+image.getOriginalFilename())); 
 			slide.setImage(image.getOriginalFilename());
 		}
 		slide.setCreatedDate(LocalDateTime.now());

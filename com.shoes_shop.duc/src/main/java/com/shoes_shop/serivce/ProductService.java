@@ -3,7 +3,6 @@ package com.shoes_shop.serivce;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -69,11 +68,7 @@ public class ProductService {
 			//created update
 			if(productRepo.findById(product.getId()).get().compare(product) || !isEmptyUploadFile(productImages))
 			{
-				LocalDateTime now = LocalDateTime.now();  
-			    DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");  
-			    String formatDateTime = now.format(format); 
-			    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-				product.setUpdatedDate(LocalDateTime.parse(formatDateTime, formatter));
+				product.setUpdatedDate(LocalDateTime.now());
 			}
 			else 
 			product.setUpdatedDate(oldProduct.getUpdatedDate());
@@ -81,14 +76,11 @@ public class ProductService {
 		}
 		
 		else {
-			LocalDateTime now = LocalDateTime.now();  
-		    DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");  
-		    String formatDateTime = now.format(format); 
-		    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-			product.setCreatedDate(LocalDateTime.parse(formatDateTime, formatter));
+			product.setCreatedDate(LocalDateTime.now());
 		}
 		
 		if(!isEmptyUploadFile(productImages)) {
+			boolean checkAvatar = false;
 			for(MultipartFile productImg : productImages) {
 				productImg.transferTo(new File("C:\\Users\\Duc\\Desktop\\shoe_shop_springboot_application\\com.shoes_shop.duc\\uploads\\" + productImg.getOriginalFilename()));
 				ProductImages _productImg = new ProductImages();
@@ -96,20 +88,25 @@ public class ProductService {
 				_productImg.setTitle(productImg.getOriginalFilename());
 				product.addProductImages(_productImg);
 			}
-			product.setAvatar(productImages[0].getOriginalFilename());
+			for(MultipartFile productImg : productImages) {
+				if(productImg.getOriginalFilename().contains("avatar")) {
+					product.setAvatar(productImg.getOriginalFilename());
+					checkAvatar = true;
+					break;
+				}
+			}
+			if(!checkAvatar) product.setAvatar(productImages[0].getOriginalFilename());
 		}
 		Slugify slg = new Slugify();
 		product.setSeo(slg.slugify(product.getTitle() +""+System.currentTimeMillis()));
 		productRepo.save(product);
 		for(String size : product.getSize().split("-")) 
-		{
-			LocalDateTime now = LocalDateTime.now();    
+		{  
 			SizeEntity s = new SizeEntity();
-			s.setCreatedDate(now);
+			s.setCreatedDate(LocalDateTime.now());
 			s.setSize(Integer.parseInt(size));
 			if(sizeRepo.findByStatusAndSize(true,Integer.parseInt(size)) == null)
 			sizeRepo.save(s);
-			product.addProductSizes(sizeRepo.findByStatusAndSize(true, Integer.parseInt(size)));
 			String sql = "INSERT INTO tbl_sizes_products(product_id,size_id) VALUES (?1,?2)";
 			entityManager.createNativeQuery(sql).setParameter(1, product.getId())
 			.setParameter(2, sizeRepo.findByStatusAndSize(true,Integer.parseInt(size)).getId()).executeUpdate();

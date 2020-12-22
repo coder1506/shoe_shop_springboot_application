@@ -43,30 +43,24 @@
 					<!-- The slideshow -->
 					<div class="carousel-inner">
 						<div class="carousel-item active">
-							<img src="${pageContext.request.contextPath}/images/slide/6.jpg"
+							<img src="${pageContext.request.contextPath}/file/uploads/slides/${slides.size() > 0 ? slides.get(0).getImage() : 'unnamed.png'}"
 								alt="3" width="1100" height="500">
-							<h3 class="clsl1 title-slide">CONVERSE BLACK CHUCK 70 HIGH
-								SNEAKERS</h3>
+							<h3 class="clsl1 title-slide">${slides.size() > 0 ? slides.get(0).getTitle() : ""}</h3>
 							<div class="btn-more btn-mn">
-								<a href="${pageContext.request.contextPath}/detail" class = "slide-btn">Mua ngay</a>
+								<a href="${pageContext.request.contextPath}/${slides.size() > 0 ? slides.get(0).getUrl() : '/'}" class = "slide-btn">Mua ngay</a>
 							</div>
 						</div>
+						<c:forEach var = "slide" items = "${slides }">
+						<c:if test = "${slides.indexOf(slide) != 0}">
 						<div class="carousel-item">
-							<img src="${pageContext.request.contextPath}/images/slide/2.jpg"
+							<img src="${pageContext.request.contextPath}/file/uploads/slides/${slide.getImage()}"
 								alt="4" width="1100" height="500">
-							<h3 class="title-slide">BORN ORIGINALS</h3>
+							<h3 class="title-slide">${slide.getTitle()}</h3>
 							<div class="btn-more btn-mn ">
-								<a href="${pageContext.request.contextPath}/detail" class = "slide-btn">Mua ngay</a>
+								<a href="${pageContext.request.contextPath}/${slide.getUrl()}" class = "slide-btn">Mua ngay</a>
 							</div>
-						</div>
-						<div class="carousel-item">
-							<img src="${pageContext.request.contextPath}/images/slide/3.jpg"
-								alt="5" width="1100" height="500">
-							<h3 class="title-slide">JACK & JILL</h3>
-							<div class="btn-more btn-mn">
-								<a href="${pageContext.request.contextPath}/detail/product/${product.id}" class = "slide-btn">Mua ngay</a>
-							</div>
-						</div>
+						</div></c:if>
+						</c:forEach>
 					</div>
 
 					<!-- Left and right controls -->
@@ -107,9 +101,9 @@
 								</div>
 								<div class="cost">
 									<b>${product.title}</b>
-									<span style="display:${product.price_sale != null ? 'inline' :'none' }">${product.price_sale}Đ</span>
+									<span style="display:${product.price_sale != null ? 'inline' :'none' }" class = "price">${product.getPriceFormat(product.price_sale)}</span>
 									&nbsp &nbsp
-									<span class = "${product.price_sale != null ? 'old-cost' :'' }">${product.price}Đ</span> 
+									<span class = " price ${product.price_sale != null ? 'old-cost' :'' }">${product.getPriceFormat(product.price)}</span> 
 								</div>
 							</div>
 						</c:if>
@@ -140,8 +134,9 @@
 								</div>
 								<div class="cost">
 									<a>${product.title}</a> <br> 
-									<span style="display:${product.price_sale != null ? 'inline' :'none' }">${product.price}Đ</span>
-									<span class = "${product.price_sale != null ? 'old-cost' :'' }">${product.price}Đ</span> 
+									<span style="display:${product.price_sale != null ? 'inline' :'none' }" class = "price">${product.getPriceFormat(product.price_sale)}</span>
+									&nbsp &nbsp
+									<span class = "price ${product.price_sale != null ? 'old-cost' :'' }">${product.getPriceFormat(product.price)}</span>  
 								</div>
 							</div>
 						</c:if>
@@ -171,7 +166,9 @@
 										TIẾT</a>
 								</div>
 								<div class="cost">
-									<a>${product.title}</a> <br> ${product.price}Đ
+									<span style="display:${product.price_sale != null ? 'inline' :'none' }" class = "price">${product.getPriceFormat(product.price_sale)}</span>
+									&nbsp &nbsp
+									<span class = "price ${product.price_sale != null ? 'old-cost' :'' }">${product.getPriceFormat(product.price)}</span> 
 								</div>
 							</div>
 						</c:if>

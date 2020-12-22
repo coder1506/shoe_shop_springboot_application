@@ -40,7 +40,7 @@ public class WebSecureUserConf extends WebSecurityConfigurerAdapter {
 		http.cors().and().csrf().disable();
 		http.antMatcher("/user/**")
 		.authorizeRequests()
-		.antMatchers("/user/**").hasAnyAuthority("USER")
+		.antMatchers("/user/**").hasAnyAuthority("USER","ADMIN")
 		.and()
         .exceptionHandling().accessDeniedPage("/USER?error_access=loi")
         .and() // kết hợp với điều kiện.

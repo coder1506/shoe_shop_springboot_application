@@ -1,5 +1,7 @@
 package com.shoes_shop.Controller.indexcontroller;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,6 +20,7 @@ import com.shoes_shop.model.AjaxResponse;
 import com.shoes_shop.model.Subcriber;
 import com.shoes_shop.repositories.EmailRepo;
 import com.shoes_shop.repositories.ProductRepo;
+import com.shoes_shop.repositories.SlideRepo;
 import com.shoes_shop.serivce.UserService;
 
 @Controller
@@ -28,6 +31,8 @@ public class HomeController extends BaseController implements Contants{
 	UserService userService;
 	@Autowired
  	CartController cart;
+	@Autowired
+ 	SlideRepo slideRepo;
 	@RequestMapping(value = {"/"}, method = RequestMethod.GET)
 	public String index(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
@@ -36,6 +41,8 @@ public class HomeController extends BaseController implements Contants{
 		model.addAttribute("productNb", productRepo.findByStatusAndProducttype(true, "san-pham-noi-bat"));
 		model.addAttribute("productGg", productRepo.findByStatusAndProducttype(true, "san-pham-giam-gia"));
 		ss.setAttribute(CURRENTCATEGORYSEO, "home");
+		ss.setAttribute("slides", slideRepo.findByStatus(true));
+		if(ss.getAttribute("shop_cart") == null) model.addAttribute("amount", 0);
 		return "front-end/home";
 	}
 	@RequestMapping(value = {"/save-contact-with-ajax"}, method = RequestMethod.POST)

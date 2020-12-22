@@ -2,6 +2,10 @@ package com.shoes_shop.model;
 
 import java.math.BigDecimal;
 
+import org.springframework.format.annotation.NumberFormat;
+
+import com.ibm.icu.text.DecimalFormat;
+
 public class ProductCart {
 	private int productCode;
 	private int productAmount = 0;
@@ -61,5 +65,10 @@ public class ProductCart {
 	public void setSize(int size) {
 		this.size = size;
 	}
-	
+	public String getPriceFormat(BigDecimal priceConvert) {
+		if(priceConvert != null) {
+		 DecimalFormat df = new DecimalFormat("#,###.00");
+		return df.format(priceConvert);}
+		return "";
+	}
 }

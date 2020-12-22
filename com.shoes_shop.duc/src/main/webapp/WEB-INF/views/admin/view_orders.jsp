@@ -26,7 +26,7 @@
 										<tr>
 											<th>STT</th>
 											<th>HỌ VÀ TÊN</th>
-											<th style="text-align: left;">SDT</th>
+											<th>SDT</th>
 											<th>Số Hoá Đơn</th>
 											<th>ID Sản Phẩm</th>
 											<th>Số Lượng</th>
@@ -40,7 +40,7 @@
 									<tbody>
 									<c:forEach var="order" items="${allOrder}">
 										<tr>
-											<td data-label="STT">${orders.indexOf(order) + 1}</td>
+											<td data-label="STT">${allOrder.indexOf(order) + 1}</td>
 											<td data-label="HỌ VÀ TÊN">${order.customerName}</td>
 											<td data-label="SDT">${order.customerPhone}</td>
 											<td data-label="Số Hoá Đơn">${order.code}</td>

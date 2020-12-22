@@ -16,6 +16,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.NumberFormat;
+
+import com.ibm.icu.text.DecimalFormat;
+
 @Entity
 @Table(name = "tbl_products")
 public class ProductEntity extends BaseEntity {
@@ -24,10 +28,10 @@ public class ProductEntity extends BaseEntity {
 
 	@Column(name = "avatar", length = 500, nullable = false)
 	private String avatar;
-	
+	@NumberFormat(pattern = "#,###,###,###.##")
 	@Column(name = "price", precision = 13, scale = 2, nullable = false)
 	private BigDecimal price;
-	
+	@NumberFormat(pattern = "#,###,###,###.##")
 	@Column(name = "price_sale", precision = 13, scale = 2, nullable = false)
 	private BigDecimal price_sale;
 	
@@ -213,4 +217,12 @@ public class ProductEntity extends BaseEntity {
 		return true;
 		return false;
 	}
+	
+	public String getPriceFormat(BigDecimal priceConvert) {
+		if(priceConvert != null) {
+		 DecimalFormat df = new DecimalFormat("#,###.00");
+		return df.format(priceConvert);}
+		return "";
+	}
+	
 }

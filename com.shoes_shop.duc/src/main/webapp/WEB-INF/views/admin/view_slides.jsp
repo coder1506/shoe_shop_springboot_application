@@ -26,7 +26,7 @@
 									<div class="right__slideTitle">${slide.getTitle()}</div>
 									<div class="right__slideImage">
 										<img
-											src="${pageContext.request.contextPath}/file/uploads/${slide.getImage()}"
+											src="${pageContext.request.contextPath}/file/uploads/slides/${slide.getImage()}"
 											alt="">
 									</div>
 									<div class="right__slideIcons">

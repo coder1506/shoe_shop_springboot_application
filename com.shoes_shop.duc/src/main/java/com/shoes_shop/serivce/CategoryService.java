@@ -25,22 +25,14 @@ public class CategoryService {
 			CategoryEntity oldCategory = categoryRepo.findById(category.getId()).get();
 			if(categoryRepo.findById(category.getId()).get().isDifferent(category))
 			{
-				LocalDateTime now = LocalDateTime.now();  
-			    DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");  
-			    String formatDateTime = now.format(format); 
-			    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-			    category.setUpdatedDate(LocalDateTime.parse(formatDateTime, formatter));
+			    category.setUpdatedDate(LocalDateTime.now());
 			}
 			else 
 				category.setUpdatedDate(oldCategory.getUpdatedDate());
 				category.setCreatedDate(oldCategory.getCreatedDate());
 		}
 		else {
-			LocalDateTime now = LocalDateTime.now();  
-		    DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");  
-		    String formatDateTime = now.format(format); 
-		    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-		    category.setCreatedDate(LocalDateTime.parse(formatDateTime, formatter));
+		    category.setCreatedDate(LocalDateTime.now());
 		}
 		Slugify slg = new Slugify();
 		category.setSeo(slg.slugify(category.getName() +""+System.currentTimeMillis()));

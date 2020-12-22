@@ -119,6 +119,7 @@ function changeImage(image){
 			});
 		}
 function buttonSelected(sizeid){
+			if(sizeid == '') return;
 			var size_box = document.getElementById(sizeid).getAttribute('src');
 			$("#size span").removeClass("selected");
 			$("#"+sizeid).addClass("selected");

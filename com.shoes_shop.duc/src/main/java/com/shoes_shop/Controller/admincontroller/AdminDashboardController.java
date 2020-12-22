@@ -27,6 +27,8 @@ public class AdminDashboardController {
 	public String Dashboard(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {
 		model.addAttribute("products", productRepo.findByStatus(true));
 		model.addAttribute("categories", categoryRepo.findByStatus(true));
+		model.addAttribute("customers", orderRepo.findAll());
+		model.addAttribute("countOrder", orderRepo.findAll());
 		model.addAttribute("orders", orderRepo.findAllByCreatedDate(LocalDate.now()+""));
 		return "admin/index";
 	}

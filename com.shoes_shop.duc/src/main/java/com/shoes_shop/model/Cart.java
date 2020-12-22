@@ -3,6 +3,10 @@ package com.shoes_shop.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.format.annotation.NumberFormat;
+
+import com.ibm.icu.text.DecimalFormat;
+
 import java.math.BigDecimal;
 
 public class Cart {
@@ -14,7 +18,6 @@ public class Cart {
 	public void setCart(List<ProductCart> cart) {
 		Cart = cart;
 	}
-	
 	public BigDecimal getSumPrice() {
 		BigDecimal sum = new BigDecimal(0);
 		for(ProductCart p : Cart) {
@@ -27,7 +30,12 @@ public class Cart {
 	public Cart(List<ProductCart> cart) {
 		this.Cart = cart;
 	}
-	
+	public String getPriceFormat(BigDecimal priceConvert) {
+		if(priceConvert != null) {
+		 DecimalFormat df = new DecimalFormat("#,###.00");
+		return df.format(priceConvert);}
+		return "";
+	}
 	public ProductCart findById(int id) {
 		for(ProductCart p : Cart) {
 			if(p.getProductCode() == id) return p;

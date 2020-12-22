@@ -43,7 +43,7 @@
 						<div class="code-prd">
 							Code:<span>${product.id}</span>
 						</div>
-						<h5>${product.price_sale != null ? product.price_sale : product.price}₫</h5>
+						<h5><span class = "price">${product.price_sale != null ? product.getPriceFormat(product.price_sale) : product.getPriceFormat(product.price)}</span></h5>
 						<div class="amount">
 							<button class="btn minus">-</button>
 							<div class="current-amount">1</div>
@@ -51,8 +51,11 @@
 						</div>
 						<h4>Size</h4>
 						<div id = "size">
+							<span id = "${product.getSizes().size() > 0 ? product.getSizes().get(0).getSize() : ''}" class = "btn btn-outline-dark selected" onclick = "buttonSelected(${product.getSizes().size() > 0 ? product.getSizes().get(0).getSize() : ''})">${product.getSizes().size() > 0 ? product.getSizes().get(0).getSize() : ''}</span>
 							<c:forEach var = "size" items = "${product.getSizes()}">
+							<c:if test = "${product.getSizes().indexOf(size) != 0}">
 								<span id = "${size.getSize()}" class = "btn btn-outline-dark" onclick = "buttonSelected(${size.getSize()})">${size.getSize()}</span>
+							</c:if>
 							</c:forEach>
 						</div>
 						<br>
@@ -74,7 +77,7 @@
 								<li class="nav-item"><a class="nav-link" data-toggle="tab"
 									href="#menu1">Chất liệu & kỹ thuật</a></li>
 								<li class="nav-item"><a class="nav-link" data-toggle="tab"
-									href="#menu2">kích cỡ</a></li>
+									href="#menu2">Bình luận</a></li>
 							</ul>
 
 							<!-- Tab panes -->
@@ -89,7 +92,7 @@
 								</div>
 								<div id="menu2" class="container tab-pane fade">
 									<br>
-									<p>${product.size}</p>
+									<p></p>
 								</div>
 							</div>
 						</div>
@@ -108,7 +111,7 @@
 									src="${pageContext.request.contextPath}/file/uploads/${product.avatar}">
 								</a>
 								<div class="cost">
-									<a>${product.title}</a> <br> ${product.price}Đ
+									<a>${product.title}</a> <br> <span class = "price">${product.price}</span>
 								</div>
 							</div>
 							</c:if>

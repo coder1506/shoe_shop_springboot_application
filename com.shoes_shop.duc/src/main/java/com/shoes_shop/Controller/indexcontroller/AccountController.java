@@ -55,7 +55,9 @@ public class AccountController extends BaseController{
 				id  = ((User)principal).getId();
 			}
 		orderSerivce.saveOrder(cart, order,id);
-		return "front-end/checkout";
+		ss.removeAttribute("shop_cart");
+		ss.removeAttribute("amount");
+		return "front-end/home";
 	}
 	@RequestMapping (value = "/accountRegister" , method = RequestMethod.GET)
 	public String accountSingInIndex(final ModelMap model ,final HttpServletRequest request,final HttpServletResponse response ) {

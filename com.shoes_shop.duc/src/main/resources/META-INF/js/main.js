@@ -33,9 +33,24 @@ window.addEventListener("load", event => {
 //ajax
 //delete product
  function deletePrd(id) {
- 	var check = confirm("Bạn có muốn xoá sản phẩm này không ?");
- 	if(check == true){
-			var data = {};
+ 	const swalWithBootstrapButtons = Swal.mixin({
+			  customClass: {
+			    confirmButton: 'btn-ok',
+			    cancelButton: 'btn-cancel'
+			  },
+			  buttonsStyling: false
+			})
+
+			swalWithBootstrapButtons.fire({
+			  title: 'Bạn có muốn xoá sản phẩm này không?',
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonText: 'Xoá',
+			  cancelButtonText: 'Huỷ',
+			  reverseButtons: true
+			}).then((result) => {
+			  if (result.isConfirmed) {
+			  var data = {};
 			data["id"] = id;
 			
 			$.ajax({
@@ -54,7 +69,21 @@ window.addEventListener("load", event => {
 				error: function (jqXhr, textStatus, errorMessage) { // error callback 
 			        
 		 }
-	});}
+	});
+			    swalWithBootstrapButtons.fire(
+			      'Đã xoá!',
+			      'Sản phẩm đã được xoá thành công.',
+			      'Thành công'
+			    )
+			  } else if (
+			    /* Read more about handling dismissals below */
+			    result.dismiss === Swal.DismissReason.cancel
+			  ) {
+			    swalWithBootstrapButtons.fire(
+			      'Đã huỷ',
+			    )
+			  }
+			});
 }
 //delete category
 function deleteCate(id) {

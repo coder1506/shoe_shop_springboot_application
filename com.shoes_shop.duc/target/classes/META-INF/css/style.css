@@ -707,7 +707,6 @@ body {
 	line-height:25px;
 	padding:10px 2px;
 	font-size:14px;
-	color:red; 
 }
 
 .cost>b{
@@ -721,7 +720,9 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
+.fw{
+	font-weight:500;
+}
 .cost a {
 	color: #292929;
 	font-weight: lighter;
@@ -740,6 +741,18 @@ body {
 
 .fp {
 	margin-left: 0;
+}
+.price{
+		position: relative;
+		color: red !important;
+	}
+.price::after{
+		position: absolute;
+		content: "₫";
+		color: red;
+		font-size: 10px;
+		top:-5px;
+		right:-8px;
 }
 /*/content*/
 /*footer*/

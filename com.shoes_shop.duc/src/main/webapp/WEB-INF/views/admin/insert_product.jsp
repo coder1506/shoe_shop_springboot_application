@@ -43,7 +43,7 @@
 									</form:select>
 								</div>
 								<div class="right__inputWrapper">
-									<label for="image">Ảnh sản phẩm</label> <input type="file"
+									<label for="image">Ảnh sản phẩm(Tên ảnh chứa chữ avatar sẽ được đặt làm avatar)</label> <input type="file"
 										name="product_images" multiple="multiple">
 								</div>
 								<div class="right__inputWrapper">
@@ -90,7 +90,7 @@
 									<label for="title">Màu sắc</label>
 									<input type="text" placeholder="Màu sắc" id = "color"/>
 								</div> -->
-								<button class="btn" type="submit">Chèn</button>
+								<button class="btn-custom" type="submit">Chèn</button>
 							</form:form>
 						</div>
 					</div>
@@ -99,6 +99,7 @@
 		</div>
 	</div>
 </body>
+${alertMs}
 <script src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script src="${pageContext.request.contextPath}/js/main.js"></script>
 <script src="${pageContext.request.contextPath}/js/editor-solution.js"></script>

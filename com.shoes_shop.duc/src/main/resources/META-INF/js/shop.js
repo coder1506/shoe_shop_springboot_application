@@ -57,6 +57,23 @@ var Shop = {
 			});
 		},
 		cartDeleteData:function (id) {
+		const swalWithBootstrapButtons = Swal.mixin({
+			  customClass: {
+			    confirmButton: 'btn btn-success btn-margin',
+			    cancelButton: 'btn btn-danger btn-margin'
+			  },
+			  buttonsStyling: false
+			})
+
+			swalWithBootstrapButtons.fire({
+			  title: 'Bạn có muốn xoá sản phẩm này không?',
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonText: 'Xoá',
+			  cancelButtonText: 'Huỷ',
+			  reverseButtons: true
+			}).then((result) => {
+			  if (result.isConfirmed) {
 			var data = {};
 			data["id"] = id;
 			
@@ -78,8 +95,21 @@ var Shop = {
 			        
 			    }
 			});
+			swalWithBootstrapButtons.fire(
+			      'Đã xoá!',
+			      'Sản phẩm đã được xoá thành công.',
+			      'Thành công'
+			    )
+			  } else if (
+			    /* Read more about handling dismissals below */
+			    result.dismiss === Swal.DismissReason.cancel
+			  ) {
+			    swalWithBootstrapButtons.fire(
+			      'Đã huỷ',
+			    )
+			  }
+			});
 		}
-		
 }
 function ValidateEmail(mail) 
 {

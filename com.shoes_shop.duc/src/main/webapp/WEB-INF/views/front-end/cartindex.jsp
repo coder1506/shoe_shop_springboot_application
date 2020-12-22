@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/stylechitiet.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/account.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/cart.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.css">
 
 </head>
 <body>
@@ -60,7 +61,7 @@
 								<button class="btn">-</button>
 								<div class="current-amount" id = "${product.productCode}">${product.productAmount}</div>
 								<button class="btn" >+</button>
-								<span class = "title_cart">${product.productPrice}₫</span>
+								<span class = "title_cart "><span class = "price">${product.getPriceFormat(product.productPrice)}</span></span>
 							</div>
 							<span>Size : ${product.size}</span>
 							<button type="button" class="btn btn-outline-danger btn-deleted-align" onclick = "Shop.cartDeleteData(${product.productCode});">Xoá</button>
@@ -71,8 +72,8 @@
 				</div>
 				<div class = "paycart" style = "display:${shop_cart.getCart().size() > 0 ? 'block' : 'none'}">
 					<div class = "paysale border-bottom">Mã khuyến mãi</div>
-					<div class = "sumprice border-bottom">Tạm tính: <h5>${ shop_cart.sumPrice} ₫</h5></div>
-					<div class = "sumprice border-bottom">Tổng tiền:<h5>${ shop_cart.sumPrice} ₫</h5></div>
+					<div class = "sumprice border-bottom">Tạm tính: <h5><span class = "price">${shop_cart.getPriceFormat(shop_cart.sumPrice)}</span></h5></div>
+					<div class = "sumprice border-bottom">Tổng tiền:<h5><span class = "price">${shop_cart.getPriceFormat(shop_cart.sumPrice)}</span></h5></div>
 					<c:set var = "urlCheckout" scope = "session" value = "${pageContext.request.contextPath }/user/checkout"/>
 					<c:set var = "urlLogin" scope = "session" value = "${pageContext.request.contextPath }/user"/>
 					<a href="${currentUser != null ? urlCheckout : urlLogin}" class="btn-send btn btn-danger">${currentUser != null ? 'Tiến hành đặt hàng' : 'ĐĂNG NHẬP ĐỂ MUA HÀNG' }</a>
@@ -87,11 +88,13 @@
 	</div>
 </body>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/solution.js"></script>
-<script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/jquery/jquery-3.5.1.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/solution.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/scroll.js"></script>
 	<script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/shop.js"></script>
+<script src="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/sweetalert/sweetalert2.js"></script>
 </html>
