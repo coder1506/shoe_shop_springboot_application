@@ -28,10 +28,8 @@ public class ProductEntity extends BaseEntity {
 
 	@Column(name = "avatar", length = 500, nullable = false)
 	private String avatar;
-	@NumberFormat(pattern = "#,###,###,###.##")
 	@Column(name = "price", precision = 13, scale = 2, nullable = false)
 	private BigDecimal price;
-	@NumberFormat(pattern = "#,###,###,###.##")
 	@Column(name = "price_sale", precision = 13, scale = 2, nullable = false)
 	private BigDecimal price_sale;
 	
@@ -220,7 +218,7 @@ public class ProductEntity extends BaseEntity {
 	
 	public String getPriceFormat(BigDecimal priceConvert) {
 		if(priceConvert != null) {
-		 DecimalFormat df = new DecimalFormat("#,###.00");
+		 DecimalFormat df = new DecimalFormat("#,###");
 		return df.format(priceConvert);}
 		return "";
 	}

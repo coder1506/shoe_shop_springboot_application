@@ -2,7 +2,7 @@
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<header class="header">
+<header class="header" id = "${products.size() > 0 ? 'header' : ''}">
 	<!--header-top-content  -->
 	<div class="header-content">
 		<div class="header-top-content">

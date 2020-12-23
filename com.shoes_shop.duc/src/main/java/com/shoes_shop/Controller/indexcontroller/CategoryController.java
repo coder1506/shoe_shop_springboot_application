@@ -35,7 +35,8 @@ public class CategoryController extends BaseController implements Contants{
 		HttpSession ss = request.getSession();
 		ss.setAttribute(CURRENTCATEGORYSEO, seoOfCategory);
 		ProductSearching productSearch = new ProductSearching();
-		productSearch.setSeoCategory(seoOfCategory);;
+		productSearch.setSeoCategory(seoOfCategory);
+//		productSearch.setCurrentPage(Integer.parseInt(request.getParameter("page")));
 		List<ProductEntity> productList = productService.search(productSearch);
 		model.addAttribute("products", productList);
 		model.addAttribute("categoryname", categoryRepo.findBySeo(seoOfCategory).getName());

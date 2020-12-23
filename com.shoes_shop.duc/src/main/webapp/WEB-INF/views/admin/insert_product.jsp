@@ -90,7 +90,7 @@
 									<label for="title">Màu sắc</label>
 									<input type="text" placeholder="Màu sắc" id = "color"/>
 								</div> -->
-								<button class="btn-custom" type="submit">Chèn</button>
+								<button class="btn" type="submit">Chèn</button>
 							</form:form>
 						</div>
 					</div>

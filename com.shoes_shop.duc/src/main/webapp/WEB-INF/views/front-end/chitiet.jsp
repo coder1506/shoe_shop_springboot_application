@@ -111,7 +111,7 @@
 									src="${pageContext.request.contextPath}/file/uploads/${product.avatar}">
 								</a>
 								<div class="cost">
-									<a>${product.title}</a> <br> <span class = "price">${product.price}</span>
+									<b>${product.title}</b> <span class = "price">${product.price}</span>
 								</div>
 							</div>
 							</c:if>
@@ -125,7 +125,12 @@
 		<jsp:include page="/WEB-INF/views/front-end/common/footer.jsp"></jsp:include>
 	</div>
 </body>
-<jsp:include page="/WEB-INF/views/front-end/common/js.jsp"></jsp:include>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/solution.js"></script>
+	src="${pageContext.request.contextPath}/js/jquery/jquery-3.5.1.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/shop.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/bootstrap-4.5.2-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/scroll.js"></script>
 </html>

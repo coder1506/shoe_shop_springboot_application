@@ -32,7 +32,7 @@ public class Cart {
 	}
 	public String getPriceFormat(BigDecimal priceConvert) {
 		if(priceConvert != null) {
-		 DecimalFormat df = new DecimalFormat("#,###.00");
+		 DecimalFormat df = new DecimalFormat("#,###");
 		return df.format(priceConvert);}
 		return "";
 	}

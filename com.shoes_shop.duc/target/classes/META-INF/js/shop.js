@@ -98,7 +98,7 @@ var Shop = {
 			swalWithBootstrapButtons.fire(
 			      'Đã xoá!',
 			      'Sản phẩm đã được xoá thành công.',
-			      'Thành công'
+			      'success'
 			    )
 			  } else if (
 			    /* Read more about handling dismissals below */
@@ -106,6 +106,8 @@ var Shop = {
 			  ) {
 			    swalWithBootstrapButtons.fire(
 			      'Đã huỷ',
+			      'Sản phẩm được giữ nguyên',
+			      'error'
 			    )
 			  }
 			});

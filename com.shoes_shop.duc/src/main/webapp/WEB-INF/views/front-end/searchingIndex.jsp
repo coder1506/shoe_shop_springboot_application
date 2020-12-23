@@ -60,7 +60,7 @@
 										TIẾT</a>
 								</div>
 								<div class="cost">
-									<span class = "fw">${product.title}</span> <br> <span class = "price">${product.getPriceFormat(product.price)}</span>
+									<b class = "fw">${product.title}</b> <br> <span class = "price">${product.getPriceFormat(product.price)}</span>
 								</div>
 							</div>
 					</c:forEach>

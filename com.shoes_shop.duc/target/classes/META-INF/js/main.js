@@ -73,7 +73,7 @@ window.addEventListener("load", event => {
 			    swalWithBootstrapButtons.fire(
 			      'Đã xoá!',
 			      'Sản phẩm đã được xoá thành công.',
-			      'Thành công'
+			      'success'
 			    )
 			  } else if (
 			    /* Read more about handling dismissals below */
@@ -81,14 +81,31 @@ window.addEventListener("load", event => {
 			  ) {
 			    swalWithBootstrapButtons.fire(
 			      'Đã huỷ',
+			      'Sản phẩm được giữ nguyên',
+			      'error'
 			    )
 			  }
 			});
 }
 //delete category
 function deleteCate(id) {
- 	var check = confirm("Bạn có muốn xoá danh mục này không ?");
- 	if(check == true){
+ 	const swalWithBootstrapButtons = Swal.mixin({
+			  customClass: {
+			    confirmButton: 'btn-ok',
+			    cancelButton: 'btn-cancel'
+			  },
+			  buttonsStyling: false
+			})
+
+			swalWithBootstrapButtons.fire({
+			  title: 'Bạn có muốn xoá danh mục này không?',
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonText: 'Xoá',
+			  cancelButtonText: 'Huỷ',
+			  reverseButtons: true
+			}).then((result) => {
+			  if (result.isConfirmed) {
 			var data = {};
 			data["id"] = id;
 			
@@ -108,12 +125,43 @@ function deleteCate(id) {
 				error: function (jqXhr, textStatus, errorMessage) { // error callback 
 			        
 		 }
-	});}
+	});
+	swalWithBootstrapButtons.fire(
+			      'Đã xoá!',
+			      'Sản phẩm đã được xoá thành công.',
+			      'success'
+			    )
+			  } else if (
+			    /* Read more about handling dismissals below */
+			    result.dismiss === Swal.DismissReason.cancel
+			  ) {
+			    swalWithBootstrapButtons.fire(
+			      'Đã huỷ',
+			      'Sản phẩm được giữ nguyên',
+			      'error'
+			    )
+			  }
+			});
 }
 //delete slide 
 function deleteSlide(id) {
- 	var check = confirm("Bạn có muốn xoá slide này không ?");
- 	if(check == true){
+ 	const swalWithBootstrapButtons = Swal.mixin({
+			  customClass: {
+			    confirmButton: 'btn-ok',
+			    cancelButton: 'btn-cancel'
+			  },
+			  buttonsStyling: false
+			})
+
+			swalWithBootstrapButtons.fire({
+			  title: 'Bạn có muốn xoá danh mục này không?',
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonText: 'Xoá',
+			  cancelButtonText: 'Huỷ',
+			  reverseButtons: true
+			}).then((result) => {
+			  if (result.isConfirmed) {
 			var data = {};
 			data["id"] = id;
 			$.ajax({
@@ -132,5 +180,20 @@ function deleteSlide(id) {
 				error: function (jqXhr, textStatus, errorMessage) { // error callback 
 			        
 		 }
-	});}
+	});swalWithBootstrapButtons.fire(
+			      'Đã xoá!',
+			      'Sản phẩm đã được xoá thành công.',
+			      'success'
+			    )
+			  } else if (
+			    /* Read more about handling dismissals below */
+			    result.dismiss === Swal.DismissReason.cancel
+			  ) {
+			    swalWithBootstrapButtons.fire(
+			      'Đã huỷ',
+			      'Sản phẩm được giữ nguyên',
+			      'error'
+			    )
+			  }
+			});
 }

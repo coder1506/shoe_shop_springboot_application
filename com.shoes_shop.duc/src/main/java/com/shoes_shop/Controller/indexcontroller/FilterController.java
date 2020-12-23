@@ -22,6 +22,7 @@ public class FilterController implements Contants{
 	@RequestMapping(value = "/filter" , method = RequestMethod.GET)
 	public String ResultFilter(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response) {
 		HttpSession ss = request.getSession();
+		model.addAttribute("categoryname", ss.getAttribute(CURRENTCATEGORYSEO));
 		if(ss.getAttribute(CURRENTCATEGORYSEO).equals("product-all"))
 		{
 			if(request.getParameter("price") != null) {

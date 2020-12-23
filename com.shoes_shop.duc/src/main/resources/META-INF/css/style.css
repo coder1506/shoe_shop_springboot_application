@@ -249,6 +249,54 @@ body {
 	color: white;
 }
 /*/search*/
+/*header responsive*/
+.header-responsive{
+	transition: 0.3s;
+	position: fixed !important;
+	width: 100%;
+	height:80px;
+	top:-8px;
+	border:0;
+	background-color: rgba(255,255,255,1);
+	z-index:10;
+	box-shadow:2px 2px #eeeeee;
+}
+.header-responsive .search{
+	display:none
+}
+.header-responsive .header-content{
+	width:100%;
+	padding-top:0;
+}
+.header-responsive .header-menu{
+	display:none;
+}
+.header-responsive .menu-upto500{
+	display:block;
+	padding-top:0;
+	width:53%
+}
+.header-responsive .color-hover{
+	color:black
+}
+.header-responsive .logo{
+	width: 32%;
+	padding-left:3%;
+	text-align:left;
+}
+.header-responsive .logo{
+	width: 32%;
+	padding-left:3%;
+	text-align:left;
+}
+.header-responsive .small-circle-cart{
+	background-color:#292929;
+	color:white;
+}
+.header-responsive .account-cart{
+	padding-top:15px;
+}
+/*/header responsive*/
 /*responsive-search*/
 .responsive-search {
 	display: none;
