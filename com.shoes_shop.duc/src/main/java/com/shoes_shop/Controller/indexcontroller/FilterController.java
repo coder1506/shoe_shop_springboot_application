@@ -16,7 +16,7 @@ import com.shoes_shop.Contants;
 import com.shoes_shop.repositories.ProductRepo;
 
 @Controller
-public class FilterController implements Contants{
+public class FilterController extends BaseController implements Contants{
 	@Autowired
 	ProductRepo productRepo;
 	@RequestMapping(value = "/filter" , method = RequestMethod.GET)

@@ -3,7 +3,7 @@ var Shop = {
 		/**
 		 * https://www.w3schools.com/js/js_json_syntax.asp
 		 */
-		 cartData: function(productCode,productAmount,size) {
+		cartData: function(productCode,productAmount,size) {
 			var data = {};
 			data["productCode"] = productCode;
 			data["productAmount"] = productAmount;
@@ -113,6 +113,32 @@ var Shop = {
 			});
 		}
 }
+async function cartData(productCode,productAmount,size){
+	sizeList = size.split("-");
+ 	const inputOptions = new Promise((resolve) => {
+		  setTimeout(() => {
+		    resolve(
+		      sizeList
+		    )
+		  }, 1000)
+		})
+		
+		const { value: s } = await Swal.fire({
+		  title: 'Chọn kích thước',
+		  input: 'radio',
+		  inputOptions: inputOptions,
+		  inputValidator: (value) => {
+		    if (!value) {
+		      return 'You need to choose something!'
+		    }
+		  }
+		})
+		
+		if (s) {
+		 	Shop.cartData(productCode,productAmount,sizeList[s])
+		 	Swal.fire({ html: `Thêm thành công !!!` })
+		}
+ }
 function ValidateEmail(mail) 
 {
  if (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(mail))
@@ -120,4 +146,14 @@ function ValidateEmail(mail)
     return (true)
   }
     return (false)
+}
+
+function replaceQueryParam(param, newval, search) {
+    var regex = new RegExp("([?;&])" + param + "[^&;]*[;&]?");
+    var query = search.replace(regex, "$1").replace(/&$/, '');
+    return (query.length > 2 ? query + "&" : "?") + (newval ? param + "=" + newval : '');
+}
+function currentPage(id){
+	$('#pagi-custom li').removeClass('active');
+	$('#'+id).addClass('active');
 }

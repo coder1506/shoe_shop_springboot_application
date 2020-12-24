@@ -2,7 +2,7 @@
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<header class="header" id = "${products.size() > 0 ? 'header' : ''}">
+<header class="header" id = "${products.size() > 0|| productMn.size() > 0 || product != null? 'header' : ''}">
 	<!--header-top-content  -->
 	<div class="header-content">
 		<div class="header-top-content">
@@ -12,6 +12,7 @@
 					<button class="color-hover" type = "submit">
 						<i class="fas fa-search"></i>
 					</button>
+					<input type = "hidden" name = "page" value = "1"/>
 				</form>
 			</div>
 			<div class="logo"><a href = "${pageContext.request.contextPath}/">Shoes-shop</a></div>
@@ -53,7 +54,6 @@
 					<i class="fas fa-cart-plus"></i> 
 						<span class="cart-text">Giỏ hàng</span></a>
 					<div class="small-circle-cart" id="small-circle-cart">${amount}</div>
-					<div class="cart-content"></div>
 				</span> <span class="responsive-menu">
 					<div class="rp-menu-exit">
 						<i class="fas fa-times"></i>
@@ -130,7 +130,12 @@
 					</ul></li>
 			</ul>
 		</nav>
-		<!-- /menu -->
+		<!-- /menu -->	
 	</div>
 	<!-- header-top-content -->
+	<!-- status -->
+	<hr class = "gn" style = "display:${currentCategorySeo.equals('home') ? 'none' : ''}">
+	<span class = "status" style = "display:${currentCategorySeo.equals('home') ? 'none' : ''}">
+	${!currentCategorySeo.equals('home') ? status : ''}</span>
+	<!-- /status -->
 </header>

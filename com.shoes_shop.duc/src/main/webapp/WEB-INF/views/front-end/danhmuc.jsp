@@ -11,6 +11,7 @@
 <jsp:include page="/WEB-INF/views/front-end/common/css.jsp"></jsp:include>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/styledanhmuc.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.css">
 </head>
 <body>
 	<div class="wrapper">
@@ -160,7 +161,7 @@
 							<img
 								src="${pageContext.request.contextPath}/file/uploads/${product.avatar}">
 							<div class="btn-more add-btn add-btn-m">
-								<a onclick = "Shop.cartData(${product.id},1)">THÊM VÀO GIỎ</a>
+								<a onclick = "cartData(${product.id},1,`${product.size}`)">THÊM VÀO GIỎ</a>
 							</div>
 							<div class="btn-more add-btn ct-btn">
 								<a
@@ -186,4 +187,6 @@
 	src="${pageContext.request.contextPath}/js/bootstrap-4.5.2-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/scroll.js"></script>
+<script src="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/sweetalert/sweetalert2.js"></script>
 </html>

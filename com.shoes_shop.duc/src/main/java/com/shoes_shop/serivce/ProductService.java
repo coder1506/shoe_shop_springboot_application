@@ -145,9 +145,6 @@ public class ProductService {
 		}
 		Query query = entityManager.createNativeQuery(sql, ProductEntity.class);
 		
-		//query.setFirstResult(0);
-		//query.setMaxResults(4);
-		
 		return query.getResultList();
 	}
 	

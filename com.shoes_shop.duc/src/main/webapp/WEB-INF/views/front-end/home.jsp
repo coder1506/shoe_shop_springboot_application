@@ -92,7 +92,7 @@
 								<img
 									src="${pageContext.request.contextPath}/file/uploads/${product.avatar}">
 								<div class="btn-more add-btn add-btn-m">
-									<a onclick = "Shop.cartData(${product.id},1)">THÊM VÀO GIỎ</a>
+									<a onclick = "cartData(${product.id},1,`${product.size}`)">THÊM VÀO GIỎ</a>
 								</div>
 								<div class="btn-more add-btn ct-btn">
 									<a
@@ -125,7 +125,7 @@
 								<img
 									src="${pageContext.request.contextPath}/file/uploads/${product.avatar}">
 								<div class="btn-more add-btn add-btn-m">
-									<a onclick = "Shop.cartData(${product.id},1)">THÊM VÀO GIỎ</a>
+									<a onclick = "cartData(${product.id},1,`${product.size}`)">THÊM VÀO GIỎ</a>
 								</div>
 								<div class="btn-more add-btn ct-btn">
 									<a
@@ -158,7 +158,7 @@
 								<img
 									src="${pageContext.request.contextPath}/file/uploads/${product.avatar}">
 								<div class="btn-more add-btn add-btn-m">
-									<a onclick = "Shop.cartData(${product.id},1)">THÊM VÀO GIỎ</a>
+									<a onclick = "cartData(${product.id},1,`${product.size}`)">THÊM VÀO GIỎ</a>
 								</div>
 								<div class="btn-more add-btn ct-btn">
 									<a

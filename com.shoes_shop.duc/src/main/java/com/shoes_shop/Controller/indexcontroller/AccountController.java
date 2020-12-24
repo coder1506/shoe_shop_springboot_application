@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.shoes_shop.Contants;
 import com.shoes_shop.entities.SaleOrder;
 import com.shoes_shop.entities.User;
 import com.shoes_shop.model.Cart;
@@ -24,7 +25,7 @@ import com.shoes_shop.serivce.OrderService;
 import com.shoes_shop.serivce.UserService;
 
 @Controller
-public class AccountController extends BaseController{
+public class AccountController extends BaseController implements Contants{
 	@Autowired
 	UserService userService;
 	@Autowired
@@ -33,6 +34,9 @@ public class AccountController extends BaseController{
 	OrderService orderSerivce;
 	@RequestMapping (value = "/user" , method = RequestMethod.GET)
 	public String accountIndex(final ModelMap model ,final HttpServletRequest request,final HttpServletResponse response ) {
+		HttpSession ss = request.getSession();
+		ss.setAttribute(CURRENTCATEGORYSEO, "user");
+		model.addAttribute("status", "Trang chủ / Tài khoản");
 		return "front-end/userlogin";
 	}
 	@RequestMapping (value = "/user/checkout" , method = RequestMethod.GET)

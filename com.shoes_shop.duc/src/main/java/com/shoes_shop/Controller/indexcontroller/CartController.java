@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.shoes_shop.Contants;
 import com.shoes_shop.entities.ProductEntity;
 import com.shoes_shop.model.AjaxResponse;
 import com.shoes_shop.model.ProductCart;
@@ -22,7 +23,7 @@ import com.shoes_shop.model.Product;
 
 
 @Controller
-public class CartController extends BaseController{
+public class CartController extends BaseController implements Contants{ 
 	@Autowired 
 	ProductRepo productRepo;
 	@RequestMapping (value = {"/save-product-to-cart-with-ajax"},method = RequestMethod.POST)
@@ -44,7 +45,7 @@ public class CartController extends BaseController{
 		//check that has the cart had this product yet?
 		boolean isExists = false;
 		for(ProductCart prd : cart.getCart()) {
-			if(prd.getProductCode() == data.getProductCode()) { // if exists
+			if(prd.getProductCode() == data.getProductCode() && prd.getSize() == data.getSize()) { // if exists
 				isExists = true;
 				prd.setProductAmount(prd.getProductAmount() + data.getProductAmount());
 				break;
@@ -63,6 +64,9 @@ public class CartController extends BaseController{
 	}
 	@RequestMapping (value = "/cart" , method = RequestMethod.GET)
 	public String accountSingInIndex(final ModelMap model ,final HttpServletRequest request,final HttpServletResponse response ) {
+		HttpSession ss = request.getSession();
+		ss.setAttribute(CURRENTCATEGORYSEO, "cart");
+		model.addAttribute("status", "Trang chủ / Giỏ hàng");
 		return "front-end/cartindex";
 	}
 	@RequestMapping(value = {"/deletecartproduct"}, method = RequestMethod.DELETE)

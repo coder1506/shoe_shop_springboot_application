@@ -39,6 +39,7 @@ public class CategoryController extends BaseController implements Contants{
 //		productSearch.setCurrentPage(Integer.parseInt(request.getParameter("page")));
 		List<ProductEntity> productList = productService.search(productSearch);
 		model.addAttribute("products", productList);
+		model.addAttribute("status", "Trang chủ / danh mục / " + categoryRepo.findBySeo(seoOfCategory).getName());
 		model.addAttribute("categoryname", categoryRepo.findBySeo(seoOfCategory).getName());
 		return "front-end/danhmuc";
 	}
@@ -50,6 +51,7 @@ public class CategoryController extends BaseController implements Contants{
 		model.addAttribute("categoryname", "Tất cả sản phẩm");
 		List<ProductEntity> productList = productRepo.findByStatus(true);
 		model.addAttribute("products", productList);
+		model.addAttribute("status", "Trang chủ / danh mục / Tất cả sản phẩm");
 		return "front-end/danhmuc";
 	}
 	@RequestMapping (value = "/accessory-all", method = RequestMethod.GET)
@@ -60,18 +62,22 @@ public class CategoryController extends BaseController implements Contants{
 		model.addAttribute("categoryname", "Tất cả phụ kiện");
 		List<ProductEntity> productList = productRepo.findByStatus(true);
 		model.addAttribute("products", productList);
+		model.addAttribute("status", "Trang chủ / danh mục / Tất cả phụ kiện");
 		return "front-end/danhmuc";
 	}
 	@RequestMapping (value = "/productlabel/{label}", method = RequestMethod.GET)
 	public String FindProductByLabels(@PathVariable("label") String label,final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 		List<ProductEntity> productList = productRepo.findByProducttypeAndStatus(label,true);
-		if(label.equals("san-pham-moi-nhat"))
+		if(label.equals("san-pham-moi-nhat")) {
 		model.addAttribute("categoryname", "Sản phẩm mới nhất");
-		else if(label.equals("san-pham-noi-bat"))
+		model.addAttribute("status", "Trang chủ / danh mục / Sản phẩm mới nhất");}
+		else if(label.equals("san-pham-noi-bat")) {
 			model.addAttribute("categoryname", "Sản phẩm nổi bật");
+		model.addAttribute("status", "Trang chủ / danh mục / Sản phẩm nổi bật");}
 		else 
 			model.addAttribute("categoryname", "Sản phẩm giảm giá");
+		model.addAttribute("status", "Trang chủ / danh mục / Sản phẩm giảm giá");
 		model.addAttribute("products", productList);
 		return "front-end/danhmuc";
 	}

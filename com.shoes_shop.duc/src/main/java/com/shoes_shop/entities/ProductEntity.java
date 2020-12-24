@@ -222,5 +222,4 @@ public class ProductEntity extends BaseEntity {
 		return df.format(priceConvert);}
 		return "";
 	}
-	
 }

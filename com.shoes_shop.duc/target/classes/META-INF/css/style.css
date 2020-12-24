@@ -170,7 +170,7 @@ body {
 .header {
 	padding-top: 20px;
 	position: absolute;
-	height: 137px;
+	height: auto;
 	width: 100%;
 	background-color: rgba(255, 255, 255, 0.1);
 	z-index: 1;
@@ -297,6 +297,19 @@ body {
 	padding-top:15px;
 }
 /*/header responsive*/
+/*status*/
+.status{
+	padding:5px 10px;
+	font-weight:lighter;
+	margin:0 100px;
+}
+.header hr{
+	margin:0;
+}
+.appear{
+	display:none;
+}
+/*/status*/
 /*responsive-search*/
 .responsive-search {
 	display: none;
@@ -831,6 +844,14 @@ body {
 .title-end {
 	margin-top: 50px;
 	margin-left: -120px;
+}
+.pagi-margin{
+	float: right;
+    margin-top: 100px;
+    margin-right: 100px;
+}
+.pagi-margin li{
+	margin:5px;
 }
 /*footer responsive*/
 .responsive-footer {

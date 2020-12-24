@@ -48,7 +48,7 @@
 					placeholder="Tài khoản" required> </br> <input type="text"
 					name="firstname" class="text" placeholder="Email" required> </br> <input
 					type="text" name="firstname" class="text" placeholder="Số điện thoại"
-					required> </br> <input type="submit" value="SEND" id="btn-send">
+					required> </br> <input type="submit" value="GỬI" id="btn-send">
 				</br> <span> </span>
 			</form>
 		</div>

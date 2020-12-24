@@ -82,9 +82,13 @@ function myFunction() {
     //menu up to 0px
   if (document.body.scrollTop > 0|| document.documentElement.scrollTop > 0) {
   	  $('#header').addClass('header-responsive');
+  	  $('.status').addClass('appear');
+  	   $('.gn').addClass('appear');
 }
  else{
  	$('#header').removeClass('header-responsive');
+ 	$('.status').removeClass('appear');
+ 	$('.gn').removeClass('appear');
  }
 }
  window.onscroll = function() {myFunction()};

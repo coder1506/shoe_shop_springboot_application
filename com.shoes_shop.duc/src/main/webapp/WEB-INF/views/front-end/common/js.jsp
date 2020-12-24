@@ -11,3 +11,5 @@
 	src="${pageContext.request.contextPath}/js/bootstrap-4.5.2-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/scroll.js"></script>
+<script src="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/sweetalert/sweetalert2.js"></script>
