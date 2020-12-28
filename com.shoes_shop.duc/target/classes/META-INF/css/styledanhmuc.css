@@ -1,14 +1,20 @@
 @charset "utf-8";
 
 .header {
-	transition: 0.6s;
 	background-color: #eeeeee;
 	color: black;
-	position: static;
+	position: absolute;
+	margin:-200px;
 }
-
+.filter{
+	margin:200px;
+}
 .title {
 	display: none;
+}
+
+.header:hover{
+	background-color:#eeeeee !important;
 }
 
 .header-dam:hover {

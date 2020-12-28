@@ -62,7 +62,10 @@
 										TIẾT</a>
 								</div>
 								<div class="cost">
-									<b class = "fw">${product.title}</b><span class = "price">${product.getPriceFormat(product.price)}</span>
+									<b>${product.title}</b>
+									<span style="display:${product.price_sale != null ? 'inline' :'none' }" class = "price">${product.getPriceFormat(product.price_sale)}</span>
+									&nbsp &nbsp
+									<span class = " price ${product.price_sale != null ? 'old-cost' :'' }">${product.getPriceFormat(product.price)}</span> 
 								</div>
 							</div>
 					</c:forEach>

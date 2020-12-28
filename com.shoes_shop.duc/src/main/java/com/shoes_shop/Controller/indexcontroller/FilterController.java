@@ -1,6 +1,7 @@
 package com.shoes_shop.Controller.indexcontroller;
 
 import java.math.BigDecimal;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.shoes_shop.Contants;
+import com.shoes_shop.model.ProductFilter;
 import com.shoes_shop.repositories.ProductRepo;
 
 @Controller
@@ -23,6 +25,7 @@ public class FilterController extends BaseController implements Contants{
 	public String ResultFilter(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response) {
 		HttpSession ss = request.getSession();
 		model.addAttribute("categoryname", ss.getAttribute(CURRENTCATEGORYSEO));
+		model.addAttribute("productFilter", new ProductFilter());
 		if(ss.getAttribute(CURRENTCATEGORYSEO).equals("product-all"))
 		{
 			if(request.getParameter("price") != null) {

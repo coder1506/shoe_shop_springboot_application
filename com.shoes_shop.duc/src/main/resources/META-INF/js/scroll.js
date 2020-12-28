@@ -80,7 +80,7 @@ $(document).ready(function(){
 })
 function myFunction() {
     //menu up to 0px
-  if (document.body.scrollTop > 0|| document.documentElement.scrollTop > 0) {
+  if (document.body.scrollTop > 150|| document.documentElement.scrollTop > 150) {
   	  $('#header').addClass('header-responsive');
   	  $('.status').addClass('appear');
   	   $('.gn').addClass('appear');
@@ -91,7 +91,6 @@ function myFunction() {
  	$('.gn').removeClass('appear');
  }
 }
- window.onscroll = function() {myFunction()};
  window.onscroll = function() {myFunction()};
 function changeImage(image){
 			var img = document.getElementById(image).getAttribute('src');

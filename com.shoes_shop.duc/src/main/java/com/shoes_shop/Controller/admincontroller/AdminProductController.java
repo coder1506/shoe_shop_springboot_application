@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.shoes_shop.Controller.indexcontroller.BaseController;
 import com.shoes_shop.entities.ProductEntity;
@@ -37,7 +39,7 @@ public class AdminProductController extends BaseController{
 		return "admin/insert_product";
 	}
 	@RequestMapping (value = "/admin/addproduct",method = RequestMethod.POST)
-	public String addProductSave(@RequestParam("product_images") MultipartFile[] productImages,
+	public ModelAndView addProductSave(@RequestParam("product_images") MultipartFile[] productImages,
 			final ModelMap model,final HttpServletRequest request,final HttpServletResponse response 
 			,@ModelAttribute("product") ProductEntity product) throws IllegalStateException, IOException {
 		model.addAttribute("product", new ProductEntity());	
@@ -52,7 +54,10 @@ public class AdminProductController extends BaseController{
 			}
 		}
 		productservice.save(productImages, product);
-		return "redirect:/admin/product";
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("messageAlert",new AjaxResponse(200,ms));
+		mav.setViewName("redirect:/admin/product");
+		return mav;
 	}
 	@RequestMapping (value = "/admin/repairproduct/{id}",method = RequestMethod.GET)
 	public String repairProduct(@PathVariable("id") Integer id,

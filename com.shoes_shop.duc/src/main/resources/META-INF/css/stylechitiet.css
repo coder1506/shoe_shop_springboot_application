@@ -1,12 +1,20 @@
 .header {
-	transition: 0.6s;
 	background-color: #eeeeee;
 	color: black;
-	position: static;
+	position: absolute;
+	margin-top:-20px;
+}
+
+.filter{
+	margin:200px;
 }
 
 .title {
 	display: none;
+}
+
+.header:hover{
+	background-color:#eeeeee !important;
 }
 
 .header-dam:hover {
@@ -33,6 +41,7 @@
 
 .left-info {
 	padding: 10px 7% !important;
+	margin-top:200px;
 }
 
 .left-info ul {
@@ -80,6 +89,7 @@
 .right-info {
 	padding: 2.7% 1% !important;
 	padding-right: 4% !important;
+	margin-top:200px;
 }
 
 .right-info h3 {
