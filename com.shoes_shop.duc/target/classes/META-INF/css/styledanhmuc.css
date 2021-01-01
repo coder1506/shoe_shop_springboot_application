@@ -4,10 +4,10 @@
 	background-color: #eeeeee;
 	color: black;
 	position: absolute;
-	margin:-200px;
+	margin-top:-200px;
 }
 .filter{
-	margin:200px;
+	margin-top:200px;
 }
 .title {
 	display: none;
@@ -143,6 +143,7 @@
 .search__title{
 	text-align:center;
 	padding:40px ;
+	margin-top:200px;
 }
 .search__title>h1{
 	position: relative;
@@ -159,6 +160,28 @@
 .result__for{
 	margin-left:11%;
 }
+/*filter status*/
+.filter_status{
+	width:300px;
+}
+.filter_selected{
+	position:relative;
+	margin:5px;
+	padding:5px 10px;
+	border:1px solid black;
+	color:white;
+	background-color:black;
+	border-radius:5px;
+	display:inline-block;
+	font-size:12px;
+}
+.btn-close{
+	position:absolute;
+	top:-1px;
+	right:-1px;
+	font-size:12px;
+}
+/*/add size*/
 /*/filter*/
 /*animation*/
 @keyframes moveSub-menu-filter { 

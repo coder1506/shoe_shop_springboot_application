@@ -41,7 +41,7 @@
 			<jsp:include page="/WEB-INF/views/front-end/common/header.jsp"></jsp:include>
 			<form action="${pageContext.request.contextPath}/forgetPassword"
 				method="POST" class="frmaccount">
-				<a href="${pageContext.request.contextPath}/userlogin"><i
+				<a href="${pageContext.request.contextPath}/user"><i
 					class="fas fa-arrow-left back"></i></a>
 				<h1>QUÊN MẬT KHẨU</h1>
 				<input type="text" name="firstname" class="text"

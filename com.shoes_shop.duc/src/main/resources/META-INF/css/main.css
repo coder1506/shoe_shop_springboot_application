@@ -1206,24 +1206,3 @@ body {
 	width: 100%;
 }
 /*# sourceMappingURL=main.css.map */
-/*add size*/
-.size_status{
-	width:300px;
-}
-.size_selected{
-	position:relative;
-	margin:5px;
-	padding:5px 10px;
-	border:1px solid black;
-	color:white;
-	background-color:black;
-	border-radius:5px;
-	display:inline-block;
-}
-.btn-close{
-	position:absolute;
-	top:-1px;
-	right:-1px;
-	font-size:12px;
-}
-/*/add size*/

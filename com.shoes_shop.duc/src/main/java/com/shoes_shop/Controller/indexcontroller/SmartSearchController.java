@@ -31,7 +31,7 @@ public class SmartSearchController extends BaseController implements Contants{
 		int page = Integer.parseInt(request.getParameter("page"));
 		if(page > 0) page = page - 1;
 		else if(page < 0) page = 0;
-		Page<ProductEntity> resultSearching = productFilterRepo.search(key,true,PageRequest.of(page, 2));
+		Page<ProductEntity> resultSearching = productFilterRepo.search(key,true,PageRequest.of(page, 9));
 		model.addAttribute("resultSearching", resultSearching);
 		HttpSession ss = request.getSession();
 		ss.setAttribute(CURRENTCATEGORYSEO, "home");

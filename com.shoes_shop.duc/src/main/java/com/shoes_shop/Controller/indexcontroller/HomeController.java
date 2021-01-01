@@ -51,6 +51,6 @@ public class HomeController extends BaseController implements Contants{
 	throws Exception {
 		if(userService.saveEmailNoti(data.getEmail()))
 		return ResponseEntity.ok(new AjaxResponse(200,"Thành công"));
-		else return ResponseEntity.ok(new AjaxResponse(200,"Email này đã được sử dụng"));
+		else return ResponseEntity.ok(new AjaxResponse(404,"Email này đã được sử dụng"));
  }
 }

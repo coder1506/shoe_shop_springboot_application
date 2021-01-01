@@ -63,7 +63,7 @@
 					<div href="#" class="buttn bot-btn">
 						Giá sản phẩm &nbsp &nbsp <i class="fas fa-angle-down"></i>
 						<ul class="sub-menu sub-menu-filter">
-							<li><a><input type="checkbox" path= "priceProduct" name="price" value = "duoi-500000" onchange = "this.form.submit()"> Dưới
+							<li><a><input type="checkbox" path= "priceProduct" name="price" value = "duoi-500000" onchange = "this.checked == true ? filter.setFilterApplied(`duoi-500000`) : filter.removeFilterElement(`duoi-500000`)"> Dưới
 									500,000₫</a></li>
 							<li><a><input type="checkbox" path= "priceProduct" name="price" value = "500000-1000000" onchange = "this.form.submit()"> 500,000₫
 									- 1,000,000₫</a></li>
@@ -78,7 +78,7 @@
 					<div href="#" class="buttn bot-btn">
 						Màu sắc &nbsp &nbsp <i class="fas fa-angle-down"></i>
 						<ul class="sub-menu sub-menu-filter">
-							<li><a><input type="checkbox" path= "colorProduct" name="color" value = "blue" onchange = "this.form.submit()"> Xanh</a></li>
+							<li><a><input type="checkbox" path= "colorProduct" name="color" value = "blue" onchange = "filter.setFilterApplied()"> Xanh</a></li>
 							<li><a><input type="checkbox" path= "colorProduct" value = "red" onchange = "this.form.submit()"> Đỏ</a></li>
 							<li><a><input type="checkbox" path= "colorProduct" value = "purple" onchange = "this.form.submit()"> Tím</a></li>
 							<li><a><input type="checkbox" path= "colorProduct" value = "yellow" onchange = "this.form.submit()"> Vàng</a></li>
@@ -153,6 +153,8 @@
 					</div>
 				<!-- /filter responsive -->
 			</div>
+			<div class = "filter_status" id = "filter_status">
+			</div>
 			<div class="container-fluid">
 				<div class="row justify-content-center">
 					<c:forEach var="product" items="${products}">
@@ -181,6 +183,7 @@
 			<!-- /content -->
 			<jsp:include page="/WEB-INF/views/front-end/common/footer.jsp"></jsp:include>
 		</div>
+</div>
 </body>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/jquery/jquery-3.5.1.js"></script>
@@ -190,6 +193,8 @@
 	src="${pageContext.request.contextPath}/js/bootstrap-4.5.2-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/scroll.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/danhmuc.js"></script>
 <script src="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/sweetalert/sweetalert2.js"></script>
 </html>

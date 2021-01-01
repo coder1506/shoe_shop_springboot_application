@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.css">
 <% String p = request.getParameter("page"); %>
 </head>
-<body onload="currentPage(<%=p%>);">
+<body onload="currentPage(<%=p%>,${resultSearching.getTotalPages()});">
 	<c:set var = "currentPage" value = ""></c:set>
 	<div class="wrapper">
 		<!-- message -->
@@ -73,8 +73,10 @@
 		</div>
 		<nav aria-label="...">
 		  <ul class="pagination pagi-margin" id = "pagi-custom">
-		    <li class="page-item">
-		      <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><i class="fas fa-backward"></i></a>
+		    <li class="page-item" id = "prevPage">
+		      <a class="page-link" tabindex="-1" aria-disabled="true"
+		      onclick = "window.location = '/search' + replaceQueryParam('page', (parseInt($('.active>a').text()) == 1 ? 2 : parseInt($('.active>a').text()))-1, window.location.search)">
+		      <i class="fas fa-backward"></i></a>
 		    </li>
 		    <li class="page-item active" id = "1"><a class="page-link"  onclick = "window.location = '/search' + replaceQueryParam('page', 1, window.location.search)">1</a></li>
 		    <c:forEach var = "index" begin = "1" end = "${resultSearching.getTotalPages()}">
@@ -82,8 +84,10 @@
 		    <li class="page-item" aria-current="page" id = "${index }">
 		      <a class="page-link" onclick = "window.location = '/search' + replaceQueryParam('page', ${index}, window.location.search)">${index}</a>
 		    </li></c:if></c:forEach>
-		    <li class="page-item">
-		      <a class="page-link" href="#"><i class="fas fa-forward"></i></a>
+		    <li class="page-item" id = "nextPage">
+		      <a class="page-link" 
+		      onclick = "window.location = '/search' + replaceQueryParam('page', (parseInt($('.active>a').text()) == ${resultSearching.getTotalPages()} ? (${resultSearching.getTotalPages()}-1) : parseInt($('.active>a').text()))+1, window.location.search)">
+		      <i class="fas fa-forward"></i></a>
 		    </li>
 		  </ul>
 		</nav>

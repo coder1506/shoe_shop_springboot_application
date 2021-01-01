@@ -205,6 +205,33 @@ public class ProductEntity extends BaseEntity {
 	public void setSizes(List<SizeEntity> sizes) {
 		this.sizes = sizes;
 	}
+	
+	
+	
+	public ProductEntity(String title, String avatar, BigDecimal price, BigDecimal price_sale, String producttype,
+			String shortDes, String metarial_vs_skill, String code, String size, String shortDetails, String seo,
+			CategoryEntity category, List<ProductImages> productImages, List<SizeEntity> sizes) {
+		super();
+		this.title = title;
+		this.avatar = avatar;
+		this.price = price;
+		this.price_sale = price_sale;
+		this.producttype = producttype;
+		this.shortDes = shortDes;
+		this.metarial_vs_skill = metarial_vs_skill;
+		this.code = code;
+		this.size = size;
+		this.shortDetails = shortDetails;
+		this.seo = seo;
+		this.category = category;
+		this.productImages = productImages;
+		this.sizes = sizes;
+	}
+
+	
+	
+	public ProductEntity() {
+	}
 
 	public boolean compare(ProductEntity prd) {
 		if(this.getCategory().getId() != prd.getCategory().getId() 
@@ -222,4 +249,5 @@ public class ProductEntity extends BaseEntity {
 		return df.format(priceConvert);}
 		return "";
 	}
+	
 }

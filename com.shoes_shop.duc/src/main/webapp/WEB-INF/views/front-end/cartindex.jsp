@@ -58,9 +58,9 @@
 							<h4>${product.productTitle}</h4>
 							<br>
 							<div class="amount">
-								<button class="btn" onclick = "changeAmount(${product.productCode},${product.productAmount > 1 ? -1 : 0},${product.size})">-</button>
+								<button class="btn" onclick = "Shop.cartData(${product.productCode},${product.productAmount > 1 ? -1 : 0},${product.size})">-</button>
 								<div class="current-amount" id = "${product.productCode}">${product.productAmount}</div>
-								<button class="btn" onclick = "changeAmount(${product.productCode},1,${product.size})">+</button>
+								<button class="btn" onclick = "Shop.cartData(${product.productCode},1,${product.size})">+</button>
 								<span class = "title_cart "><span class = "price">${product.getPriceFormat(product.productPrice)}</span></span>
 							</div>
 							<span>Size : ${product.size}</span>

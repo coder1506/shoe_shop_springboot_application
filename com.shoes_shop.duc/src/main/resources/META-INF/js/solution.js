@@ -78,6 +78,22 @@ $(document).ready(function(){
      //auto complete search
      //auto complete search
 })
+//responsive scroll menu
+function myFunction() {
+    //menu up to 0px
+  if (document.body.scrollTop > 150|| document.documentElement.scrollTop > 150) {
+  	  $('#header').addClass('header-responsive');
+  	  $('.status').addClass('appear');
+  	   $('.gn').addClass('appear');
+}
+ else{
+ 	$('#header').removeClass('header-responsive');
+ 	$('.status').removeClass('appear');
+ 	$('.gn').removeClass('appear');
+ }
+}
+ window.onscroll = function() {myFunction()};
+ //responsive scroll menu
 function changeImage(image){
 			var img = document.getElementById(image).getAttribute('src');
 			$(".sub img").removeClass("border-sub");

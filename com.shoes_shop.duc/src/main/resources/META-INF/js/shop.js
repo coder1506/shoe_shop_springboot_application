@@ -18,6 +18,7 @@ var Shop = {
 				success: function(jsonResult) { // được gọi khi web-service trả về dữ liệu.
 					if(jsonResult.status == 200) {
 						$("#small-circle-cart").html(jsonResult.data);
+						$( "#cart__product--table" ).load(window.location.href + " #cart__product--table" );
 					} else {
 						alert('loi');
 					}
@@ -29,7 +30,11 @@ var Shop = {
 		},
 		saveContact: function() {
 			if(!ValidateEmail($("#email").val())) {
-				alert('Email bạn nhập không đúng dạng vui lòng nhập lại');
+				Swal.fire({
+							  icon: 'error',
+							  title: 'Lỗi',
+							  text: 'Email bạn nhập không đúng dạng vui lòng nhập lại',
+							});
 				return;
 			}
 			var data = {};
@@ -45,10 +50,28 @@ var Shop = {
 					//$("#message").html(jsonResult.data);
 					//$('#blogModal').modal('show');
 					if(jsonResult.status == 200) {
+						Swal.fire({
+						  icon: 'success',
+						  title: jsonResult.data,
+						  showConfirmButton: false,
+						  timer: 1500
+						});
 						 $("#email").val("");
-						alert(jsonResult.data);
-					} else {
-						alert('loi');
+					}
+					else if(jsonResult.status == 404)
+					{
+						Swal.fire({
+							  icon: 'warning',
+							  title: 'Thông báo',
+							  text: jsonResult.data,
+							});
+					}
+					 else {
+						Swal.fire({
+							  icon: 'error',
+							  title: 'Lỗi',
+							  text: jsonResult.data,
+							});
 					}
 				},
 				error: function (jqXhr, textStatus, errorMessage) { // error callback 
@@ -153,33 +176,9 @@ function replaceQueryParam(param, newval, search) {
     var query = search.replace(regex, "$1").replace(/&$/, '');
     return (query.length > 2 ? query + "&" : "?") + (newval ? param + "=" + newval : '');
 }
-function currentPage(id){
+function currentPage(id,TotalPages){
+	if(id == 1) $('#prevPage').attr("disabled","disabled");
+	else if(id == TotalPages) $('#nextPage').attr("disabled","disabled");
 	$('#pagi-custom li').removeClass('active');
 	$('#'+id).addClass('active');
 }
-//amount in cart index
-function changeAmount(productCode,amount,size) {
-			var data = {};
-			data["productCode"] = productCode;
-			data["productAmount"] = amount;
-			data["size"] = size;
-			$.ajax({
-				url: "/save-product-to-cart-with-ajax",
-				type: "post",
-				contentType: "application/json", // dữ liệu gửi lên web-service có dạng là json.
-				data: JSON.stringify(data), // object json -> string json
-				
-				dataType: "json", // dữ liệu từ web-service trả về là json.
-				success: function(jsonResult) { // được gọi khi web-service trả về dữ liệu.
-					if(jsonResult.status == 200) {
-						$( "#cart__product--table" ).load(window.location.href + " #cart__product--table" );
-						$( "#small-circle-cart" ).load(window.location.href + " #small-circle-cart" );
-					} else {
-						alert('loi');
-					}
-				},
-				error: function (jqXhr, textStatus, errorMessage) { // error callback 
-			        
-			    }
-			});
-		}

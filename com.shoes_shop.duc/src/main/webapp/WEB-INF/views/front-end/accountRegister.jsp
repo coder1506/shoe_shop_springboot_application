@@ -44,7 +44,7 @@
 				modelAttribute = "user"
 				method="POST" 
 				class="frmaccount">
-				<a href="${pageContext.request.contextPath}/userlogin"><i
+				<a href="${pageContext.request.contextPath}/user"><i
 					class="fas fa-arrow-left back"></i></a>
 				<h1>ĐĂNG KÍ</h1>
 				<form:input type="text" path = "name" name="name" class="text" placeholder="Họ và tên" required="required" /> 
@@ -54,7 +54,7 @@
 				<form:input type="password" path = "password" name="password" class="text" placeholder="Mật khẩu" required="required"/>
 				</br> 
 				<input type="submit" value="ĐĂNG KÍ" id="btn-send"> </br> <span> </span>
-				<div class="alert alert-danger" role="alert">
+				<div class="alert alert-danger" role="alert" style = "display:${empty param.error_login ? 'none' : 'block'}">
 						${error_message}
 				</div>
 			</form:form>

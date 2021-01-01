@@ -1,29 +1,52 @@
 package com.shoes_shop.model;
 
+import java.math.BigDecimal;
+
 public class ProductFilter {
-	private String sortBy;
-	private String priceProduct;
-	private String colorProduct;
+	private int id;
+	private String title;
+	private String avatar;
+	private BigDecimal price;
+	private BigDecimal price_sale;
 	private String size;
-	private String sex;
-	private String typeProduct;
-	public String getSortBy() {
-		return sortBy;
+	private String seo;
+	private int category;
+	
+	public int getCategory() {
+		return category;
 	}
-	public void setSortBy(String sortBy) {
-		this.sortBy = sortBy;
+	public void setCategory(int category) {
+		this.category = category;
 	}
-	public String getPriceProduct() {
-		return priceProduct;
+	public int getId() {
+		return id;
 	}
-	public void setPriceProduct(String priceProduct) {
-		this.priceProduct = priceProduct;
+	public void setId(int id) {
+		this.id = id;
 	}
-	public String getColorProduct() {
-		return colorProduct;
+	public String getTitle() {
+		return title;
 	}
-	public void setColorProduct(String colorProduct) {
-		this.colorProduct = colorProduct;
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getAvatar() {
+		return avatar;
+	}
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+	public BigDecimal getPrice() {
+		return price;
+	}
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
+	public BigDecimal getPrice_sale() {
+		return price_sale;
+	}
+	public void setPrice_sale(BigDecimal price_sale) {
+		this.price_sale = price_sale;
 	}
 	public String getSize() {
 		return size;
@@ -31,26 +54,23 @@ public class ProductFilter {
 	public void setSize(String size) {
 		this.size = size;
 	}
-	public String getSex() {
-		return sex;
+	public String getSeo() {
+		return seo;
 	}
-	public void setSex(String sex) {
-		this.sex = sex;
+	public void setSeo(String seo) {
+		this.seo = seo;
 	}
-	public String getTypeProduct() {
-		return typeProduct;
-	}
-	public void setTypeProduct(String typeProduct) {
-		this.typeProduct = typeProduct;
-	}
-	public ProductFilter(String sortBy, String priceProduct, String colorProduct, String size, String sex,
-			String typeProduct) {
-		this.sortBy = sortBy;
-		this.priceProduct = priceProduct;
-		this.colorProduct = colorProduct;
+	public ProductFilter(int id, String title, String avatar, BigDecimal price, BigDecimal price_sale, String size,
+			String seo,int category) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.avatar = avatar;
+		this.price = price;
+		this.price_sale = price_sale;
 		this.size = size;
-		this.sex = sex;
-		this.typeProduct = typeProduct;
+		this.seo = seo;
+		this.category = category;
 	}
 	public ProductFilter() {
 	}

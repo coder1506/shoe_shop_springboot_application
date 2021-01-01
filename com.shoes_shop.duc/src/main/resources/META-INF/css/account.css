@@ -37,6 +37,14 @@
 	transition: 0.5s;
 }
 
+.header {
+	background-color: #eeeeee;
+	color: black;
+	position: static !important;
+	margin-top:0px;
+}
+
+
 .frmaccount>span {
 	margin-top: -10px;
 }

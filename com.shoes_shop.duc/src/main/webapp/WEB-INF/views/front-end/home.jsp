@@ -41,14 +41,12 @@
 			<div class="slide">
 				<div id="demo" class="carousel slide" data-ride="carousel">
 					<!-- The slideshow -->
-					<div class="carousel-inner">
+					<div class="carousel-inner slide_list">
 						<div class="carousel-item active">
+							<a href="${pageContext.request.contextPath}/${slides.size() > 0 ? slides.get(0).getUrl() : '/'}">
 							<img src="${pageContext.request.contextPath}/file/uploads/slides/${slides.size() > 0 ? slides.get(0).getImage() : 'unnamed.png'}"
-								alt="3" width="1100" height="500">
+								alt="3" width="1100" height="500"></a>
 							<h3 class="clsl1 title-slide">${slides.size() > 0 ? slides.get(0).getTitle() : ""}</h3>
-							<div class="btn-more btn-mn">
-								<a href="${pageContext.request.contextPath}/${slides.size() > 0 ? slides.get(0).getUrl() : '/'}" class = "slide-btn">Mua ngay</a>
-							</div>
 						</div>
 						<c:forEach var = "slide" items = "${slides }">
 						<c:if test = "${slides.indexOf(slide) != 0}">

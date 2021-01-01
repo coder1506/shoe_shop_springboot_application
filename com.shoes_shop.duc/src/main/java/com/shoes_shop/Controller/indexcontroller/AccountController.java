@@ -42,11 +42,13 @@ public class AccountController extends BaseController implements Contants{
 	@RequestMapping (value = "/user/checkout" , method = RequestMethod.GET)
 	public String userAccess(final ModelMap model ,final HttpServletRequest request,final HttpServletResponse response ) {
 		model.addAttribute("order", new SaleOrder());
+		model.addAttribute("status", "Trang chủ / Tài khoản / Xác nhận");
 		return "front-end/checkout";
 	}
 	@RequestMapping (value = "/user/info" , method = RequestMethod.GET)
 	public String userInfor(final ModelMap model ,final HttpServletRequest request,final HttpServletResponse response ) {
 		model.addAttribute("order", new SaleOrder());
+		model.addAttribute("status", "Trang chủ/ Tài khoản / Thông tin");
 		return "front-end/userinfor";
 	}
 	@RequestMapping (value = "/user/saveorder" , method = RequestMethod.POST)
@@ -66,6 +68,7 @@ public class AccountController extends BaseController implements Contants{
 	@RequestMapping (value = "/accountRegister" , method = RequestMethod.GET)
 	public String accountSingInIndex(final ModelMap model ,final HttpServletRequest request,final HttpServletResponse response ) {
 		model.addAttribute("user", new User());
+		model.addAttribute("status", "Trang chủ/ Tài khoản / Đăng kí");
 		return "front-end/accountRegister";
 	}
 	@RequestMapping (value = "/accountRegister" , method = RequestMethod.POST)
@@ -86,6 +89,7 @@ public class AccountController extends BaseController implements Contants{
 	}
 	@RequestMapping (value = "/forgetPassword" , method = RequestMethod.GET)
 	public String accountForgetPassword(final ModelMap model ,final HttpServletRequest request,final HttpServletResponse response ) {
+		model.addAttribute("status", "Trang chủ/ Tài khoản / Quên tài khoản");
 		return "front-end/forgetPassword";
 	}
 }
