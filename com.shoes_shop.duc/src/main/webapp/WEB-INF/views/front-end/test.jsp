@@ -14,8 +14,9 @@
 	href="${pageContext.request.contextPath}/css/styledanhmuc.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.css">
 </head>
-<body>
-	<div class="wrapper">
+<body onload = "document.getElementById('btn-cl').click();">
+	<input style="display:none" id ="cate" value = "${currentCategorySeo}"/>
+	<div class="wrapper"  id = "app">
 		<!-- title -->
 		<div class="title">Welcome to shoes-shop!</div>
 		<!-- /title -->
@@ -63,16 +64,16 @@
 					<div href="#" class="buttn bot-btn">
 						Giá sản phẩm &nbsp &nbsp <i class="fas fa-angle-down"></i>
 						<ul class="sub-menu sub-menu-filter">
-							<li><a><input type="checkbox" path= "priceProduct" name="price" value = "duoi-500000" onchange = "this.checked == true ? filter.setFilterPriceApplied(this.value) : filter.removeFilterPriceElement(this.value)"> Dưới
-									500,000₫</a></li>
-							<li><a><input type="checkbox" path= "priceProduct" name="price" value = "500000-1000000" onchange = "this.checked == true ? filter.setFilterPriceApplied(this.value) : filter.removeFilterPriceElement(this.value)"> 500,000₫
-									- 1,000,000₫</a></li>
-							<li><a><input type="checkbox" path= "priceProduct" name="price" value = "1000000-1500000" onchange = "this.checked == true ? filter.setFilterPriceApplied(this.value) : filter.removeFilterPriceElement(this.value)">
-									1,000,000₫ - 1,500,000₫</a></li>
-							<li><a><input type="checkbox" path= "priceProduct" name="price" value = "2000000-5000000" onchange = "this.checked == true ? filter.setFilterPriceApplied(this.value) : filter.removeFilterPriceElement(this.value)">
-									2,000,000₫ - 5,000,000₫</a></li>
-							<li><a><input type="checkbox" path= "priceProduct" name="price" value = "tren-500000" onchange = "this.checked == true ? filter.setFilterPriceApplied(this.value) : filter.removeFilterPriceElement(this.value)"> Trên
-									5,000,000₫</a></li>
+							<li><input type="checkbox" v-model="filterApplied" name="price" value = "duoi-500000"> Dưới
+									500,000₫</li>
+							<li><input type="checkbox" v-model="filterApplied" name="price" value = "500000-1000000"> 500,000₫
+									- 1,000,000₫</li>
+							<li><input type="checkbox" v-model="filterApplied" name="price" value = "1000000-1500000">
+									1,000,000₫ - 1,500,000₫</li>
+							<li><input type="checkbox" v-model="filterApplied" name="price" value = "1500000-5000000">
+									1,500,000₫ - 5,000,000₫</a></li>
+							<li><input type="checkbox" v-model="filterApplied" name="price" value = "tren-500000"> Trên
+									5,000,000₫</li>
 						</ul>
 					</div>
 					<div href="#" class="buttn bot-btn">
@@ -153,30 +154,32 @@
 					</div>
 				<!-- /filter responsive -->
 			</div>
-			<span class = "filter_status" id = "filter_status"></span>
+			<span v-bind:class = "filterApplied.length == 0 ? 'filter_status dpn' : 'filter_status'" id = "filter_status" >
+			Trạng thái lọc:
+				<span v-for = "item in filterApplied" class = "filter_selected">{{item}}<span class = "btn-close"><i class="fas fa-window-close" v-on:click = "setfilterApplied(item)"></i></span></span>
+			</span>
 			</div>
 			<div class="container-fluid">
 				<div class="row justify-content-center">
-					<c:forEach var="product" items="${products}">
-						<div class="col-xl-3 col-lg-3 col-md-5 prd">
+				<button style = "display:none" id = "btn-cl" v-on:click = "setCate()"></button>
+						<div class="col-xl-3 col-lg-3 col-md-5 prd" v-for = "product in filterItems">
 							<img
-								src="${pageContext.request.contextPath}/file/uploads/${product.avatar}">
+								v-bind:src="'${pageContext.request.contextPath}/file/uploads/'+product.avatar">
 							<div class="btn-more add-btn add-btn-m">
-								<a onclick = "cartData(${product.id},1,`${product.size}`)">THÊM VÀO GIỎ</a>
+								<a v-on:click = "setCartData(product.id,1,product.size)">THÊM VÀO GIỎ</a>
 							</div>
 							<div class="btn-more add-btn ct-btn">
 								<a
-									href="${pageContext.request.contextPath}/products/${product.seo}">CHI
+									v-bind:href="'${pageContext.request.contextPath}/products/'+product.seo">CHI
 									TIẾT</a>
 							</div>
 							<div class="cost">
-									<b>${product.title}</b>
-									<span style="display:${product.price_sale != null ? 'inline' :'none' }" class = "price">${product.getPriceFormat(product.price_sale)}</span>
+									<b>{{product.title}}</b>
+									<span v-bind:class = "product.price_sale != null ? 'price' : 'price dpn'">{{formatPrice(product.price_sale)}}</span>
 									&nbsp &nbsp
-									<span class = " price ${product.price_sale != null ? 'old-cost' :'' }">${product.getPriceFormat(product.price)}</span> 
+									<span v-bind:class = "product.price_sale != null ? 'price old-cost' :'price' ">{{formatPrice(product.price)}}</span> 
 							</div>
 						</div>
-					</c:forEach>
 				</div>
 			</div>
 			<!-- /content -->
@@ -193,5 +196,9 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/scroll.js"></script>
 <script src="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/sweetalert/sweetalert2.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/vue.js"></script>
 </html>

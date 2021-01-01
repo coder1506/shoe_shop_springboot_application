@@ -163,23 +163,26 @@
 /*filter status*/
 .filter_status{
 	width:300px;
+	margin-left:10%;
 }
 .filter_selected{
 	position:relative;
 	margin:5px;
-	padding:5px 10px;
-	border:1px solid black;
-	color:white;
-	background-color:black;
-	border-radius:5px;
+	padding:5px 20px;
+	border:1px solid #dddddd;
+	color:#292929;
+	border-radius:100px;
 	display:inline-block;
 	font-size:12px;
 }
-.btn-close{
+.btn-close i{
 	position:absolute;
 	top:-1px;
-	right:-1px;
+	right:-3px;
 	font-size:12px;
+}
+.dpn{
+	display:none;
 }
 /*/add size*/
 /*/filter*/
