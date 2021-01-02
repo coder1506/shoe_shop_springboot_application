@@ -36,18 +36,18 @@
 							<li><input type="checkbox" name="nu" path= "sex"> Nữ</li>
 						</ul>
 					</div>
-					<div class="buttn top-btn">
+					<div class="buttn top-btn" id = "filterSort">
 						<i class="fas fa-sort-alpha-down"></i> Sắp xếp theo &nbsp &nbsp <i
 							class="fas fa-angle-down"></i>
-						<ul class="sub-menu sub-menu-filter">
-							<li><a path= "sortBy">Giá: Tăng dần</a></li>
-							<li><a path= "sortBy">Giá: Giảm dần</a></li>
-							<li><a path= "sortBy">Tên: A-Z</a></li>
-							<li><a path= "sortBy">Tên: Z-A</a></li>
-							<li><a path= "sortBy">Cũ nhất</a></li>
-							<li><a path= "sortBy">Mới nhất</a></li>
-							<li><a path= "sortBy">Bán chạy nhất</a></li>
-							<li><a path= "sortBy">Tồn kho:Giảm dần</a></li>
+						<ul class="sub-menu sub-menu-filter" id = "sortFilter">
+							<li><a id="td" v-on:click = "setSort('td','Giá: Tăng dần')">Giá: Tăng dần</a></li>
+							<li><a id="gd" v-on:click = "setSort('gd','Giá: Giảm dần')">Giá: Giảm dần</a></li>
+							<li><a id="az" v-on:click = "setSort('az','Tên: A-Z')">Tên: A-Z</a></li>
+							<li><a id="za" v-on:click = "setSort('za','Tên: Z-A')">Tên: Z-A</a></li>
+							<li><a id="old">Cũ nhất</a></li>
+							<li><a id="new">Mới nhất</a></li>
+							<li><a id="bcn">Bán chạy nhất</a></li>
+							<li><a id="gdan">Tồn kho:Giảm dần</a></li>
 						</ul>
 					</div>
 				</div>
@@ -64,15 +64,15 @@
 					<div href="#" class="buttn bot-btn">
 						Giá sản phẩm &nbsp &nbsp <i class="fas fa-angle-down"></i>
 						<ul class="sub-menu sub-menu-filter">
-							<li><input type="checkbox" v-model="filterApplied" name="price" value = "duoi-500000"> Dưới
+							<li><input type="checkbox" v-model="filterApplied" name="price" value = "Dưới 500,000₫"> Dưới
 									500,000₫</li>
-							<li><input type="checkbox" v-model="filterApplied" name="price" value = "500000-1000000"> 500,000₫
+							<li><input type="checkbox" v-model="filterApplied" name="price" value = "500,000₫-1,000,000₫"> 500,000₫
 									- 1,000,000₫</li>
-							<li><input type="checkbox" v-model="filterApplied" name="price" value = "1000000-1500000">
+							<li><input type="checkbox" v-model="filterApplied" name="price" value = "1,000,000₫-1,500,000₫">
 									1,000,000₫ - 1,500,000₫</li>
-							<li><input type="checkbox" v-model="filterApplied" name="price" value = "1500000-5000000">
+							<li><input type="checkbox" v-model="filterApplied" name="price" value = "1,500,000₫-5,000,000₫">
 									1,500,000₫ - 5,000,000₫</a></li>
-							<li><input type="checkbox" v-model="filterApplied" name="price" value = "tren-500000"> Trên
+							<li><input type="checkbox" v-model="filterApplied" name="price" value = "Trên 5,000,000₫"> Trên
 									5,000,000₫</li>
 						</ul>
 					</div>
@@ -154,9 +154,10 @@
 					</div>
 				<!-- /filter responsive -->
 			</div>
-			<span v-bind:class = "filterApplied.length == 0 ? 'filter_status dpn' : 'filter_status'" id = "filter_status" >
+			<span v-bind:class = "filterApplied.length == 0 && sort == null ? 'filter_status dpn' : 'filter_status'" id = "filter_status" >
 			Trạng thái lọc:
-				<span v-for = "item in filterApplied" class = "filter_selected">{{item}}<span class = "btn-close"><i class="fas fa-window-close" v-on:click = "setfilterApplied(item)"></i></span></span>
+				<span v-for = "item in filterApplied" class = "filter_selected">Giá:{{item}}<span class = "btn-close"><i class="fas fa-window-close" v-on:click = "setfilterApplied(item)"></i></span></span>
+				<span v-bind:class = "sort == null ? 'filter_selected dpn':'filter_selected'">{{sort}}<span class = "btn-close"><i class="fas fa-window-close" v-on:click = "setSortNull()"></i></span></span>
 			</span>
 			</div>
 			<div class="container-fluid">
@@ -196,9 +197,10 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/scroll.js"></script>
 <script src="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/vue.js"></script>
+	src="${pageContext.request.contextPath}/js/vue.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/axios.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/vueDanhMuc.js"></script>
 </html>

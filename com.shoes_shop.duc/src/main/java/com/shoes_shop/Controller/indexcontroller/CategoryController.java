@@ -32,40 +32,42 @@ public class CategoryController extends BaseController implements Contants{
 	CategoryRepo categoryRepo;
 	@Autowired
 	ProductRepo productRepo;
+	@RequestMapping(value = {"/products"}, method = RequestMethod.GET)
+	public ResponseEntity<List<ProductFilter>> test(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
+	throws Exception {
+		List<ProductFilter> prdList = new ArrayList<ProductFilter>();
+		String cate = request.getParameter("cate");
+		List<ProductEntity> prdListInDb = new ArrayList<ProductEntity>();;
+		if( cate!= null && categoryRepo.findBySeo(cate) != null || cate.equals("product-all") || cate.equals("accessory-all")) {
+			ProductSearching prds = new ProductSearching();
+			prds.setSeoCategory(cate);
+			if(cate.equals("product-all")) prdListInDb =  productRepo.findByStatus(true);
+			else if(cate.equals("accessory-all")) prdListInDb = productRepo.findByStatus(true);
+			else prdListInDb = productService.search(prds);
+		}
+		for(ProductEntity prd : prdListInDb) {
+			prdList.add(new ProductFilter(prd.getId(),prd.getTitle(),prd.getAvatar(),prd.getPrice()
+					,prd.getPrice_sale(),prd.getSize(),prd.getSeo(),prd.getCategory().getId()));
+		}
+		return ResponseEntity.ok(prdList);
+ }
 	@RequestMapping (value = "/shoes-shop/{seoOfCategory}", method = RequestMethod.GET)
-	public String indexFindByCategory(@PathVariable("seoOfCategory") String seoOfCategory,final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
+	public String testPage(@PathVariable("seoOfCategory") String seoOfCategory,final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 		HttpSession ss = request.getSession();
 		ss.setAttribute(CURRENTCATEGORYSEO, seoOfCategory);
-		ProductSearching productSearch = new ProductSearching();
-		productSearch.setSeoCategory(seoOfCategory);
-//		productSearch.setCurrentPage(Integer.parseInt(request.getParameter("page")));
-		List<ProductEntity> productList = productService.search(productSearch);
-		model.addAttribute("products", productList);
-		model.addAttribute("status", "Trang chủ / danh mục / " + categoryRepo.findBySeo(seoOfCategory).getName());
-		model.addAttribute("categoryname", categoryRepo.findBySeo(seoOfCategory).getName());
-		return "front-end/danhmuc";
-	}
-	@RequestMapping (value = "/product-all", method = RequestMethod.GET)
-	public String indexProductAll(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
-			throws Exception {
-		HttpSession ss = request.getSession();
-		ss.setAttribute(CURRENTCATEGORYSEO, "product-all");
-		model.addAttribute("categoryname", "Tất cả sản phẩm");
-		List<ProductEntity> productList = productRepo.findByStatus(true);
-		model.addAttribute("products", productList);
-		model.addAttribute("status", "Trang chủ / danh mục / Tất cả sản phẩm");
-		return "front-end/danhmuc";
-	}
-	@RequestMapping (value = "/accessory-all", method = RequestMethod.GET)
-	public String indexAccessoryAll(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
-			throws Exception {
-		HttpSession ss = request.getSession();
-		ss.setAttribute(CURRENTCATEGORYSEO, "accessory-all");
-		model.addAttribute("categoryname", "Tất cả phụ kiện");
-		List<ProductEntity> productList = productRepo.findByStatus(true);
-		model.addAttribute("products", productList);
-		model.addAttribute("status", "Trang chủ / danh mục / Tất cả phụ kiện");
+		if(seoOfCategory.equals("product-all")) {
+			model.addAttribute("status", "Trang chủ / danh mục / Tất cả sản phẩm");
+			model.addAttribute("categoryname", "Tất cả sản phẩm");
+		}
+		else if(seoOfCategory.equals("accessory-all")) {
+			model.addAttribute("status", "Trang chủ / danh mục / Tất cả phụ kiện");
+			model.addAttribute("categoryname", "Tất cả sản phẩm");
+		}
+		else {
+			if(categoryRepo.findBySeo(seoOfCategory) != null) {
+			model.addAttribute("status", "Trang chủ / danh mục / " + categoryRepo.findBySeo(seoOfCategory).getName());
+			model.addAttribute("categoryname", categoryRepo.findBySeo(seoOfCategory).getName());}}
 		return "front-end/danhmuc";
 	}
 	@RequestMapping (value = "/productlabel/{label}", method = RequestMethod.GET)

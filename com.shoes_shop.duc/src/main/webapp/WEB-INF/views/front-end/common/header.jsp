@@ -21,7 +21,7 @@
 					<li class="nav-item ${currentCategorySeo.equals('home') ? 'categoryactive' : ''}"><a class="nav-link color-hover"
 						href="${pageContext.request.contextPath}/"> TRANG CHỦ </a></li>
 					<li class="nav-item sp"><a class="nav-link color-hover"
-						href="${pageContext.request.contextPath}/product-all">SẢN PHẨM
+						href="${pageContext.request.contextPath}/shoes-shop/product-all">SẢN PHẨM
 							&nbsp<i class="fas fa-angle-down"></i>
 					</a>
 						<ul class="sub-menu sub-menu-sp color-hover">
@@ -32,7 +32,7 @@
 							</c:forEach>
 						</ul></li>
 					<li class="nav-item lc"><a class="nav-link color-hover"
-						href="${pageContext.request.contextPath}/accessory-all">PHỤ KIỆN
+						href="${pageContext.request.contextPath}/shoes-shop/accessory-all">PHỤ KIỆN
 							KHÁC &nbsp<i class="fas fa-angle-down"></i>
 					</a>
 						<ul class="sub-menu sub-menu-lc">
@@ -64,7 +64,7 @@
 							<div class="title-rp-menu">Menu</div>
 							<li class="nav-item ${currentCategorySeo.equals('home') ? 'categoryactive' : ''}">
 							<a class="nav-link color-hover" href="${pageContext.request.contextPath}/"> TRANG CHỦ </a></li>
-							<li class="nav-item sp"><a href="${pageContext.request.contextPath}/product-all">SẢN PHẨM &nbsp</a><i
+							<li class="nav-item sp"><a href="${pageContext.request.contextPath}/shoes-shop/product-all">SẢN PHẨM &nbsp</a><i
 								class="fas fa-angle-down sp-icon"></i>
 								<ul class="sub-menu-sp color-hover">
 									<c:forEach var="category" items="${categories}">
@@ -74,7 +74,7 @@
 									</c:forEach>
 								</ul></li>
 							<li class="nav-item lc">
-							<a href="${pageContext.request.contextPath}/accessory-all">PHỤ KIỆN
+							<a href="${pageContext.request.contextPath}/shoes-shop/accessory-all">PHỤ KIỆN
 									KHÁC &nbsp</a><i class="fas fa-angle-down lc-icon"></i>
 								<ul class="sub-menu-lc">
 									<c:forEach var="category" items="${categories}">
@@ -109,7 +109,7 @@
 				<li class="nav-item ${currentCategorySeo.equals('home') ? 'categoryactive' : ''}"><a class="nav-link color-hover"
 					href="${pageContext.request.contextPath}/"> TRANG CHỦ </a></li>
 				<li class="nav-item sp"><a class="nav-link color-hover"
-					href="${pageContext.request.contextPath}/product-all">SẢN PHẨM
+					href="${pageContext.request.contextPath}/shoes-shop/product-all">SẢN PHẨM
 						&nbsp<i class="fas fa-angle-down"></i>
 				</a>
 					<ul class="sub-menu sub-menu-sp color-hover">
@@ -120,7 +120,7 @@
 						</c:forEach>
 					</ul></li>
 				<li class="nav-item lc"><a class="nav-link color-hover"
-					href="${pageContext.request.contextPath}/accessory-all">PHỤ KIỆN KHÁC &nbsp<i class="fas fa-angle-down"></i></a>
+					href="${pageContext.request.contextPath}/shoes-shop/accessory-all">PHỤ KIỆN KHÁC &nbsp<i class="fas fa-angle-down"></i></a>
 					<ul class="sub-menu sub-menu-lc">
 						<c:forEach var="category" items="${categories}">
 							<c:if test="${category.categorytype.equals('phụ kiện khác')}">
