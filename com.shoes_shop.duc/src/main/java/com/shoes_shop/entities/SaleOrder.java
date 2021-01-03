@@ -38,6 +38,12 @@ public class SaleOrder extends BaseEntity {
 	@Column(name = "seo")
 	private String seo;
 	
+	@Column(name = "pay")
+	private boolean pay = false;
+	
+	@Column(name = "customer_active")
+	private boolean customerActive = true;
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "saleOrder", fetch = FetchType.EAGER)
 	private List<SaleOrderProducts> saleOrderProducts = new ArrayList<SaleOrderProducts>();
 	
@@ -120,6 +126,22 @@ public class SaleOrder extends BaseEntity {
 
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
+	}
+
+	public boolean isPay() {
+		return pay;
+	}
+
+	public void setPay(boolean pay) {
+		this.pay = pay;
+	}
+
+	public boolean isCustomer_active() {
+		return customerActive;
+	}
+
+	public void setCustomer_active(boolean customerActive) {
+		this.customerActive = customerActive;
 	}
 
 	

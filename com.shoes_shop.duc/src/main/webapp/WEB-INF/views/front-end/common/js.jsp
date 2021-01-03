@@ -4,6 +4,8 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
+<script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/solution.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/shop.js"></script>

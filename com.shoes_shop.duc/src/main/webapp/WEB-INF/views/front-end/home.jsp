@@ -13,7 +13,7 @@
 <body>
 	<div class="wrapper">
 		<!-- message -->
-		<div class="message">
+		<div class="message" id  = "message">
 			<img
 				src="${pageContext.request.contextPath}/images/logo/messege-image.png">
 			<div class="message-text">Xin chào bạn ! chúng tôi có thể giúp

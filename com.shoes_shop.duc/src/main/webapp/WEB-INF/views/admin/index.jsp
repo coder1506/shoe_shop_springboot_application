@@ -101,7 +101,7 @@
 											<td data-label="Tổng tiền">
 												${order.getTotal()}
 											</td>
-											<td data-label="Trạng Thái">${order.getStatus() == true ? 'Đang xử lý' : 'Đã thanh toán'}</td>
+											<td data-label="Trạng Thái">${order.pay == false ? 'Đang xử lý' : 'Đã thanh toán'}</td>
 										</tr>
 									</tbody>
 									</c:forEach>

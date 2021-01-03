@@ -62,7 +62,7 @@
 					<div href="#" class="buttn bot-btn">
 						Màu sắc &nbsp &nbsp <i class="fas fa-angle-down"></i>
 						<ul class="sub-menu sub-menu-filter">
-							<li><a><input type="checkbox" v-model="color" name="color" value = "blue"> Xanh</a></li>
+							<li><a><input type="checkbox" v-model="color" name="color" value = "xanh"> Xanh</a></li>
 							<li><a><input type="checkbox" v-model="color" value = "do"> Đỏ</a></li>
 							<li><a><input type="checkbox" v-model="color" value = "tim"> Tím</a></li>
 							<li><a><input type="checkbox" v-model="color" value = "vang"> Vàng</a></li>

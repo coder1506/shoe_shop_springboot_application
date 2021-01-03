@@ -9,6 +9,7 @@
 <title>Dashboard</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/main.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.css">
 </head>
 <body>
 	<div class="wrapper">
@@ -19,7 +20,7 @@
 					<div class="right__content">
 						<div class="right__title">Bảng điều khiển</div>
 						<p class="right__desc">Xem sản phẩm</p>
-						<div class="right__table">
+						<div class="right__table" id = "refreshTable">
 							<div class="right__tableWrapper">
 								<table>
 									<thead>
@@ -41,7 +42,7 @@
 											<td data-label="Email">${customer.getCustomerEmail()}</td>
 											<td data-label="Phone">${customer.getCustomerPhone()}</td>
 											<td data-label="Địa chỉ">${customer.getCustomerAddress()}</td>
-											<td data-label="Xoá" class="right__iconTable"><a href=""><img
+											<td data-label="Xoá" class="right__iconTable"><a onclick = "deleteCustomer(${customer.id})"><img
 													src="${pageContext.request.contextPath}/assets/icon-trash-black.svg"
 													alt=""></a></td>
 										</tr>
@@ -56,6 +57,9 @@
 		</div>
 	</div>
 
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/jquery/jquery-3.5.1.js"></script>
+<script src="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/main.js"></script>
 </body>
 </html>

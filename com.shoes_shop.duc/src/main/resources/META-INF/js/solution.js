@@ -55,6 +55,17 @@ $(document).ready(function(){
       // responsive menu
      // messege
      var checkmg = true;
+     $( init );
+		function init() {
+		  $('#message').draggable( {
+		    cursor: 'move',
+		    containment: 'document',
+		    stop:abc
+		  } );
+		}
+		function abc (){
+			checkmg = true;
+		}
      $('.message-text').attr('style','display:block;');
      setTimeout(function(){
         $('.message-text').removeAttr('style');

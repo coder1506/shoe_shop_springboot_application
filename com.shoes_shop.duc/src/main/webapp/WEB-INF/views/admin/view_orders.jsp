@@ -9,6 +9,7 @@
 <title>Dashboard</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/main.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.css">
 </head>
 <body>
 	<div class="wrapper">
@@ -19,7 +20,7 @@
 					<div class="right__content">
 						<div class="right__title">Bảng điều khiển</div>
 						<p class="right__desc">Xem đơn hàng</p>
-						<div class="right__table">
+						<div class="right__table" id = "refreshTable">
 							<div class="right__tableWrapper">
 								<table>
 									<thead>
@@ -62,16 +63,16 @@
 											<td data-label="Tổng tiền">
 												${order.getTotal()}
 											</td>
-											<td data-label="Trạng Thái">${order.getStatus() == true ? 'Đang xử lý' : 'Đã thanh toán'}</td>
-											<td data-label="Xoá" class="right__iconTable"><a href=""><img
+											<td data-label="Trạng Thái">${order.pay == false ? 'Đang xử lý' : 'Đã xử lý'}</td>
+											<td data-label="Xoá" class="right__iconTable"><a onclick = "deleteOrder(${order.id})"><img
 													src="${pageContext.request.contextPath}/assets/icon-trash-black.svg"
 													alt=""></a></td>
 											<td data-label="Thanh toán" class="right__confirm"><a
-												href="" class="right__iconTable"><img
+												onclick = "setPay(${order.id})" class="right__iconTable" style = "display:${order.pay == false ? 'inline' : 'none'}">Xác nhận <img
 													src="${pageContext.request.contextPath}/assets/icon-check.svg"
-													alt=""></a> <a href="" class="right__iconTable"><img
-													src="${pageContext.request.contextPath}/assets/icon-x.svg"
-													alt=""></a></td>
+													alt=""></a>
+													${order.pay == true ? 'Đã thanh toán' : ''}
+													</td>
 										</tr>
 									</c:forEach>
 									</tbody>
@@ -83,7 +84,9 @@
 			</div>
 		</div>
 	</div>
-
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/jquery/jquery-3.5.1.js"></script>
+<script src="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/main.js"></script>
 </body>
 </html>
