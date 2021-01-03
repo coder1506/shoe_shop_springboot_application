@@ -41,7 +41,17 @@ public class AccountController extends BaseController implements Contants{
 	}
 	@RequestMapping (value = "/user/checkout" , method = RequestMethod.GET)
 	public String userAccess(final ModelMap model ,final HttpServletRequest request,final HttpServletResponse response ) {
-		model.addAttribute("order", new SaleOrder());
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String name = null;
+		String email = null;
+		if (principal instanceof UserDetails) {
+			name  = ((User)principal).getName();
+			email = ((User)principal).getEmail();
+		}
+		SaleOrder or = new SaleOrder();
+		or.setCustomerName(name);
+		or.setCustomerEmail(email);
+		model.addAttribute("order", or);
 		model.addAttribute("status", "Trang chủ / Tài khoản / Xác nhận");
 		return "front-end/checkout";
 	}

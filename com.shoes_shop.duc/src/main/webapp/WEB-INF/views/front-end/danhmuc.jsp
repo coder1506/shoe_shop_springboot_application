@@ -40,10 +40,8 @@
 								<li><a id="gd" v-on:click = "setSort('gd','Giá: Giảm dần')">Giá: Giảm dần</a></li>
 								<li><a id="az" v-on:click = "setSort('az','Tên: A-Z')">Tên: A-Z</a></li>
 								<li><a id="za" v-on:click = "setSort('za','Tên: Z-A')">Tên: Z-A</a></li>
-								<li><a id="old">Cũ nhất</a></li>
-								<li><a id="new">Mới nhất</a></li>
-								<li><a id="bcn">Bán chạy nhất</a></li>
-								<li><a id="gdan">Tồn kho:Giảm dần</a></li>
+								<li><a id="new" v-on:click = "setSort('new','Mới nhất')">Mới nhất</a></li>
+								<li><a id="bcn" v-on:click = "setSort('bcn','Bán chạy nhất')">Bán chạy nhất</a></li>
 							</ul>
 					</div>
 					<div href="#" class="buttn bot-btn">
@@ -64,14 +62,14 @@
 					<div href="#" class="buttn bot-btn">
 						Màu sắc &nbsp &nbsp <i class="fas fa-angle-down"></i>
 						<ul class="sub-menu sub-menu-filter">
-							<li><a><input type="checkbox" name="color" value = "blue"> Xanh</a></li>
-							<li><a><input type="checkbox" value = "red" > Đỏ</a></li>
-							<li><a><input type="checkbox" value = "purple"> Tím</a></li>
-							<li><a><input type="checkbox" value = "yellow"> Vàng</a></li>
-							<li><a><input type="checkbox" value = "pink"> Hồng</a></li>
-							<li><a><input type="checkbox" value = "brown"> Nâu</a></li>
-							<li><a><input type="checkbox" value = "black"> Đen</a></li>
-							<li><a><input type="checkbox" value = "white"> Trắng</a></li>
+							<li><a><input type="checkbox" v-model="color" name="color" value = "blue"> Xanh</a></li>
+							<li><a><input type="checkbox" v-model="color" value = "do"> Đỏ</a></li>
+							<li><a><input type="checkbox" v-model="color" value = "tim"> Tím</a></li>
+							<li><a><input type="checkbox" v-model="color" value = "vang"> Vàng</a></li>
+							<li><a><input type="checkbox" v-model="color" value = "hong"> Hồng</a></li>
+							<li><a><input type="checkbox" v-model="color" value = "nau"> Nâu</a></li>
+							<li><a><input type="checkbox" v-model="color" value = "den"> Đen</a></li>
+							<li><a><input type="checkbox" v-model="color" value = "trang"> Trắng</a></li>
 						</ul>
 					</div>
 					<div href="#" class="buttn bot-btn">
@@ -82,6 +80,8 @@
 							<li><a><input type="checkbox" v-model="size" value="40"> 40</a></li>
 							<li><a><input type="checkbox" v-model="size" value="41"> 41</a></li>
 							<li><a><input type="checkbox" v-model="size" value="42"> 42</a></li>
+							<li><a><input type="checkbox" v-model="size" value="43"> 43</a></li>
+							<li><a><input type="checkbox" v-model="size" value="44"> 44</a></li>
 						</ul>
 					</div>
 				</div>
@@ -139,10 +139,11 @@
 					</div>
 				<!-- /filter responsive -->
 			</div>
-			<span v-bind:class = "filterApplied.length == 0 && sort == null && size.length == 0 ? 'filter_status dpn' : 'filter_status'" id = "filter_status" >
+			<span v-bind:class = "filterApplied.length == 0 && sort == null && size.length == 0 && color.length == 0 ? 'filter_status dpn' : 'filter_status'" id = "filter_status" >
 			Trạng thái lọc:
 				<span v-for = "item in filterApplied" class = "filter_selected">Giá: {{item}}<span class = "btn-close"><i class="fas fa-window-close" v-on:click = "setfilterApplied(item)"></i></span></span>
 				<span v-for = "item in size" class = "filter_selected">Size: {{item}}<span class = "btn-close"><i class="fas fa-window-close" v-on:click = "setSize(item)"></i></span></span>
+				<span v-for = "item in color" class = "filter_selected">Màu sắc: {{item}}<span class = "btn-close"><i class="fas fa-window-close" v-on:click = "setColor(item)"></i></span></span>
 				<span v-bind:class = "sort == null ? 'filter_selected dpn':'filter_selected'">{{sort}}<span class = "btn-close"><i class="fas fa-window-close" v-on:click = "setSortNull()"></i></span></span>
 			</span>
 			</div>

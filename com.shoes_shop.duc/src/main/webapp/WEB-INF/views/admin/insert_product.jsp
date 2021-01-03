@@ -86,10 +86,10 @@
 									<label for="title">Kích thước</label>
 									<form:input type="tel" pattern="[0-9]{2}([-]{1}([[0-9]){2}){0,6}" path = "size"  class="text" placeholder="12-34-56..." required="required"/> 
 								</div>
-								<!-- <div class="right__inputWrapper">
-									<label for="title">Màu sắc</label>
-									<input type="text" placeholder="Màu sắc" id = "color"/>
-								</div> -->
+								<div class="right__inputWrapper">
+									<label for="title">Màu sắc(chữ in thường không dấu)</label>
+									<form:input type="tel" pattern="[a-z]{0,5}([-]{1}([[a-z]){0,5}){0,6}" path = "color"  class="text" placeholder="xanh-do-tim..." required="required"/> 
+								</div>
 								<button class="btn" type="submit">Chèn</button>
 							</form:form>
 						</div>

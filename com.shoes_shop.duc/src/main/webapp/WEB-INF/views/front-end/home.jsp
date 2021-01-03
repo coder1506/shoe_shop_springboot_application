@@ -79,7 +79,7 @@
 						<div class="heading-panel">
 							<h2>Sản phẩm mới nhất</h2>
 							<div class="btn-more">
-								<a href="${pageContext.request.contextPath}/productlabel/${'san-pham-moi-nhat'}">Xem
+								<a href="${pageContext.request.contextPath}/shoes-shop/${'san-pham-moi-nhat'}">Xem
 									thêm</a>
 							</div>
 						</div>
@@ -112,7 +112,7 @@
 						<div class="heading-panel">
 							<h2>Sản phẩm nổi bật</h2>
 							<div class="btn-more">
-								<a href="${pageContext.request.contextPath}/productlabel/${'san-pham-noi-bat'}">Xem
+								<a href="${pageContext.request.contextPath}/shoes-shop/${'san-pham-noi-bat'}">Xem
 									thêm</a>
 							</div>
 						</div>
@@ -131,7 +131,7 @@
 										TIẾT</a>
 								</div>
 								<div class="cost">
-									<a>${product.title}</a> <br> 
+									<b>${product.title}</b>
 									<span style="display:${product.price_sale != null ? 'inline' :'none' }" class = "price">${product.getPriceFormat(product.price_sale)}</span>
 									&nbsp &nbsp
 									<span class = "price ${product.price_sale != null ? 'old-cost' :'' }">${product.getPriceFormat(product.price)}</span>  
@@ -145,7 +145,7 @@
 						<div class="heading-panel">
 							<h2>Sản phẩm giảm giá</h2>
 							<div class="btn-more">
-								<a href="${pageContext.request.contextPath}/productlabel/${'san-pham-giam-gia'}">Xem
+								<a href="${pageContext.request.contextPath}/shoes-shop/${'san-pham-giam-gia'}">Xem
 									thêm</a>
 							</div>
 						</div>
@@ -164,6 +164,7 @@
 										TIẾT</a>
 								</div>
 								<div class="cost">
+									<b>${product.title}</b> 
 									<span style="display:${product.price_sale != null ? 'inline' :'none' }" class = "price">${product.getPriceFormat(product.price_sale)}</span>
 									&nbsp &nbsp
 									<span class = "price ${product.price_sale != null ? 'old-cost' :'' }">${product.getPriceFormat(product.price)}</span> 

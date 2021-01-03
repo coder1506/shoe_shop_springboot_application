@@ -38,16 +38,19 @@ public class CategoryController extends BaseController implements Contants{
 		List<ProductFilter> prdList = new ArrayList<ProductFilter>();
 		String cate = request.getParameter("cate");
 		List<ProductEntity> prdListInDb = new ArrayList<ProductEntity>();;
-		if( cate!= null && categoryRepo.findBySeo(cate) != null || cate.equals("product-all") || cate.equals("accessory-all")) {
+		if( cate!= null && categoryRepo.findBySeo(cate) != null || cate.equals("product-all") || cate.equals("san-pham-moi-nhat") || cate.equals("san-pham-noi-bat") || cate.equals("san-pham-giam-gia") || cate.equals("accessory-all")) {
 			ProductSearching prds = new ProductSearching();
 			prds.setSeoCategory(cate);
 			if(cate.equals("product-all")) prdListInDb =  productRepo.findByStatus(true);
 			else if(cate.equals("accessory-all")) prdListInDb = productRepo.findByStatus(true);
+			else if(cate.equals("san-pham-moi-nhat")) prdListInDb = productRepo.findByProducttypeAndStatus(cate, true);
+			else if(cate.equals("san-pham-noi-bat")) prdListInDb = productRepo.findByProducttypeAndStatus(cate, true);
+			else if(cate.equals("san-pham-giam-gia")) prdListInDb = productRepo.findByProducttypeAndStatus(cate, true);
 			else prdListInDb = productService.search(prds);
 		}
 		for(ProductEntity prd : prdListInDb) {
 			prdList.add(new ProductFilter(prd.getId(),prd.getTitle(),prd.getAvatar(),prd.getPrice()
-					,prd.getPrice_sale(),prd.getSize(),prd.getSeo(),prd.getCategory().getId()));
+					,prd.getPrice_sale(),prd.getSize(),prd.getSeo(),prd.getCategory().getId(),prd.getColor(),prd.getProducttype()));
 		}
 		return ResponseEntity.ok(prdList);
  }
@@ -64,26 +67,22 @@ public class CategoryController extends BaseController implements Contants{
 			model.addAttribute("status", "Trang chủ / danh mục / Tất cả phụ kiện");
 			model.addAttribute("categoryname", "Tất cả sản phẩm");
 		}
+		else if(seoOfCategory.equals("san-pham-moi-nhat")) {
+			model.addAttribute("status", "Trang chủ / danh mục / Sản phẩm mới nhất");
+			model.addAttribute("categoryname", "Sản phẩm mới nhất");
+		}
+		else if(seoOfCategory.equals("san-pham-noi-bat")) {
+			model.addAttribute("status", "Trang chủ / danh mục / Sản phẩm nổi bật");
+			model.addAttribute("categoryname", "Sản phẩm nổi bật");
+		}
+		else if(seoOfCategory.equals("san-pham-giam-gia")) {
+			model.addAttribute("status", "Trang chủ / danh mục / Sản phẩm giảm giá");
+			model.addAttribute("categoryname", "Sản phẩm giảm giá");
+		}
 		else {
 			if(categoryRepo.findBySeo(seoOfCategory) != null) {
 			model.addAttribute("status", "Trang chủ / danh mục / " + categoryRepo.findBySeo(seoOfCategory).getName());
 			model.addAttribute("categoryname", categoryRepo.findBySeo(seoOfCategory).getName());}}
-		return "front-end/danhmuc";
-	}
-	@RequestMapping (value = "/productlabel/{label}", method = RequestMethod.GET)
-	public String FindProductByLabels(@PathVariable("label") String label,final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
-			throws Exception {
-		List<ProductEntity> productList = productRepo.findByProducttypeAndStatus(label,true);
-		if(label.equals("san-pham-moi-nhat")) {
-		model.addAttribute("categoryname", "Sản phẩm mới nhất");
-		model.addAttribute("status", "Trang chủ / danh mục / Sản phẩm mới nhất");}
-		else if(label.equals("san-pham-noi-bat")) {
-			model.addAttribute("categoryname", "Sản phẩm nổi bật");
-		model.addAttribute("status", "Trang chủ / danh mục / Sản phẩm nổi bật");}
-		else 
-			model.addAttribute("categoryname", "Sản phẩm giảm giá");
-		model.addAttribute("status", "Trang chủ / danh mục / Sản phẩm giảm giá");
-		model.addAttribute("products", productList);
 		return "front-end/danhmuc";
 	}
 }

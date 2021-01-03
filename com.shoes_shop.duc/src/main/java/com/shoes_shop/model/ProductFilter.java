@@ -11,6 +11,8 @@ public class ProductFilter {
 	private String size;
 	private String seo;
 	private int category;
+	private String color;
+	private String producttype;
 	
 	public int getCategory() {
 		return category;
@@ -60,8 +62,21 @@ public class ProductFilter {
 	public void setSeo(String seo) {
 		this.seo = seo;
 	}
+	
+	public String getColor() {
+		return color;
+	}
+	public void setColor(String color) {
+		this.color = color;
+	}
+	public String getProducttype() {
+		return producttype;
+	}
+	public void setProducttype(String producttype) {
+		this.producttype = producttype;
+	}
 	public ProductFilter(int id, String title, String avatar, BigDecimal price, BigDecimal price_sale, String size,
-			String seo,int category) {
+			String seo,int category,String color,String producttype) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -71,6 +86,8 @@ public class ProductFilter {
 		this.size = size;
 		this.seo = seo;
 		this.category = category;
+		this.color = color;
+		this.producttype = producttype;
 	}
 	public ProductFilter() {
 	}

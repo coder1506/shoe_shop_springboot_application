@@ -44,11 +44,25 @@ function sortProduct(arr , sortType)
 			else return 0;
 		});
 	}
+	if(sortType ==  "Mới nhất"){
+		return arr.filter(ele => ele.producttype == 'san-pham-moi-nhat')
+	}
+	if(sortType ==  "Bán chạy nhất"){
+		return arr.filter(ele => ele.producttype == 'san-pham-noi-bat')
+	}
 }
-function sizeProductSort(arr , sizeArr){
+function productSortWithSize(arr , sizeArr){
 	return arr.filter(function(ele){
 		for(var i = 0; i< sizeArr.length;i++){
 			if(!ele.size.split('-').includes(String(sizeArr[i]))) return false;
+		}
+		return true;
+	});
+}
+function productSortWithColor(arr , colorArr){
+	return arr.filter(function(ele){
+		for(var i = 0; i< colorArr.length;i++){
+			if(!ele.color.split('-').includes(String(colorArr[i]))) return false;
 		}
 		return true;
 	});
@@ -61,6 +75,7 @@ var app = new Vue({
   	products:[],
   	sort:null,
   	size:[],
+  	color:[]
   },
   computed:{
   	filterItems:function(){
@@ -114,10 +129,15 @@ var app = new Vue({
   			count++;
   		}
   		if(this.size.length > 0){
-  			check = true;
   			if(count == 0){
-  			prdListFinal = sizeProductSort(this.products,this.size);}
-  			else prdListFinal = sizeProductSort(prdListFinal,this.size);
+  			prdListFinal = productSortWithSize(this.products,this.size);}
+  			else prdListFinal = productSortWithSize(prdListFinal,this.size);
+  			count++; 
+  		}
+  		if(this.color.length > 0){
+  			if(count == 0){
+  			prdListFinal = productSortWithColor(this.products,this.color);}
+  			else prdListFinal = productSortWithColor(prdListFinal,this.color);
   			count++; 
   		}
   		if(count > 0 ) return prdListFinal;
@@ -132,6 +152,9 @@ var app = new Vue({
   },
   setSize:function(fil){
   	this.size = this.size.filter(dk => dk != fil);
+  },
+  setColor:function(fil){
+  	this.color = this.color.filter(dk => dk != fil);
   },
   setSort:function(id,sortSl){
   	setClassSeleted(id);

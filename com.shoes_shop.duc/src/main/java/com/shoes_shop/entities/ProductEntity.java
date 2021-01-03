@@ -50,7 +50,10 @@ public class ProductEntity extends BaseEntity {
 
 	@Column(name = "seo", nullable = false)
 	private String seo;
-
+	
+	@Column(name = "color", nullable = false)
+	private String color;
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "category_id")
 	private CategoryEntity category;
@@ -138,6 +141,14 @@ public class ProductEntity extends BaseEntity {
 
 	public void setSeo(String seo) {
 		this.seo = seo;
+	}
+	
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
 	}
 
 	public String getAvatar() {
