@@ -28,7 +28,7 @@ public class AdminDashboardController {
 		model.addAttribute("products", productRepo.findByStatus(true));
 		model.addAttribute("categories", categoryRepo.findByStatus(true));
 		model.addAttribute("customers", orderRepo.findAll());
-		model.addAttribute("countOrder", orderRepo.findAll());
+		model.addAttribute("countOrder", orderRepo.findByStatus(true));
 		model.addAttribute("orders", orderRepo.findAllByCreatedDate(LocalDate.now()+""));
 		return "admin/index";
 	}

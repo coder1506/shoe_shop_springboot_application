@@ -11,6 +11,7 @@
 <jsp:include page="/WEB-INF/views/front-end/common/css.jsp"></jsp:include>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/stylechitiet.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.css">
 </head>
 <body>
 	<div class="wrapper">
@@ -136,4 +137,5 @@
 	src="${pageContext.request.contextPath}/js/bootstrap-4.5.2-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/scroll.js"></script>
+<script src="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.js"></script>
 </html>

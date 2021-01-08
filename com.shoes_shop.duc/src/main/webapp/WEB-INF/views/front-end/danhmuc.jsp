@@ -170,6 +170,19 @@
 						</div>
 				</div>
 			</div>
+			<!-- pagination-->
+			<nav aria-label="..." v-bind:class = "numberOfPage < 2 ? 'dpn' : ''">
+				  <ul class="pagination pagi-margin" id = "pagi-custom">
+				    <li class="page-item">
+				      <a class="page-link" tabindex="-1" v-on:click = "pmPageNumber(-1)"><i class="fas fa-backward"></i></a>
+				    </li>
+				    <li v-for = "i in numberOfPage"  v-bind:class="pageNumber == i ? 'page-item active' : 'page-item'"><a class = "page-link" v-bind:value = "i" v-on:click = "setPageNumber(i)">{{i}}</a></li>
+				  <li class="page-item">
+				      <a class="page-link" v-on:click = "pmPageNumber(1)"> <i class="fas fa-forward"></i></a>
+				    </li>
+				  </ul>
+				</nav>
+			<!-- /pagination-->
 			<!-- /content -->
 			<jsp:include page="/WEB-INF/views/front-end/common/footer.jsp"></jsp:include>
 		</div>

@@ -36,9 +36,9 @@ public class Cart {
 		return df.format(priceConvert);}
 		return "";
 	}
-	public ProductCart findById(int id) {
+	public ProductCart findByIdAndSize(int id,int size) {
 		for(ProductCart p : Cart) {
-			if(p.getProductCode() == id) return p;
+			if(p.getProductCode() == id && p.getSize() == size) return p;
 		}
 		return null;
 	}

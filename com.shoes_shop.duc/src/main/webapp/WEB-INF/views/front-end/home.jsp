@@ -51,12 +51,9 @@
 						<c:forEach var = "slide" items = "${slides }">
 						<c:if test = "${slides.indexOf(slide) != 0}">
 						<div class="carousel-item">
-							<img src="${pageContext.request.contextPath}/file/uploads/slides/${slide.getImage()}"
-								alt="4" width="1100" height="500">
+							<a href="${pageContext.request.contextPath}/${slide.getUrl()}"><img src="${pageContext.request.contextPath}/file/uploads/slides/${slide.getImage()}"
+								alt="4" width="1100" height="500"></a>
 							<h3 class="title-slide">${slide.getTitle()}</h3>
-							<div class="btn-more btn-mn ">
-								<a href="${pageContext.request.contextPath}/${slide.getUrl()}" class = "slide-btn">Mua ngay</a>
-							</div>
 						</div></c:if>
 						</c:forEach>
 					</div>

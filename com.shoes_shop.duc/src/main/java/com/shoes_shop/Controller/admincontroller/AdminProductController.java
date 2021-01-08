@@ -43,9 +43,21 @@ public class AdminProductController extends BaseController{
 			final ModelMap model,final HttpServletRequest request,final HttpServletResponse response 
 			,@ModelAttribute("product") ProductEntity product) throws IllegalStateException, IOException {
 		model.addAttribute("product", new ProductEntity());	
-		String ms = "repair";
+		String ms = "<script> setTimeout(function() {Swal.fire({"
+				+ "						  icon: 'success',"
+				+ "						  title: 'Sửa thành công',"
+				+ "						  confirmButtonText: 'Ok'"
+				+ "						}).then(function(){"
+				+ "                     window.location = 'http://localhost:8080/admin/product';"
+				+ "                  });},500)</script>";
 		if(product.getId() == null) { 
-			ms = "add";
+			ms = "<script> setTimeout(function() {Swal.fire({"
+					+ "						  icon: 'success',"
+					+ "						  title: 'Thêm thành công',"
+					+ "						  confirmButtonText: 'Ok'"
+					+ "						}).then(function(){"
+					+ "                     window.location = 'http://localhost:8080/admin/product';"
+					+ "                  });},500)</script>";
 			try {
 				// send a notification
 				productservice.sendNoti(product);
@@ -54,7 +66,8 @@ public class AdminProductController extends BaseController{
 			}
 		}
 		productservice.save(productImages, product);
-		return "redirect:/admin/productlist?"+ms+"=success";
+		model.addAttribute("message",ms);
+		return "admin/insert_product";
 	}
 	@RequestMapping (value = "/admin/repairproduct/{id}",method = RequestMethod.GET)
 	public String repairProduct(@PathVariable("id") Integer id,
@@ -64,27 +77,6 @@ public class AdminProductController extends BaseController{
 		model.addAttribute("product", prd);
 		model.addAttribute("title", "Sửa sản phẩm");
 		return "admin/insert_product";
-	}
-	@RequestMapping (value = "/admin/productlist",method = RequestMethod.GET)
-	public String returnProductList(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {
-		model.addAttribute("products", productRepo.findByStatus(true));
-		if(request.getParameter("repair") != null) {
-		if(request.getParameter("repair").equalsIgnoreCase("success"))
-			model.addAttribute("message", "<script>Swal.fire({"
-					+ "						  icon: 'success',"
-					+ "						  title: 'Sửa thành công',"
-					+ "						  showConfirmButton: false,"
-					+ "						  timer: 1500"
-					+ "						});</script>");}
-		else if(request.getParameter("add").equalsIgnoreCase("success"))
-			model.addAttribute("message",  "<script>Swal.fire({"
-					+ "						  icon: 'success',"
-					+ "						  title: 'Thêm thành công',"
-					+ "						  showConfirmButton: false,"
-					+ "						  timer: 1500"
-					+ "						});</script>");
-		else model.addAttribute("message", " ");
-		return "admin/view_product";
 	}
 	@RequestMapping (value = "/admin/product",method = RequestMethod.GET)
 	public String viewProduct(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) {

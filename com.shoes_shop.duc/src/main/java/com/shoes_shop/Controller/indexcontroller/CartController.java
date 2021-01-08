@@ -75,7 +75,7 @@ public class CartController extends BaseController implements Contants{
 	throws Exception {
 		HttpSession ss = request.getSession();
 		Cart cart = (Cart)ss.getAttribute("shop_cart");
-		cart.getCart().remove(cart.findById(data.getId()));
+		cart.getCart().remove(cart.findByIdAndSize(data.getId(),data.getSize()));
 		ss.setAttribute("amount",countProduct(cart));
 		return ResponseEntity.ok(new AjaxResponse(200,"Xoá thành công"));
  }

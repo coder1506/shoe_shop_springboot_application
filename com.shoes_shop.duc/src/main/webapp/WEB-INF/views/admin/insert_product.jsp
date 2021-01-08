@@ -13,6 +13,7 @@
 	href="${pageContext.request.contextPath}/css/main.css">
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/jquery/jquery-3.5.1.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.css">
 </head>
 <body>
 	<div class="wrapper">
@@ -50,17 +51,17 @@
 									<label for="label">Nhãn sản phẩm</label> 
 									<form:select path="producttype">
 										<form:option value="san-pham-moi-nhat" label="Sản phẩm mới nhất"/>
-										<form:option value="san-pham-noi-bat" label="Sản phẩm nổi bật"/>
 										<form:option value="san-pham-giam-gia" label="Sản phẩm giảm giá"/>
+										<form:option value="san-pham-noi-bat" label="Sản phẩm nổi bật"/>
 									</form:select>
 								</div>
 								<div class="right__inputWrapper">
 									<label for="title">Giá sản phẩm</label>
-									<form:input type="text" placeholder="Giá sản phẩm" path="price" />
+									<form:input type="tel" pattern="[0-9' ']*" placeholder="Giá sản phẩm" path="price" />
 								</div>
 								<div class="right__inputWrapper">
 									<label for="title">Giá sản phẩm giảm còn</label>
-									<form:input type="text" placeholder="Giá sản phẩm sau khi giảm" path="price_sale" />
+									<form:input type="tel" pattern="[0-9' ']*" placeholder="Giá sản phẩm sau khi giảm" path="price_sale" />
 								</div>
 								<div class="right__inputWrapper">
 									<label for="desc">Mô tả ngắn</label>
@@ -99,8 +100,10 @@
 		</div>
 	</div>
 </body>
-${alertMs}
+${message}
 <script src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script src="${pageContext.request.contextPath}/js/main.js"></script>
 <script src="${pageContext.request.contextPath}/js/editor-solution.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery/jquery-3.5.1.js"></script>
+<script src="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.js"></script>
 </html>

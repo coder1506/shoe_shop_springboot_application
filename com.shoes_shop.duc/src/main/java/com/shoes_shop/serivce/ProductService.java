@@ -22,10 +22,12 @@ import com.shoes_shop.entities.EmailEntity;
 import com.shoes_shop.entities.ProductEntity;
 import com.shoes_shop.entities.ProductImages;
 import com.shoes_shop.entities.SizeEntity;
+import com.shoes_shop.entities.User;
 import com.shoes_shop.model.ProductSearching;
 import com.shoes_shop.repositories.EmailRepo;
 import com.shoes_shop.repositories.ProductRepo;
 import com.shoes_shop.repositories.SizeRepo;
+import com.shoes_shop.repositories.UserRepo;
 
 @Service
 public class ProductService {
@@ -38,6 +40,8 @@ public class ProductService {
 	EmailRepo emailRepo;
 	@Autowired
 	SizeRepo sizeRepo;
+	@Autowired
+	UserRepo userRepo;
 	public boolean isEmptyUploadFile(MultipartFile[] images) {
 		if(images == null || images.length <= 0 ) return true;
 		if(images.length == 0 || images[0].getOriginalFilename().isEmpty() == true) return true;
@@ -122,8 +126,15 @@ public class ProductService {
 			e.printStackTrace();
 		}
 				SimpleMailMessage message = new SimpleMailMessage();
-		        for(EmailEntity em : emailRepo.findAll()) {
+		        for(EmailEntity em : emailRepo.findByStatus(true)) {
 			        message.setTo(em.getEmail());
+			        message.setSubject("HOT NEW");
+			        message.setText("Chúng tôi mới bán thêm một sản phẩm mới tên là " +product.getTitle()+
+			        		". nhấn vào đây để biết thêm thông tin chi tiết");
+			        emailSender.send(message);
+		        }
+		        for(User ur : userRepo.findByStatus(true)) {
+		        	message.setTo(ur.getEmail());
 			        message.setSubject("HOT NEW");
 			        message.setText("Chúng tôi mới bán thêm một sản phẩm mới tên là " +product.getTitle()+
 			        		". nhấn vào đây để biết thêm thông tin chi tiết");

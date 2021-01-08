@@ -9,6 +9,7 @@
 <title>Dashboard</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/main.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.css">
 </head>
 <body>
 	<div class="wrapper">
@@ -42,7 +43,9 @@
 			</div>
 		</div>
 	</div>
-
 	<script src="${pageContext.request.contextPath}/js/main.js"></script>
+	<script src="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/sweetalert/sweetalert2.js"></script>
+	${message}
 </body>
 </html>

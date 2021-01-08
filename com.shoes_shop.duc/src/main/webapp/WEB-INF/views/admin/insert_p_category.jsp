@@ -9,6 +9,7 @@
 <title>Dashboard</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/main.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.css">
 </head>
 <body>
 	<div class="wrapper">
@@ -31,7 +32,7 @@
 									<form:textarea path ="description" id="editor" cols="30" rows="10" placeholder="Mô tả"></form:textarea>
 								</div>
 								<div class="right__inputWrapper">
-								<label for="label">Nhãn sản phẩm</label> 
+								<label for="label">Thuộc danh mục cha</label> 
 									<form:select path="categorytype">
 										<form:option value="sản phẩm" label="sản phẩm"/>
 										<form:option value="phụ kiện khác" label="phụ kiện khác"/>
@@ -46,7 +47,11 @@
 			</div>
 		</div>
 	</div>
+	${message}
 	<script src="${pageContext.request.contextPath}/js/main.js"></script>
 	<script src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery/jquery-3.5.1.js"></script>
+	<script src="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/sweetalert/sweetalert2.js"></script>
 </body>
 </html>

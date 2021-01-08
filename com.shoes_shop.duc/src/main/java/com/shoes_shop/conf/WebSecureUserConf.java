@@ -69,7 +69,7 @@ public class WebSecureUserConf extends WebSecurityConfigurerAdapter {
              User user =  userRepo.findByUsername(userDetails.getUsername());
              user.setPassword("");
              ss.setAttribute("currentUser",user);
-             response.sendRedirect("/");
+             response.sendRedirect("/user/info");
          }
     }) // when user success authenticated then go to this url.
         .failureUrl("/user?error_login=true") // nhập username, password sai thì redirect về trang nào.

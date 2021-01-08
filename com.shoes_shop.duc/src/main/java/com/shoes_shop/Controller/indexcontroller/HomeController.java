@@ -37,9 +37,9 @@ public class HomeController extends BaseController implements Contants{
 	public String index(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 		HttpSession ss = request.getSession();
-		model.addAttribute("productMn", productRepo.findByStatusAndProducttype(true, "san-pham-moi-nhat"));
-		model.addAttribute("productNb", productRepo.findByStatusAndProducttype(true, "san-pham-noi-bat"));
-		model.addAttribute("productGg", productRepo.findByStatusAndProducttype(true, "san-pham-giam-gia"));
+		model.addAttribute("productMn", productRepo.findByProducttypeAndStatus("san-pham-moi-nhat",true));
+		model.addAttribute("productNb", productRepo.findByProducttypeAndStatus("san-pham-noi-bat",true));
+		model.addAttribute("productGg", productRepo.findByProducttypeAndStatus("san-pham-giam-gia",true));
 		ss.setAttribute(CURRENTCATEGORYSEO, "home");
 		ss.setAttribute("slides", slideRepo.findByStatus(true));
 		if(ss.getAttribute("shop_cart") == null) model.addAttribute("amount", 0);

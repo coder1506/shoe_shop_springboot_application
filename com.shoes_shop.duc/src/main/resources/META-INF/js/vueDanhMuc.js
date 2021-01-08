@@ -75,7 +75,9 @@ var app = new Vue({
   	products:[],
   	sort:null,
   	size:[],
-  	color:[]
+  	color:[],
+  	numberOfPage :null,
+  	pageNumber:1
   },
   computed:{
   	filterItems:function(){
@@ -166,12 +168,28 @@ var app = new Vue({
   },
   setCate:function(){
   	this.cate = getCate();
-  	  axios
-      .get('/products?cate='+this.cate)
-      .then(response => (this.products = response.data))
+  	axios
+      .get('/products?cate='+this.cate+'&page='+this.pageNumber)
+      .then(response => {this.products = response.data.prdList,this.numberOfPage = response.data.numberOfPage})
   },
   setCartData:function(id,sl,size){
   		cartData(id,sl,size);
+  },
+  setPageNumber:function(n){
+  		this.pageNumber = n;
+  		axios
+      .get('/products?cate='+this.cate+'&page='+this.pageNumber)
+      .then(response => this.products = response.data.prdList)
+  },
+  pmPageNumber:function(n){
+  		if(this.pageNumber + (n) == 0)
+  		this.pageNumber = 1;
+  		else if(this.pageNumber + (n) == (this.numberOfPage + 1))
+  		this.pageNumber = this.numberOfPage;
+  		else this.pageNumber = this.pageNumber + (n)
+  		axios
+      .get('/products?cate='+this.cate+'&page='+this.pageNumber)
+      .then(response => this.products = response.data.prdList)
   },
   formatPrice:function(value) {
         let val = (value/1).toFixed(0).replace('.', ',')

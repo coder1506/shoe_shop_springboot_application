@@ -58,13 +58,13 @@
 							<h4>${product.productTitle}</h4>
 							<br>
 							<div class="amount">
-								<button class="btn" onclick = "Shop.cartData(${product.productCode},${product.productAmount > 1 ? -1 : 0},${product.size})">-</button>
+								<button class="btn" onclick = "pmProductCart(${product.productCode},${product.productAmount > 1 ? -1 : 0},${product.size})">-</button>
 								<div class="current-amount" id = "${product.productCode}">${product.productAmount}</div>
-								<button class="btn" onclick = "Shop.cartData(${product.productCode},1,${product.size})">+</button>
+								<button class="btn" onclick = "pmProductCart(${product.productCode},1,${product.size})">+</button>
 								<span class = "title_cart "><span class = "price">${product.getPriceFormat(product.productPrice)}</span></span>
 							</div>
 							<span>Size : ${product.size}</span>
-							<button type="button" class="btn btn-outline-danger btn-deleted-align" onclick = "Shop.cartDeleteData(${product.productCode});">Xoá</button>
+							<button type="button" class="btn btn-outline-danger btn-deleted-align" onclick = "Shop.cartDeleteData(${product.productCode},${product.size});">Xoá</button>
 						</td>
 					</tr>
 				</c:forEach>
@@ -90,11 +90,8 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/solution.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/scroll.js"></script>
-	<script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/shop.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/sweetalert/sweetalert2.js"></script>
 </html>

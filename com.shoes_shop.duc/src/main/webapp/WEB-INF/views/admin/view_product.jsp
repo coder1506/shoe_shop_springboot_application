@@ -30,7 +30,6 @@
 											<th>Hình ảnh</th>
 											<th>Giá cũ SP</th>
 											<th>Giá mới</th>
-											<th>Đã bán</th>
 											<th>Thời gian</th>
 											<th>Sửa</th>
 											<th>Xoá</th>
@@ -47,7 +46,6 @@
 													alt=""></td>
 												<td data-label="Giá cũ">${product.price}</td>
 												<td data-label="Giá mới">${product.price_sale != null ? product.price_sale : 'chưa có'}</td>
-												<td data-label="Đã bán">1</td>
 												<td data-label="Thời gian">${product.formatDate(product.createdDate)}</td>
 												<td data-label="Sửa" class="right__iconTable"><a
 													href="${pageContext.request.contextPath}/admin/repairproduct/${product.id}"><img
@@ -68,7 +66,6 @@
 			</div>
 		</div>
 	</div>
-	${alertMs}
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery/jquery-3.5.1.js"></script>
 	<script src="${pageContext.request.contextPath}/js/main.js"></script>
 	<script src="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.js"></script>

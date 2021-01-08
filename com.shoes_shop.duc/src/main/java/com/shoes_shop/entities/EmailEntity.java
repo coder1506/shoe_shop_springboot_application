@@ -18,6 +18,8 @@ public class EmailEntity {
 	private Integer id; // primary-key
 	@Column(name = "email",length = 100,nullable = false)
 	private String email;
+	@Column(name = "status",nullable = false)
+	private boolean status = true;
 	@Column(name = "createdDate",nullable = false)
 	private LocalDateTime createdDate;
 	public Integer getId() {
@@ -37,6 +39,12 @@ public class EmailEntity {
 	}
 	public void setCreatedDate(LocalDateTime localDateTime) {
 		this.createdDate = localDateTime;
+	}
+	public boolean getStatus() {
+		return status;
+	}
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 	
 }

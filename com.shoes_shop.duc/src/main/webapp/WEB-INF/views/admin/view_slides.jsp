@@ -51,6 +51,5 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery/jquery-3.5.1.js"></script>
 	<script src="${pageContext.request.contextPath}/js/main.js"></script>
 	<script src="${pageContext.request.contextPath}/js/sweetalert/dist/sweetalert2.min.js"></script>
-	<script src="${pageContext.request.contextPath}/js/sweetalert/sweetalert2.js"></script>
 </body>
 </html>

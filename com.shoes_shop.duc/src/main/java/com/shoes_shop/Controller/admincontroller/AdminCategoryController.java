@@ -28,7 +28,24 @@ public class AdminCategoryController {
 	@RequestMapping (value = "/admin/addcategory",method = RequestMethod.POST)
 	public String addCategory(final ModelMap model,final HttpServletRequest request,final HttpServletResponse response,
 			 @ModelAttribute("category") CategoryEntity cat) {
+		String ms = "<script> setTimeout(function() {Swal.fire({"
+				+ "						  icon: 'success',"
+				+ "						  title: 'Thêm thành công',"
+				+ "						  confirmButtonText: 'Ok'"
+				+ "						}).then(function(){"
+				+ "                     window.location = 'http://localhost:8080/admin/viewcategory';"
+				+ "                  });},0)</script>";
+		if(cat.getId() != null) {
+			ms = "<script> setTimeout(function() {Swal.fire({"
+					+ "						  icon: 'success',"
+					+ "						  title: 'Sửa thành công',"
+					+ "						  confirmButtonText: 'Ok'"
+					+ "						}).then(function(){"
+					+ "                     window.location = 'http://localhost:8080/admin/viewcategory';"
+					+ "                  });},0)</script>";
+		}
 		categoryService.save(cat);
+		model.addAttribute("message", ms);
 		return "admin/insert_p_category";
 	}
 	@RequestMapping (value = "/admin/addcategory",method = RequestMethod.GET)

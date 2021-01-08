@@ -2,13 +2,13 @@
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<header class="header" id = "${products.size() > 0|| productMn.size() > 0 || product != null? 'header' : ''}">
+<header class="header" id = "header">
 	<!--header-top-content  -->
 	<div class="header-content">
 		<div class="header-top-content">
 			<div class="search">
 				<form action="${pageContext.request.contextPath}/search" method = "get">
-					<input type="text" class="color-hover" name = "key" id="input-search" placeholder="Tìm kiếm sản phẩm..." required/>
+					<input type="search" class="color-hover" name = "key" id="input-search" placeholder="Tìm kiếm sản phẩm..." required/>
 					<button class="color-hover" type = "submit">
 						<i class="fas fa-search"></i>
 					</button>
@@ -95,7 +95,7 @@
 		<!-- responsive-search -->
 		<div class="search responsive-search">
 			<form action="${pageContext.request.contextPath}/search" method = "get">
-				<input type="text" name="key" class="color-hover"
+				<input type="search" name="key" class="color-hover"
 					placeholder="Tìm kiếm sản phẩm..." required>
 				<button class="color-hover">
 					<i class="fas fa-search"></i>

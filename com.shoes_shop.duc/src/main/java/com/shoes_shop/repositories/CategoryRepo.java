@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.shoes_shop.entities.CategoryEntity;
 @Repository
 public interface CategoryRepo extends JpaRepository<CategoryEntity,Integer>{
-	public CategoryEntity findBySeo(String seo);
+	public CategoryEntity findBySeoAndStatus(String seo,boolean stt);
 	public List<CategoryEntity> findByStatus(boolean stt);
 }

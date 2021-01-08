@@ -73,7 +73,15 @@ public class AccountController extends BaseController implements Contants{
 		orderSerivce.saveOrder(cart, order,id);
 		ss.removeAttribute("shop_cart");
 		ss.removeAttribute("amount");
-		return "front-end/home";
+		String ms = "<script> setTimeout(function() {Swal.fire({"
+				+ "						  icon: 'success',"
+				+ "						  title: 'Đặt hàng thành công',"
+				+ "						  confirmButtonText: 'Ok'"
+				+ "						}).then(function(){"
+				+ "                     window.location = 'http://localhost:8080';"
+				+ "                  });},0)</script>";
+		model.addAttribute("message", ms);
+		return "front-end/checkout";
 	}
 	@RequestMapping (value = "/accountRegister" , method = RequestMethod.GET)
 	public String accountSingInIndex(final ModelMap model ,final HttpServletRequest request,final HttpServletResponse response ) {

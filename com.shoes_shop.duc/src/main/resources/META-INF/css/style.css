@@ -578,11 +578,6 @@ body {
 	position: relative;
 }
 
-.slide_list .active img{
-	transform:scale(1.1);
-	animation: zoomInSlide 15s forwards;
-}
-
 .btn-mn a {
 	padding: 10px 20px !important;
 	color: #292929 !important;
@@ -963,14 +958,6 @@ body {
 }
 	100%{
 	margin-top: 0px;
-	}
-}
-@keyframes zoomInSlide{ 
-	0%{
-	transform:scale(1.1);
-}
-	100%{
-	transform:scale(1);
 	}
 }
 /*/animation*/

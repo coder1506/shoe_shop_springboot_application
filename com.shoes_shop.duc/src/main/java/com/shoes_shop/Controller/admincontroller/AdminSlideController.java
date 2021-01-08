@@ -38,8 +38,25 @@ public class AdminSlideController {
 	@RequestMapping (value = "/admin/addslide",method = RequestMethod.POST)
 	public String saveSlide(@ModelAttribute("slide") SlideEntity slide,@RequestParam("slide_image") MultipartFile image ,
 			final ModelMap model,final HttpServletRequest request,final HttpServletResponse response ) throws IllegalStateException, IOException {
+		String ms = "<script> setTimeout(function() {Swal.fire({"
+				+ "						  icon: 'success',"
+				+ "						  title: 'Thêm thành công',"
+				+ "						  confirmButtonText: 'Ok'"
+				+ "						}).then(function(){"
+				+ "                     window.location = 'http://localhost:8080/admin/viewslide';"
+				+ "                  });},0)</script>";
+		if(slide.getId() != null) {
+			ms = "<script> setTimeout(function() {Swal.fire({"
+					+ "						  icon: 'success',"
+					+ "						  title: 'Sửa thành công',"
+					+ "						  confirmButtonText: 'Ok'"
+					+ "						}).then(function(){"
+					+ "                     window.location = 'http://localhost:8080/admin/viewslide';"
+					+ "                  });},0)</script>";
+		}
 		slideSerivce.save(image, slide);
-		return "redirect:/admin/viewslide";
+		model.addAttribute("message", ms);
+		return "admin/insert_slide";
 	}
 	@RequestMapping (value = "/admin/addslide/{id}",method = RequestMethod.GET)
 	public String repairSlide(@PathVariable("id") Integer id,

@@ -2,6 +2,7 @@ package com.shoes_shop.model;
 
 public class Product {
 	private int id ;
+	private int size;
 
 	public int getId() {
 		return id;
@@ -9,6 +10,14 @@ public class Product {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
 	}
 
 	public Product() {

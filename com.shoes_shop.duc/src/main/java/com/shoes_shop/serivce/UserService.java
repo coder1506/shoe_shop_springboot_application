@@ -49,6 +49,7 @@ public class UserService {
 		EmailEntity eml = new EmailEntity();
 		eml.setEmail(email);
 		if(emailRepo.findByEmail(eml.getEmail()) != null) return false;
+		else if(userRepo.findByEmail(eml.getEmail()) != null) return false;
 		else {
 			LocalDateTime now = LocalDateTime.now();  
 		    DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");  
