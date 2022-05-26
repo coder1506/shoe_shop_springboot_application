@@ -31,6 +31,11 @@
 				class="left__title"><img
 					src="${pageContext.request.contextPath}/assets/icon-dashboard.svg"
 					alt="">Dashboard</a></li>
+			<li class="left__menuItem"><a
+				href="${pageContext.request.contextPath}/admin/chart"
+				class="left__title"><img
+					src="${pageContext.request.contextPath}/assets/chart.svg"
+					alt="">Thống kê</a></li>
 			<li class="left__menuItem">
 				<div class="left__title">
 					<img src="${pageContext.request.contextPath}/assets/icon-tag.svg"

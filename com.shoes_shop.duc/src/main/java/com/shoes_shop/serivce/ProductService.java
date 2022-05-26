@@ -2,7 +2,12 @@ package com.shoes_shop.serivce;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -18,14 +23,23 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.github.slugify.Slugify;
+import com.shoes_shop.entities.CategoryEntity;
 import com.shoes_shop.entities.EmailEntity;
 import com.shoes_shop.entities.ProductEntity;
 import com.shoes_shop.entities.ProductImages;
+import com.shoes_shop.entities.SaleOrder;
+import com.shoes_shop.entities.SaleOrderProducts;
+import com.shoes_shop.entities.SaleProductEntity;
 import com.shoes_shop.entities.SizeEntity;
 import com.shoes_shop.entities.User;
 import com.shoes_shop.model.ProductSearching;
+import com.shoes_shop.model.TotalInCate;
+import com.shoes_shop.repositories.CategoryRepo;
 import com.shoes_shop.repositories.EmailRepo;
 import com.shoes_shop.repositories.ProductRepo;
+import com.shoes_shop.repositories.SaleORepo;
+import com.shoes_shop.repositories.SaleProductRepo;
+import com.shoes_shop.repositories.SaleorderRepo;
 import com.shoes_shop.repositories.SizeRepo;
 import com.shoes_shop.repositories.UserRepo;
 
@@ -35,6 +49,10 @@ public class ProductService {
 	@Autowired
 	private ProductRepo productRepo;
 	@Autowired
+	private SaleORepo saleorderRepo;
+	@Autowired
+	private SaleProductRepo saleProductRepo;
+	@Autowired
 	public JavaMailSender emailSender;
 	@Autowired
 	EmailRepo emailRepo;
@@ -42,6 +60,8 @@ public class ProductService {
 	SizeRepo sizeRepo;
 	@Autowired
 	UserRepo userRepo;
+	@Autowired
+	private CategoryRepo categoryRepo;
 	public boolean isEmptyUploadFile(MultipartFile[] images) {
 		if(images == null || images.length <= 0 ) return true;
 		if(images.length == 0 || images[0].getOriginalFilename().isEmpty() == true) return true;
@@ -159,4 +179,42 @@ public class ProductService {
 		return query.getResultList();
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<TotalInCate> getTotalInCateByDate(LocalDateTime fromDate, LocalDateTime toDate, List<CategoryEntity> cates){
+		List<SaleProductEntity> Sprs = saleProductRepo.findAll();
+		List<CategoryEntity> cate = categoryRepo.findAll();
+		List<ProductEntity> prs = productRepo.findAll();
+		List<SaleOrder> sor = saleorderRepo.getAllBetweenDatesAndPay(fromDate, toDate, true);
+		List<TotalInCate> results = new ArrayList<TotalInCate>();
+		for(int i = 0; i < cates.size(); i++) {
+			results.add(new TotalInCate(cates.get(i).getName(), BigDecimal.ZERO));
+		}
+		for(int i = 0; i < cate.size(); i++) {
+			for(int j = 0; j < prs.size(); j++) {
+				for(int k = 0; k < Sprs.size(); k++) {
+					for(int d = 0; d < sor.size(); d++) {
+						if(cate.get(i).getId() == prs.get(j).getCategory().getId() && prs.get(j).getId() == Sprs.get(k).getProduct_id() && sor.get(d).getId() == Sprs.get(k).getSaleorder_id()) {
+							int index = containsCategoryValue(results, cate.get(i).getName());
+							BigDecimal total = new BigDecimal(Sprs.get(k).getQuality()).multiply(prs.get(j).getPrice());
+							if(index == -1) {
+								results.add(new TotalInCate(cate.get(i).getName(), total));
+							}else {
+								results.get(index).setTotal(results.get(index).getTotal().add(total));
+							}
+						}
+					}
+				}
+			}
+		}
+		return results;
+	}
+	
+	public int containsCategoryValue(List<TotalInCate> arr, String value){
+		for(int i = 0; i < arr.size(); i++) {
+			if(arr.get(i).getCategory().equals(value)) {
+				return i;
+			}
+		}
+		return -1;
+	}
 }
